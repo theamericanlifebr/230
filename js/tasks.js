@@ -17,6 +17,7 @@ const taskCustomInputs = document.querySelectorAll('#task-custom-week input');
 const taskTimeInput = document.getElementById('task-time');
 const taskHoursInput = document.getElementById('task-hours');
 const taskMinutesInput = document.getElementById('task-minutes');
+const taskDescInput = document.getElementById('task-desc');
 const taskAspectInput = document.getElementById('task-aspect');
 const taskTypeInput = document.getElementById('task-type');
 const taskNoTimeInput = document.getElementById('task-no-time');
@@ -51,6 +52,16 @@ function nextTaskStep() {
 
 function prevTaskStep() {
   if (currentTaskStep > 1) showTaskStep(currentTaskStep - 1);
+}
+
+function formatDuration(mins) {
+  const m = mins || 0;
+  const h = Math.floor(m / 60);
+  const mm = m % 60;
+  if (h && mm) return `${h}h ${mm}m`;
+  if (h) return `${h}h`;
+  if (mm) return `${mm}m`;
+  return '';
 }
 export function initTasks(keys, data, aspects) {
   aspectKeys = keys;
@@ -132,16 +143,25 @@ function buildTasks() {
     const div = document.createElement('div');
     div.className = 'task-item';
     div.dataset.index = index;
+
+    const icon = document.createElement('img');
+    icon.className = 'task-aspect-icon';
+    icon.alt = t.aspect;
+    icon.src = aspectsMap[t.aspect]?.image || '';
+
+    const textDiv = document.createElement('div');
+    textDiv.className = 'task-text';
+
     const h3 = document.createElement('h3');
     h3.textContent = t.title;
-    const p = document.createElement('p');
-    p.textContent = t.description;
+    textDiv.appendChild(h3);
+
     const span = document.createElement('span');
-    const infoTime = t.startTime ? new Date(t.startTime).toLocaleString() : 'Sem horário';
-    span.textContent = `${infoTime} | ${t.aspect} | ${t.type || 'Hábito'}`;
-    div.appendChild(h3);
-    if (t.description) div.appendChild(p);
-    div.appendChild(span);
+    span.textContent = `${formatDuration(t.duration)} ${t.type || 'Hábito'}`.trim();
+    textDiv.appendChild(span);
+
+    div.appendChild(icon);
+    div.appendChild(textDiv);
     div.addEventListener('dblclick', () => {
       tasks[index].completed = true;
       localStorage.setItem('tasks', JSON.stringify(tasks));
@@ -158,6 +178,15 @@ function buildTasks() {
     div.addEventListener('mouseleave', cancel);
     div.addEventListener('touchend', cancel);
     const time = t.startTime ? new Date(t.startTime).getTime() : null;
+    if (time && time > now) {
+      const timer = document.createElement('div');
+      timer.className = 'task-timer';
+      const diff = Math.floor((time - now) / 60000);
+      const hh = Math.floor(diff / 60);
+      const mm = diff % 60;
+      timer.innerHTML = `<small>tempo até início</small><div>${hh}:${mm.toString().padStart(2,'0')}h</div>`;
+      div.appendChild(timer);
+    }
     if (t.substituted) {
       div.classList.add('overdue');
       substituted.appendChild(div);
@@ -195,6 +224,7 @@ export function openTaskModal(index = null, prefill = null) {
   taskNoTimeInput.value = '';
   taskHoursInput.value = 0;
   taskMinutesInput.value = 0;
+  taskDescInput.value = '';
   taskCustomInputs.forEach(i => (i.checked = false));
   if (index !== null) {
     const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
@@ -213,6 +243,7 @@ export function openTaskModal(index = null, prefill = null) {
     }
     taskAspectInput.value = t.aspect;
     taskTypeInput.value = t.type || 'Hábito';
+    taskDescInput.value = t.description || '';
     const dur = t.duration || 0;
     taskHoursInput.value = Math.floor(dur / 60);
     taskMinutesInput.value = dur % 60;
@@ -230,12 +261,14 @@ export function openTaskModal(index = null, prefill = null) {
       taskTitleInput.value = prefill.title;
       taskAspectInput.value = prefill.aspect;
       taskTypeInput.value = prefill.type || 'Hábito';
+      taskDescInput.value = prefill.description || '';
       const dur = prefill.duration || 0;
       taskHoursInput.value = Math.floor(dur / 60);
       taskMinutesInput.value = dur % 60;
     } else {
       taskTitleInput.value = '';
       taskAspectInput.value = aspectKeys[0] || '';
+      taskDescInput.value = '';
     }
   }
   showTaskStep(1);
@@ -299,7 +332,7 @@ function findConflicts(start, duration, tasks, ignoreIndex = null) {
 function saveTask() {
   const title = taskTitleInput.value.trim();
   if (!title) return;
-  const description = '';
+  const description = taskDescInput.value.trim();
   const aspect = taskAspectInput.value;
   const type = taskTypeInput.value;
   const duration = (parseInt(taskHoursInput.value, 10) || 0) * 60 + (parseInt(taskMinutesInput.value, 10) || 0);
@@ -327,7 +360,7 @@ function saveTask() {
     }
     const baseTask = {
       title: title.slice(0, 14),
-      description,
+      description: description.slice(0, 60),
       aspect,
       type,
       duration,
