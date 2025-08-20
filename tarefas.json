@@ -1,52 +1,271 @@
 [
+  // ====== EMOCIONAL ======
   {
-    "title": "Arrumar espaço",
-    "description": "Organize o ambiente ao seu redor.",
-    "aspect": "Ambiente",
+    "title": "Respiração consciente",
+    "description": "Praticar 5 minutos de respiração profunda.",
+    "aspect": "Emocional",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "08:00",
+    "frequency": 1
+  },
+  {
+    "title": "Jornal emocional",
+    "description": "Escrever seus sentimentos em um caderno.",
+    "aspect": "Emocional",
     "type": "Tarefa",
-    "date": "",
-    "time": "",
+    "date": "Todos os dias",
+    "time": "21:00",
     "frequency": 1
   },
   {
-    "title": "Refeição leve",
-    "description": "Planeje uma refeição equilibrada com verduras e proteínas.",
-    "aspect": "Nutrition",
+    "title": "Agradecimento diário",
+    "description": "Listar 3 coisas pelas quais você é grato.",
+    "aspect": "Emocional",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "Noite",
+    "frequency": 1
+  },
+  {
+    "title": "Autoafirmações",
+    "description": "Repetir frases positivas para reforçar confiança.",
+    "aspect": "Emocional",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "Manhã",
+    "frequency": 1
+  },
+  {
+    "title": "Pausa consciente",
+    "description": "Observar pensamentos por 5 minutos em silêncio.",
+    "aspect": "Emocional",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "Tarde",
+    "frequency": 1
+  },
+  {
+    "title": "Revisar conquistas",
+    "description": "Relembrar uma vitória recente para reforçar confiança.",
+    "aspect": "Emocional",
     "type": "Tarefa",
-    "date": "",
+    "date": "Semanal",
     "time": "",
     "frequency": 1
   },
   {
-    "title": "Sono cedo",
-    "description": "Durma cedo e garanta oito horas de recuperação.",
-    "aspect": "Sleep",
-    "type": "Hábito",
-    "date": "Todos os dias",
-    "time": "22:00",
-    "frequency": 1
-  },
-  {
-    "title": "Higiene dia",
-    "description": "Cuide do corpo com banho e escovação completos hoje.",
-    "aspect": "Hygiene",
-    "type": "Hábito",
-    "date": "Todos os dias",
+    "title": "Praticar perdão",
+    "description": "Liberar ressentimentos através de reflexão consciente.",
+    "aspect": "Emocional",
+    "type": "Tarefa",
+    "date": "Semanal",
     "time": "",
     "frequency": 1
   },
   {
-    "title": "Auto controle",
-    "description": "Respire fundo antes de reagir a cada situação.",
-    "aspect": "Emotional",
+    "title": "Meditação guiada",
+    "description": "Fazer 10 minutos de meditação guiada.",
+    "aspect": "Emocional",
     "type": "Hábito",
     "date": "Todos os dias",
+    "time": "Noite",
+    "frequency": 1
+  },
+  {
+    "title": "Visualização positiva",
+    "description": "Imaginar seu dia ideal antes de começar.",
+    "aspect": "Emocional",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "Manhã",
+    "frequency": 1
+  },
+  {
+    "title": "Desconectar",
+    "description": "Passar 30 minutos sem telas para clareza mental.",
+    "aspect": "Emocional",
+    "type": "Tarefa",
+    "date": "Todos os dias",
+    "time": "Tarde",
+    "frequency": 1
+  },
+  {
+    "title": "Reforçar valores",
+    "description": "Ler sua lei pessoal interna em voz alta.",
+    "aspect": "Emocional",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "Manhã",
+    "frequency": 1
+  },
+  {
+    "title": "Escrita livre",
+    "description": "Escrever sem regras por 10 minutos.",
+    "aspect": "Emocional",
+    "type": "Tarefa",
+    "date": "Semanal",
     "time": "",
     "frequency": 1
   },
   {
-    "title": "Pausa de energia",
-    "description": "Faça uma breve caminhada para renovar a disposição.",
+    "title": "Silêncio",
+    "description": "Ficar 10 minutos em silêncio completo.",
+    "aspect": "Emocional",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "Noite",
+    "frequency": 1
+  },
+  {
+    "title": "Música relaxante",
+    "description": "Ouvir músicas calmas por alguns minutos.",
+    "aspect": "Emocional",
+    "type": "Tarefa",
+    "date": "Todos os dias",
+    "time": "Noite",
+    "frequency": 1
+  },
+  {
+    "title": "Revisar metas pessoais",
+    "description": "Lembrar de seus objetivos de vida.",
+    "aspect": "Emocional",
+    "type": "Tarefa",
+    "date": "Semanal",
+    "time": "Domingo",
+    "frequency": 1
+  },
+  {
+    "title": "Anotar vitórias",
+    "description": "Registrar pequenas conquistas do dia.",
+    "aspect": "Emocional",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "Noite",
+    "frequency": 1
+  },
+  {
+    "title": "Autoanálise",
+    "description": "Escrever como você reagiu às situações do dia.",
+    "aspect": "Emocional",
+    "type": "Tarefa",
+    "date": "Todos os dias",
+    "time": "21:00",
+    "frequency": 1
+  },
+  {
+    "title": "Respiração 4-7-8",
+    "description": "Praticar técnica de respiração para relaxamento.",
+    "aspect": "Emocional",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "19:00",
+    "frequency": 1
+  },
+  {
+    "title": "Leitura inspiradora",
+    "description": "Ler um trecho curto de livro de sabedoria.",
+    "aspect": "Emocional",
+    "type": "Tarefa",
+    "date": "Todos os dias",
+    "time": "Manhã",
+    "frequency": 1
+  },
+  {
+    "title": "Celebrar progresso",
+    "description": "Comemorar uma ação cumprida hoje.",
+    "aspect": "Emocional",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "Noite",
+    "frequency": 1
+  },
+
+  // ====== ENERGIA ======
+  {
+    "title": "Alongamento matinal",
+    "description": "Despertar corpo com alongamento de 5 minutos.",
+    "aspect": "Energia",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "07:00",
+    "frequency": 1
+  },
+  {
+    "title": "Exposição ao sol",
+    "description": "Tomar 10 minutos de sol pela manhã.",
+    "aspect": "Energia",
+    "type": "Tarefa",
+    "date": "Todos os dias",
+    "time": "08:30",
+    "frequency": 1
+  },
+  {
+    "title": "Hidratação manhã",
+    "description": "Beber dois copos de água ao acordar.",
+    "aspect": "Energia",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "07:10",
+    "frequency": 1
+  },
+  {
+    "title": "Caminhada leve",
+    "description": "Andar 10 minutos para ativar energia.",
+    "aspect": "Energia",
+    "type": "Tarefa",
+    "date": "Todos os dias",
+    "time": "Manhã",
+    "frequency": 1
+  },
+  {
+    "title": "Sorrir",
+    "description": "Forçar um sorriso para liberar endorfina.",
+    "aspect": "Energia",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "Manhã",
+    "frequency": 1
+  },
+  {
+    "title": "Banho frio",
+    "description": "Tomar banho frio para estimular disposição.",
+    "aspect": "Energia",
+    "type": "Tarefa",
+    "date": "Semanal",
+    "time": "Manhã",
+    "frequency": 1
+  },
+  {
+    "title": "Música animada",
+    "description": "Ouvir música que dê energia antes de trabalhar.",
+    "aspect": "Energia",
+    "type": "Tarefa",
+    "date": "Todos os dias",
+    "time": "Manhã",
+    "frequency": 1
+  },
+  {
+    "title": "Respiração vigorosa",
+    "description": "Praticar respiração rápida para despertar.",
+    "aspect": "Energia",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "08:00",
+    "frequency": 1
+  },
+  {
+    "title": "Leitura mindset",
+    "description": "Ler suas leis internas de mindset.",
+    "aspect": "Energia",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "Manhã",
+    "frequency": 1
+  },
+  {
+    "title": "Postura ereta",
+    "description": "Manter postura ereta para mais energia.",
     "aspect": "Energia",
     "type": "Hábito",
     "date": "Todos os dias",
@@ -54,17 +273,363 @@
     "frequency": 1
   },
   {
-    "title": "Estudo curto",
-    "description": "Leia ou aprenda algo novo por quinze minutos.",
+    "title": "Pequena dança",
+    "description": "Dançar por 2 minutos para ativar disposição.",
+    "aspect": "Energia",
+    "type": "Tarefa",
+    "date": "Todos os dias",
+    "time": "Tarde",
+    "frequency": 1
+  },
+  {
+    "title": "Pausa ativa",
+    "description": "Levantar-se da cadeira e se movimentar.",
+    "aspect": "Energia",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "A cada 2h",
+    "frequency": 1
+  },
+  {
+    "title": "Contato com natureza",
+    "description": "Olhar plantas ou céu por 5 minutos.",
+    "aspect": "Energia",
+    "type": "Tarefa",
+    "date": "Todos os dias",
+    "time": "Tarde",
+    "frequency": 1
+  },
+  {
+    "title": "Respirar ar fresco",
+    "description": "Abrir a janela e respirar fundo.",
+    "aspect": "Energia",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "Manhã",
+    "frequency": 1
+  },
+  {
+    "title": "Rir",
+    "description": "Assistir algo engraçado para liberar energia.",
+    "aspect": "Energia",
+    "type": "Tarefa",
+    "date": "Todos os dias",
+    "time": "Noite",
+    "frequency": 1
+  },
+  {
+    "title": "Água gelada",
+    "description": "Beber água gelada para renovar energia.",
+    "aspect": "Energia",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "Tarde",
+    "frequency": 1
+  },
+  {
+    "title": "Alongar coluna",
+    "description": "Alongar costas para aliviar cansaço.",
+    "aspect": "Energia",
+    "type": "Tarefa",
+    "date": "Todos os dias",
+    "time": "Tarde",
+    "frequency": 1
+  },
+  {
+    "title": "Checklist do dia",
+    "description": "Revisar tarefas concluídas para motivação.",
+    "aspect": "Energia",
+    "type": "Tarefa",
+    "date": "Todos os dias",
+    "time": "Noite",
+    "frequency": 1
+  },
+  {
+    "title": "Café moderado",
+    "description": "Tomar café só pela manhã, em moderação.",
+    "aspect": "Energia",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "09:00",
+    "frequency": 1
+  },
+  {
+    "title": "Mantra pessoal",
+    "description": "Repetir mentalmente seu lema de vida.",
+    "aspect": "Energia",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "Manhã",
+    "frequency": 1
+  },
+
+  // ====== LEARNING ======
+  {
+    "title": "Ler artigo curto",
+    "description": "Ler artigo de 5 minutos em área de interesse.",
+    "aspect": "Learning",
+    "type": "Tarefa",
+    "date": "Todos os dias",
+    "time": "Manhã",
+    "frequency": 1
+  },
+  {
+    "title": "Assistir vídeo educativo",
+    "description": "Ver vídeo de 10 minutos sobre novo tema.",
+    "aspect": "Learning",
+    "type": "Tarefa",
+    "date": "Todos os dias",
+    "time": "Tarde",
+    "frequency": 1
+  },
+  {
+    "title": "Audiobook diário",
+    "description": "Ouvir audiobook por 15 minutos.",
     "aspect": "Learning",
     "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "Noite",
+    "frequency": 1
+  },
+  {
+    "title": "Resumo escrito",
+    "description": "Escrever resumo curto do que aprendeu hoje.",
+    "aspect": "Learning",
+    "type": "Tarefa",
+    "date": "Todos os dias",
+    "time": "Noite",
+    "frequency": 1
+  },
+  {
+    "title": "Aprender palavra nova",
+    "description": "Pesquisar uma palavra nova em inglês.",
+    "aspect": "Learning",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "Manhã",
+    "frequency": 1
+  },
+  {
+    "title": "Ouvir podcast",
+    "description": "Escutar 10 minutos de podcast educativo.",
+    "aspect": "Learning",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "Tarde",
+    "frequency": 1
+  },
+  {
+    "title": "Pesquisar tema novo",
+    "description": "Investigar tema que você não conhece.",
+    "aspect": "Learning",
+    "type": "Tarefa",
+    "date": "Semanal",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Estudo programado",
+    "description": "Reservar 30 minutos fixos para estudo.",
+    "aspect": "Learning",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "20:00",
+    "frequency": 1
+  },
+  {
+    "title": "Flashcards",
+    "description": "Revisar flashcards por 10 minutos.",
+    "aspect": "Learning",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "Tarde",
+    "frequency": 1
+  },
+  {
+    "title": "Assistir palestra",
+    "description": "Ver palestra curta (TED ou similar).",
+    "aspect": "Learning",
+    "type": "Tarefa",
+    "date": "Semanal",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Tomar notas",
+    "description": "Anotar 3 ideias principais do dia.",
+    "aspect": "Learning",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "Noite",
+    "frequency": 1
+  },
+  {
+    "title": "Livro técnico",
+    "description": "Ler 5 páginas de livro técnico.",
+    "aspect": "Learning",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "Manhã",
+    "frequency": 1
+  },
+  {
+    "title": "Discutir aprendizado",
+    "description": "Compartilhar algo aprendido com alguém.",
+    "aspect": "Learning",
+    "type": "Tarefa",
     "date": "Todos os dias",
     "time": "",
     "frequency": 1
   },
   {
-    "title": "Exercício rápido",
-    "description": "Realize uma sequência curta de exercícios físicos.",
+    "title": "Pesquisar dúvida",
+    "description": "Procurar resposta para uma dúvida específica.",
+    "aspect": "Learning",
+    "type": "Tarefa",
+    "date": "Todos os dias",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Revisão semanal",
+    "description": "Revisar anotações da semana.",
+    "aspect": "Learning",
+    "type": "Tarefa",
+    "date": "Semanal",
+    "time": "Domingo",
+    "frequency": 1
+  },
+  {
+    "title": "Mapa mental",
+    "description": "Criar um mapa mental simples.",
+    "aspect": "Learning",
+    "type": "Tarefa",
+    "date": "Semanal",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Leitura rápida",
+    "description": "Praticar leitura rápida por 10 minutos.",
+    "aspect": "Learning",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "Manhã",
+    "frequency": 1
+  },
+  {
+    "title": "Aplicar conhecimento",
+    "description": "Usar algo aprendido em tarefa prática.",
+    "aspect": "Learning",
+    "type": "Tarefa",
+    "date": "Todos os dias",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Estudo em dupla",
+    "description": "Estudar com outra pessoa por 20 minutos.",
+    "aspect": "Learning",
+    "type": "Tarefa",
+    "date": "Semanal",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Assistir documentário",
+    "description": "Ver parte de documentário educativo.",
+    "aspect": "Learning",
+    "type": "Tarefa",
+    "date": "Semanal",
+    "time": "",
+    "frequency": 1
+  },
+
+  // ====== EXERCÍCIOS ======
+  {
+    "title": "Caminhada rápida",
+    "description": "Andar 15 minutos em ritmo acelerado.",
+    "aspect": "Exercícios",
+    "type": "Tarefa",
+    "date": "Todos os dias",
+    "time": "Manhã",
+    "frequency": 1
+  },
+  {
+    "title": "Corrida leve",
+    "description": "Correr 10 minutos contínuos.",
+    "aspect": "Exercícios",
+    "type": "Hábito",
+    "date": "3x por semana",
+    "time": "07:00",
+    "frequency": 1
+  },
+  {
+    "title": "Polichinelos",
+    "description": "Fazer 30 polichinelos.",
+    "aspect": "Exercícios",
+    "type": "Tarefa",
+    "date": "Todos os dias",
+    "time": "Manhã",
+    "frequency": 1
+  },
+  {
+    "title": "Agachamentos",
+    "description": "Fazer 3 séries de 15 agachamentos.",
+    "aspect": "Exercícios",
+    "type": "Tarefa",
+    "date": "3x por semana",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Flexões",
+    "description": "Fazer 3 séries de 10 flexões.",
+    "aspect": "Exercícios",
+    "type": "Tarefa",
+    "date": "3x por semana",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Abdominais",
+    "description": "Fazer 3 séries de 20 abdominais.",
+    "aspect": "Exercícios",
+    "type": "Tarefa",
+    "date": "3x por semana",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Pular corda",
+    "description": "Pular corda por 5 minutos.",
+    "aspect": "Exercícios",
+    "type": "Tarefa",
+    "date": "Todos os dias",
+    "time": "Tarde",
+    "frequency": 1
+  },
+  {
+    "title": "Yoga curta",
+    "description": "Praticar 10 minutos de yoga.",
+    "aspect": "Exercícios",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "Noite",
+    "frequency": 1
+  },
+  {
+    "title": "Alongamento total",
+    "description": "Alongar corpo inteiro por 10 minutos.",
+    "aspect": "Exercícios",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "Manhã",
+    "frequency": 1
+  },
+  {
+    "title": "Subir escadas",
+    "description": "Substituir elevador por escada.",
     "aspect": "Exercícios",
     "type": "Hábito",
     "date": "Todos os dias",
@@ -72,17 +637,327 @@
     "frequency": 1
   },
   {
-    "title": "Conectar rede",
-    "description": "Envie mensagem sincera para um amigo distante.",
-    "aspect": "Relationships",
+    "title": "Ciclismo leve",
+    "description": "Pedalar 20 minutos.",
+    "aspect": "Exercícios",
     "type": "Tarefa",
-    "date": "",
+    "date": "2x por semana",
     "time": "",
     "frequency": 1
   },
   {
-    "title": "Revisar conta",
-    "description": "Cheque gastos de hoje e atualize seu orçamento.",
+    "title": "Natação leve",
+    "description": "Nadar 15 minutos contínuos.",
+    "aspect": "Exercícios",
+    "type": "Tarefa",
+    "date": "Semanal",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Caminhada após almoço",
+    "description": "Andar 10 minutos após refeição.",
+    "aspect": "Exercícios",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "13:30",
+    "frequency": 1
+  },
+  {
+    "title": "Corrida longa",
+    "description": "Correr 30 minutos.",
+    "aspect": "Exercícios",
+    "type": "Tarefa",
+    "date": "Semanal",
+    "time": "Sábado",
+    "frequency": 1
+  },
+  {
+    "title": "Treino HIIT",
+    "description": "Fazer 10 minutos de treino intervalado.",
+    "aspect": "Exercícios",
+    "type": "Tarefa",
+    "date": "2x por semana",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Caminhada noturna",
+    "description": "Andar devagar à noite para relaxar.",
+    "aspect": "Exercícios",
+    "type": "Tarefa",
+    "date": "Todos os dias",
+    "time": "20:00",
+    "frequency": 1
+  },
+  {
+    "title": "Exercício de equilíbrio",
+    "description": "Ficar 1 minuto em um pé só.",
+    "aspect": "Exercícios",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "Manhã",
+    "frequency": 1
+  },
+  {
+    "title": "Caminhada social",
+    "description": "Passear com amigo ou pet.",
+    "aspect": "Exercícios",
+    "type": "Tarefa",
+    "date": "Semanal",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Exercício de respiração física",
+    "description": "Fazer respiração ativa durante movimento.",
+    "aspect": "Exercícios",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Treino completo",
+    "description": "Fazer série completa de 30 minutos.",
+    "aspect": "Exercícios",
+    "type": "Tarefa",
+    "date": "3x por semana",
+    "time": "",
+    "frequency": 1
+  },
+
+  // ====== RELATIONSHIPS ======
+  {
+    "title": "Mensagem família",
+    "description": "Mandar mensagem para parente próximo.",
+    "aspect": "Relationships",
+    "type": "Tarefa",
+    "date": "Todos os dias",
+    "time": "Noite",
+    "frequency": 1
+  },
+  {
+    "title": "Ligar amigo",
+    "description": "Telefonar para um amigo distante.",
+    "aspect": "Relationships",
+    "type": "Tarefa",
+    "date": "Semanal",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Almoço família",
+    "description": "Compartilhar refeição com família.",
+    "aspect": "Relationships",
+    "type": "Tarefa",
+    "date": "Semanal",
+    "time": "Domingo",
+    "frequency": 1
+  },
+  {
+    "title": "Elogio sincero",
+    "description": "Fazer um elogio genuíno a alguém.",
+    "aspect": "Relationships",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Mensagem inesperada",
+    "description": "Mandar mensagem positiva para surpresa.",
+    "aspect": "Relationships",
+    "type": "Tarefa",
+    "date": "Semanal",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Escuta ativa",
+    "description": "Praticar ouvir sem interromper.",
+    "aspect": "Relationships",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Tempo com amigo",
+    "description": "Marcar encontro presencial ou online.",
+    "aspect": "Relationships",
+    "type": "Tarefa",
+    "date": "Semanal",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Apoio emocional",
+    "description": "Oferecer apoio a alguém em dificuldade.",
+    "aspect": "Relationships",
+    "type": "Tarefa",
+    "date": "Semanal",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Desconectar telas",
+    "description": "Passar 1h focado em tempo de qualidade.",
+    "aspect": "Relationships",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "Noite",
+    "frequency": 1
+  },
+  {
+    "title": "Atividade em grupo",
+    "description": "Participar de atividade coletiva.",
+    "aspect": "Relationships",
+    "type": "Tarefa",
+    "date": "Semanal",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Surpresa pequena",
+    "description": "Fazer gesto pequeno de carinho.",
+    "aspect": "Relationships",
+    "type": "Tarefa",
+    "date": "Mensal",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Caminhada família",
+    "description": "Dar uma volta junto com familiares.",
+    "aspect": "Relationships",
+    "type": "Tarefa",
+    "date": "Semanal",
+    "time": "Sábado",
+    "frequency": 1
+  },
+  {
+    "title": "Carta ou email",
+    "description": "Escrever carta/email para alguém especial.",
+    "aspect": "Relationships",
+    "type": "Tarefa",
+    "date": "Mensal",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Jantar em grupo",
+    "description": "Preparar jantar em conjunto.",
+    "aspect": "Relationships",
+    "type": "Tarefa",
+    "date": "Mensal",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Gratidão verbal",
+    "description": "Dizer obrigado conscientemente.",
+    "aspect": "Relationships",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Visita familiar",
+    "description": "Fazer visita a familiar idoso.",
+    "aspect": "Relationships",
+    "type": "Tarefa",
+    "date": "Mensal",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Atividade divertida",
+    "description": "Compartilhar jogo ou filme juntos.",
+    "aspect": "Relationships",
+    "type": "Tarefa",
+    "date": "Semanal",
+    "time": "Noite",
+    "frequency": 1
+  },
+  {
+    "title": "Feedback positivo",
+    "description": "Dar feedback positivo a colega.",
+    "aspect": "Relationships",
+    "type": "Tarefa",
+    "date": "Semanal",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Abraço",
+    "description": "Dar um abraço em alguém próximo.",
+    "aspect": "Relationships",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Relembrar boas memórias",
+    "description": "Compartilhar história divertida com alguém.",
+    "aspect": "Relationships",
+    "type": "Tarefa",
+    "date": "Semanal",
+    "time": "",
+    "frequency": 1
+  },
+
+  // ====== FINANCIAL ======
+  {
+    "title": "Anotar gastos",
+    "description": "Registrar todas as despesas do dia.",
+    "aspect": "Financial",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "Noite",
+    "frequency": 1
+  },
+  {
+    "title": "Revisar saldo",
+    "description": "Checar extrato bancário diariamente.",
+    "aspect": "Financial",
+    "type": "Tarefa",
+    "date": "Todos os dias",
+    "time": "Manhã",
+    "frequency": 1
+  },
+  {
+    "title": "Planejar orçamento",
+    "description": "Definir limites de gasto da semana.",
+    "aspect": "Financial",
+    "type": "Tarefa",
+    "date": "Semanal",
+    "time": "Segunda-feira",
+    "frequency": 1
+  },
+  {
+    "title": "Separar poupança",
+    "description": "Guardar pequena quantia em poupança.",
+    "aspect": "Financial",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "Noite",
+    "frequency": 1
+  },
+  {
+    "title": "Investir aprendizado",
+    "description": "Estudar 10 minutos sobre finanças.",
+    "aspect": "Financial",
+    "type": "Tarefa",
+    "date": "Semanal",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Evitar compras por impulso",
+    "description": "Esperar 24h antes de compra não planejada.",
     "aspect": "Financial",
     "type": "Hábito",
     "date": "Todos os dias",
@@ -90,21 +965,599 @@
     "frequency": 1
   },
   {
-    "title": "Momento de lazer",
-    "description": "Separe um tempo para algo que você gosta.",
-    "aspect": "Lazer",
+    "title": "Revisar metas financeiras",
+    "description": "Checar progresso das metas financeiras.",
+    "aspect": "Financial",
     "type": "Tarefa",
-    "date": "",
+    "date": "Semanal",
     "time": "",
     "frequency": 1
   },
   {
-    "title": "Planejar trabalho",
-    "description": "Defina as prioridades do seu dia de trabalho.",
-    "aspect": "Trabalho",
+    "title": "Lista de compras",
+    "description": "Criar lista antes de ir ao mercado.",
+    "aspect": "Financial",
     "type": "Tarefa",
-    "date": "",
+    "date": "Semanal",
     "time": "",
     "frequency": 1
-  }
-]
+  },
+  {
+    "title": "Comparar preços",
+    "description": "Pesquisar preço antes de comprar.",
+    "aspect": "Financial",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Evitar dívidas",
+    "description": "Não usar cartão de crédito para supérfluos.",
+    "aspect": "Financial",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Revisão mensal",
+    "description": "Revisar orçamento do mês.",
+    "aspect": "Financial",
+    "type": "Tarefa",
+    "date": "Mensal",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Definir meta de economia",
+    "description": "Estabelecer valor para economizar no mês.",
+    "aspect": "Financial",
+    "type": "Tarefa",
+    "date": "Mensal",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Controle de assinaturas",
+    "description": "Verificar assinaturas ativas e cancelar inúteis.",
+    "aspect": "Financial",
+    "type": "Tarefa",
+    "date": "Mensal",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Revisar investimentos",
+    "description": "Checar carteira de investimentos.",
+    "aspect": "Financial",
+    "type": "Tarefa",
+    "date": "Semanal",
+    "time": "Segunda-feira",
+    "frequency": 1
+  },
+  {
+    "title": "Separar emergência",
+    "description": "Colocar 5% do ganho em reserva emergencial.",
+    "aspect": "Financial",
+    "type": "Hábito",
+    "date": "Mensal",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Evitar supérfluos",
+    "description": "Não gastar em itens desnecessários hoje.",
+    "aspect": "Financial",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Controle semanal",
+    "description": "Fechar contas da semana.",
+    "aspect": "Financial",
+    "type": "Tarefa",
+    "date": "Semanal",
+    "time": "Domingo",
+    "frequency": 1
+  },
+  {
+    "title": "Revisar ganhos",
+    "description": "Checar todas entradas de renda do mês.",
+    "aspect": "Financial",
+    "type": "Tarefa",
+    "date": "Mensal",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Educação financeira",
+    "description": "Assistir vídeo curto sobre finanças pessoais.",
+    "aspect": "Financial",
+    "type": "Tarefa",
+    "date": "Semanal",
+    "time": "",
+    "frequency": 1
+  },
+
+  [
+  // ====== LAZER ======
+  {
+    "title": "Tempo criativo",
+    "description": "Desenhar, pintar ou escrever por prazer.",
+    "aspect": "Lazer",
+    "type": "Tarefa",
+    "date": "Todos os dias",
+    "time": "Tarde",
+    "frequency": 1
+  },
+  {
+    "title": "Filme relaxante",
+    "description": "Assistir a um filme leve à noite.",
+    "aspect": "Lazer",
+    "type": "Tarefa",
+    "date": "Semanal",
+    "time": "Sexta-feira",
+    "frequency": 1
+  },
+  {
+    "title": "Jogo de tabuleiro",
+    "description": "Jogar algo divertido com amigos ou família.",
+    "aspect": "Lazer",
+    "type": "Tarefa",
+    "date": "Semanal",
+    "time": "Sábado",
+    "frequency": 1
+  },
+  {
+    "title": "Ouvir música",
+    "description": "Escutar músicas favoritas por 20 minutos.",
+    "aspect": "Lazer",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "Noite",
+    "frequency": 1
+  },
+  {
+    "title": "Passeio leve",
+    "description": "Dar uma volta sem destino certo.",
+    "aspect": "Lazer",
+    "type": "Tarefa",
+    "date": "Semanal",
+    "time": "Domingo",
+    "frequency": 1
+  },
+  {
+    "title": "Ler por prazer",
+    "description": "Ler um livro apenas por diversão.",
+    "aspect": "Lazer",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "Tarde",
+    "frequency": 1
+  },
+  {
+    "title": "Explorar hobby",
+    "description": "Dedicar 30 minutos a um hobby pessoal.",
+    "aspect": "Lazer",
+    "type": "Hábito",
+    "date": "Semanal",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Jogos digitais",
+    "description": "Jogar videogame de forma equilibrada.",
+    "aspect": "Lazer",
+    "type": "Tarefa",
+    "date": "Semanal",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Atividade cultural",
+    "description": "Visitar museu, exposição ou cinema.",
+    "aspect": "Lazer",
+    "type": "Tarefa",
+    "date": "Mensal",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Descobrir música nova",
+    "description": "Ouvir artista novo ou playlist diferente.",
+    "aspect": "Lazer",
+    "type": "Hábito",
+    "date": "Semanal",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Jogar cartas",
+    "description": "Organizar partida rápida de cartas.",
+    "aspect": "Lazer",
+    "type": "Tarefa",
+    "date": "Mensal",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Relaxar ao sol",
+    "description": "Tomar sol de forma relaxante por 15 minutos.",
+    "aspect": "Lazer",
+    "type": "Hábito",
+    "date": "Semanal",
+    "time": "Manhã",
+    "frequency": 1
+  },
+  {
+    "title": "Fotografia divertida",
+    "description": "Tirar fotos criativas durante o dia.",
+    "aspect": "Lazer",
+    "type": "Tarefa",
+    "date": "Semanal",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Brincadeira com pet",
+    "description": "Dedicar 15 minutos a brincar com um animal.",
+    "aspect": "Lazer",
+    "type": "Tarefa",
+    "date": "Todos os dias",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Desenho livre",
+    "description": "Desenhar sem compromisso artístico.",
+    "aspect": "Lazer",
+    "type": "Tarefa",
+    "date": "Semanal",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Provar receita nova",
+    "description": "Cozinhar algo novo apenas por diversão.",
+    "aspect": "Lazer",
+    "type": "Tarefa",
+    "date": "Mensal",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Ver pôr do sol",
+    "description": "Assistir ao pôr do sol de um lugar calmo.",
+    "aspect": "Lazer",
+    "type": "Tarefa",
+    "date": "Semanal",
+    "time": "Fim de tarde",
+    "frequency": 1
+  },
+  {
+    "title": "Aprender jogo novo",
+    "description": "Experimentar um novo jogo de cartas ou tabuleiro.",
+    "aspect": "Lazer",
+    "type": "Tarefa",
+    "date": "Mensal",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Dia sem tarefas",
+    "description": "Reservar um período apenas para descanso e lazer.",
+    "aspect": "Lazer",
+    "type": "Tarefa",
+    "date": "Mensal",
+    "time": "Domingo",
+    "frequency": 1
+  },
+  {
+    "title": "Explorar cidade",
+    "description": "Visitar um lugar novo na cidade sem pressa.",
+    "aspect": "Lazer",
+    "type": "Tarefa",
+    "date": "Mensal",
+    "time": "Sábado",
+    "frequency": 1
+  },
+
+  // ====== TRABALHO ======
+  {
+    "title": "Prioridades do dia",
+    "description": "Definir 3 tarefas prioritárias.",
+    "aspect": "Trabalho",
+    "type": "Tarefa",
+    "date": "Todos os dias",
+    "time": "Manhã",
+    "frequency": 1
+  },
+  {
+    "title": "Bloco de foco",
+    "description": "Trabalhar 1h sem interrupções.",
+    "aspect": "Trabalho",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "Manhã",
+    "frequency": 1
+  },
+  {
+    "title": "Revisão semanal",
+    "description": "Revisar entregas da semana.",
+    "aspect": "Trabalho",
+    "type": "Tarefa",
+    "date": "Semanal",
+    "time": "Sexta-feira",
+    "frequency": 1
+  },
+  {
+    "title": "Aprender ferramenta",
+    "description": "Explorar recurso novo de ferramenta de trabalho.",
+    "aspect": "Trabalho",
+    "type": "Tarefa",
+    "date": "Semanal",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Delegar tarefa",
+    "description": "Delegar uma tarefa sempre que possível.",
+    "aspect": "Trabalho",
+    "type": "Tarefa",
+    "date": "Todos os dias",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Feedback",
+    "description": "Dar feedback construtivo a colega.",
+    "aspect": "Trabalho",
+    "type": "Tarefa",
+    "date": "Semanal",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Pausa produtiva",
+    "description": "Fazer pausa de 10 minutos a cada 2h.",
+    "aspect": "Trabalho",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Planejamento mensal",
+    "description": "Definir metas do mês.",
+    "aspect": "Trabalho",
+    "type": "Tarefa",
+    "date": "Mensal",
+    "time": "Início do mês",
+    "frequency": 1
+  },
+  {
+    "title": "Organizar espaço",
+    "description": "Arrumar mesa e arquivos digitais.",
+    "aspect": "Trabalho",
+    "type": "Tarefa",
+    "date": "Semanal",
+    "time": "Segunda-feira",
+    "frequency": 1
+  },
+  {
+    "title": "Reflexão profissional",
+    "description": "Pensar sobre evolução de carreira.",
+    "aspect": "Trabalho",
+    "type": "Tarefa",
+    "date": "Mensal",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Alinhar equipe",
+    "description": "Reunião rápida para alinhar tarefas.",
+    "aspect": "Trabalho",
+    "type": "Tarefa",
+    "date": "Semanal",
+    "time": "Segunda-feira",
+    "frequency": 1
+  },
+  {
+    "title": "Aprender com erros",
+    "description": "Registrar aprendizado de um erro cometido.",
+    "aspect": "Trabalho",
+    "type": "Tarefa",
+    "date": "Sempre que ocorrer",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Networking",
+    "description": "Conectar-se com um novo contato profissional.",
+    "aspect": "Trabalho",
+    "type": "Tarefa",
+    "date": "Mensal",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Estudo profissional",
+    "description": "Estudar 15 minutos sobre área de atuação.",
+    "aspect": "Trabalho",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "Noite",
+    "frequency": 1
+  },
+  {
+    "title": "Organizar emails",
+    "description": "Responder e organizar emails pendentes.",
+    "aspect": "Trabalho",
+    "type": "Tarefa",
+    "date": "Todos os dias",
+    "time": "Manhã",
+    "frequency": 1
+  },
+  {
+    "title": "Check-in diário",
+    "description": "Refletir sobre produtividade do dia.",
+    "aspect": "Trabalho",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "Noite",
+    "frequency": 1
+  },
+  {
+    "title": "Revisar agenda",
+    "description": "Checar compromissos do próximo dia.",
+    "aspect": "Trabalho",
+    "type": "Tarefa",
+    "date": "Todos os dias",
+    "time": "Noite",
+    "frequency": 1
+  },
+  {
+    "title": "Reunião foco",
+    "description": "Participar apenas de reuniões essenciais.",
+    "aspect": "Trabalho",
+    "type": "Hábito",
+    "date": "Sempre que agendado",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Atualizar currículo",
+    "description": "Revisar e atualizar currículo ou portfólio.",
+    "aspect": "Trabalho",
+    "type": "Tarefa",
+    "date": "Semestral",
+    "time": "",
+    "frequency": 1
+  },
+
+  // ====== AMBIENTE ======
+  {
+    "title": "Arrumar mesa",
+    "description": "Organizar mesa de trabalho ao final do dia.",
+    "aspect": "Ambiente",
+    "type": "Tarefa",
+    "date": "Todos os dias",
+    "time": "Noite",
+    "frequency": 1
+  },
+  {
+    "title": "Lixo reciclável",
+    "description": "Separar resíduos recicláveis do lixo comum.",
+    "aspect": "Ambiente",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Plantas",
+    "description": "Cuidar e regar plantas.",
+    "aspect": "Ambiente",
+    "type": "Tarefa",
+    "date": "Semanal",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Luz natural",
+    "description": "Abrir janelas para entrada de luz.",
+    "aspect": "Ambiente",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "Manhã",
+    "frequency": 1
+  },
+  {
+    "title": "Organizar quarto",
+    "description": "Deixar quarto limpo e organizado.",
+    "aspect": "Ambiente",
+    "type": "Tarefa",
+    "date": "Todos os dias",
+    "time": "Manhã",
+    "frequency": 1
+  },
+  {
+    "title": "Economizar energia",
+    "description": "Apagar luzes desnecessárias.",
+    "aspect": "Ambiente",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Ventilar casa",
+    "description": "Abrir janelas para circulação de ar.",
+    "aspect": "Ambiente",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "Manhã",
+    "frequency": 1
+  },
+  {
+    "title": "Organizar documentos",
+    "description": "Guardar papéis importantes no lugar certo.",
+    "aspect": "Ambiente",
+    "type": "Tarefa",
+    "date": "Mensal",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Trocar roupa de cama",
+    "description": "Manter cama limpa semanalmente.",
+    "aspect": "Ambiente",
+    "type": "Tarefa",
+    "date": "Semanal",
+    "time": "Domingo",
+    "frequency": 1
+  },
+  {
+    "title": "Limpeza rápida",
+    "description": "Dedicar 10 minutos à limpeza de um cômodo.",
+    "aspect": "Ambiente",
+    "type": "Tarefa",
+    "date": "Todos os dias",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Cuidar da cozinha",
+    "description": "Lavar louça e limpar pia após uso.",
+    "aspect": "Ambiente",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "Após refeições",
+    "frequency": 1
+  },
+  {
+    "title": "Higienizar eletrônicos",
+    "description": "Limpar celulares e computadores.",
+    "aspect": "Ambiente",
+    "type": "Tarefa",
+    "date": "Semanal",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Destralhar",
+    "description": "Separar itens para doação.",
+    "aspect": "Ambiente",
+    "type": "Tarefa",
+    "date": "Mensal",
+    "time": "",
+    "frequency": 1
+  },
+
+  ]
+
+  
+
