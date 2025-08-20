@@ -426,7 +426,7 @@ li:hover { transform: scale(1.02); }
   width: 100%;
 }
 
-#to-step-2, #to-step-3, #save-task {
+#save-task {
   background: linear-gradient(135deg, #00ff7f, #32cd32);
   color: #fff;
 }
@@ -439,7 +439,8 @@ li:hover { transform: scale(1.02); }
 .task-form .task-step > input,
 .task-form .task-step > select,
 .task-form .task-step > textarea,
-.task-form .task-step > .time-inputs {
+.task-form .task-step > .time-inputs,
+#task-modal .task-form button {
   width: calc(100% - 40px);
   margin: 0 20px;
 }

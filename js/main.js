@@ -15,18 +15,18 @@ let responses = JSON.parse(localStorage.getItem('responses') || '{}');
 let previousLogin = 0;
 
 const statsColors = {
-  Family: ['#ff4d4d', '#ff6666'],
+  Exercícios: ['#ff4d4d', '#ff6666'],
   Relationships: ['#ffd700', '#ffea00'],
   Nutrition: ['#66bb6a', '#81c784'],
   Sleep: ['#003366', '#004080'],
-  Water: ['#00bcd4', '#26c6da'],
+  Ambiente: ['#00bcd4', '#26c6da'],
   Emocional: ['#64b5f6', '#90caf9'],
   Hygiene: ['#b3e5fc', '#e1f5fe'],
-  Mindfulness: ['#c0c0c0', '#d3d3d3'],
+  Energia: ['#c0c0c0', '#d3d3d3'],
   Learning: ['#ffb300', '#ffca28'],
   Financial: ['#2e7d32', '#388e3c'],
-  Purpose: ['#7e57c2', '#9575cd'],
-  Contribution: ['#ffffff', '#f5f5f5']
+  Lazer: ['#7e57c2', '#9575cd'],
+  Trabalho: ['#ffffff', '#f5f5f5']
 };
 
 // Prevent copying, context menu, and zoom interactions

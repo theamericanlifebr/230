@@ -35,6 +35,17 @@ export function initLaws(keys, data, colors) {
     buildLaws();
   });
   cancelLawActionBtn.addEventListener('click', closeLawActionModal);
+  if (window.innerWidth <= 600) {
+    const icon = document.querySelector('#laws .icone-central');
+    if (icon) {
+      let lastTap = 0;
+      icon.addEventListener('touchend', () => {
+        const now = Date.now();
+        if (now - lastTap < 300) suggestLaw();
+        lastTap = now;
+      });
+    }
+  }
   buildLaws();
 }
 
