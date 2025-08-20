@@ -43,12 +43,12 @@
     <div id="menu-carousel" class="menu-carousel"></div>
     <section id="menu" class="page active">
       <div class="menu-grid">
-        <div class="menu-item" data-page="tasks"><img src="acoes.png" alt="Tarefas" /><span>Tarefas</span></div>
-        <div class="menu-item" data-page="laws"><img src="leis.png" alt="Leis" /><span>Leis</span></div>
-        <div class="menu-item" data-page="stats"><img src="estatisticas.png" alt="Estatísticas" /><span>Estatísticas</span></div>
-        <div class="menu-item" data-page="mindset"><img src="mindset.png" alt="Mindset" /><span>Mindset</span></div>
-        <div class="menu-item" data-page="options"><img src="constituicao.png" alt="Opções" /><span>Opções</span></div>
-        <div class="menu-item" data-page="history"><img src="historico.png" alt="Histórico" /><span>Histórico</span></div>
+        <div class="menu-item" data-page="tasks"><img src="acoes.png" alt="Tarefas" /></div>
+        <div class="menu-item" data-page="laws"><img src="leis.png" alt="Leis" /></div>
+        <div class="menu-item" data-page="stats"><img src="estatisticas.png" alt="Estatísticas" /></div>
+        <div class="menu-item" data-page="mindset"><img src="mindset.png" alt="Mindset" /></div>
+        <div class="menu-item" data-page="options"><img src="constituicao.png" alt="Opções" /></div>
+        <div class="menu-item" data-page="history"><img src="historico.png" alt="Histórico" /></div>
       </div>
     </section>
     <section id="tasks" class="page">
@@ -76,10 +76,6 @@
             <div class="task-group" id="substituted-list"></div>
           </div>
         </div>
-        <div id="calendar">
-          <h2 id="calendar-title"></h2>
-          <div id="calendar-list"></div>
-        </div>
       </div>
     </section>
     <section id="laws" class="page">
@@ -103,8 +99,10 @@
       <div id="mindset-content"></div>
     </section>
     <section id="history" class="page">
-      <img src="historico.png" alt="Histórico" class="icone-central" />
-      <p>Em desenvolvimento...</p>
+      <div id="calendar">
+        <h2 id="calendar-title"></h2>
+        <div id="calendar-list"></div>
+      </div>
     </section>
     <section id="options" class="page">
       <img src="constituicao.png" alt="Opções" class="icone-central" />
@@ -117,13 +115,21 @@
       <h2>Nova tarefa</h2>
       <div class="task-step" id="task-step-1">
         <input type="text" id="task-title" placeholder="Tarefa" />
-        <textarea id="task-desc" placeholder="Descrição"></textarea>
         <select id="task-aspect"></select>
         <button id="to-step-2">Próximo</button>
       </div>
       <div class="task-step hidden" id="task-step-2">
-        <input type="date" id="task-date" />
-        <div id="task-repeat">
+        <select id="task-date-option">
+          <option value="today">Hoje</option>
+          <option value="tomorrow">Amanhã</option>
+          <option value="weekday2">Dia da semana +2</option>
+          <option value="weekday3">Dia da semana +3</option>
+          <option value="weekday4">Dia da semana +4</option>
+          <option value="choose">Escolher data</option>
+          <option value="custom">Personalizar data</option>
+        </select>
+        <input type="date" id="task-date" class="hidden" />
+        <div id="task-custom-week" class="hidden">
           <label><input type="checkbox" value="0">D</label>
           <label><input type="checkbox" value="1">S</label>
           <label><input type="checkbox" value="2">T</label>
@@ -148,10 +154,15 @@
         <button id="to-step-3">Próximo</button>
       </div>
       <div class="task-step hidden" id="task-step-3">
-        <input type="number" id="task-duration" min="5" max="480" step="5" value="15" />
+        <h3>Tempo da tarefa</h3>
+        <div class="time-inputs">
+          <input type="number" id="task-hours" min="0" value="0" />
+          <input type="number" id="task-minutes" min="0" max="59" value="0" />
+        </div>
         <select id="task-type">
           <option value="Hábito">Hábito</option>
           <option value="Tarefa">Tarefa</option>
+          <option value="Agenda">Agenda</option>
         </select>
         <button id="back-step-2">Voltar</button>
         <button id="save-task">Salvar</button>

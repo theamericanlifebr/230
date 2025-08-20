@@ -2,9 +2,6 @@ let aspectKeys = [];
 let tasksData = [];
 let editingTaskIndex = null;
 let aspectsMap = {};
-let touchStartX = 0;
-let calendarStart = getCurrentPeriodStart(new Date());
-let titleTouchX = 0;
 let pendingTask = null;
 let conflictingIndices = [];
 
@@ -12,10 +9,13 @@ const addTaskBtn = document.getElementById('add-task-btn');
 const suggestTaskBtn = document.getElementById('suggest-task-btn');
 const taskModal = document.getElementById('task-modal');
 const taskTitleInput = document.getElementById('task-title');
-const taskDescInput = document.getElementById('task-desc');
+const taskDateOption = document.getElementById('task-date-option');
 const taskDateInput = document.getElementById('task-date');
+const taskCustomWeekDiv = document.getElementById('task-custom-week');
+const taskCustomInputs = document.querySelectorAll('#task-custom-week input');
 const taskTimeInput = document.getElementById('task-time');
-const taskDurationInput = document.getElementById('task-duration');
+const taskHoursInput = document.getElementById('task-hours');
+const taskMinutesInput = document.getElementById('task-minutes');
 const taskAspectInput = document.getElementById('task-aspect');
 const taskTypeInput = document.getElementById('task-type');
 const taskNoTimeInput = document.getElementById('task-no-time');
@@ -29,7 +29,6 @@ const backStep2Btn = document.getElementById('back-step-2');
 const step1Div = document.getElementById('task-step-1');
 const step2Div = document.getElementById('task-step-2');
 const step3Div = document.getElementById('task-step-3');
-const taskRepeatInputs = document.querySelectorAll('#task-repeat input');
 const conflictModal = document.getElementById('conflict-modal');
 const conflictList = document.getElementById('conflict-list');
 const replaceAllBtn = document.getElementById('replace-all');
@@ -47,10 +46,6 @@ function showTaskStep(step) {
     step3Div.classList.remove('hidden');
   }
 }
-const calendarTitle = document.getElementById('calendar-title');
-const calendarList = document.getElementById('calendar-list');
-const tasksSection = document.getElementById('tasks');
-
 export function initTasks(keys, data, aspects) {
   aspectKeys = keys;
   tasksData = data;
@@ -67,6 +62,19 @@ export function initTasks(keys, data, aspects) {
   taskNoTimeInput.addEventListener('change', () => {
     taskTimeInput.disabled = taskNoTimeInput.value !== '';
   });
+  taskDateOption.addEventListener('change', () => {
+    const val = taskDateOption.value;
+    if (val === 'choose') {
+      taskDateInput.classList.remove('hidden');
+      taskCustomWeekDiv.classList.add('hidden');
+    } else if (val === 'custom') {
+      taskCustomWeekDiv.classList.remove('hidden');
+      taskDateInput.classList.add('hidden');
+    } else {
+      taskDateInput.classList.add('hidden');
+      taskCustomWeekDiv.classList.add('hidden');
+    }
+  });
   replaceAllBtn.addEventListener('click', replaceAllConflicts);
   cancelConflictBtn.addEventListener('click', () => {
     conflictModal.classList.add('hidden');
@@ -74,72 +82,10 @@ export function initTasks(keys, data, aspects) {
     pendingTask = null;
     conflictingIndices = [];
   });
-  tasksSection.addEventListener('touchstart', e => {
-    touchStartX = e.touches[0].clientX;
-  });
-  tasksSection.addEventListener('touchend', e => {
-    const dx = e.changedTouches[0].clientX - touchStartX;
-    if (!tasksSection.classList.contains('show-calendar') && dx < -50) {
-      tasksSection.classList.add('show-calendar');
-    } else if (tasksSection.classList.contains('show-calendar') && dx > 50) {
-      tasksSection.classList.remove('show-calendar');
-    }
-  });
-  document.addEventListener('keydown', e => {
-    if (e.key === 'ArrowUp') {
-      tasksSection.classList.add('show-calendar');
-    } else if (e.key === 'ArrowDown') {
-      tasksSection.classList.remove('show-calendar');
-    } else if (e.key === 'ArrowLeft') {
-      changePeriod(-1);
-    } else if (e.key === 'ArrowRight') {
-      changePeriod(1);
-    }
-  });
-  const centralIcon = tasksSection.querySelector('.icone-central');
-  if (centralIcon) {
-    let pressTimer;
-    const startPress = () => {
-      pressTimer = setTimeout(() => {
-        tasksSection.classList.toggle('show-calendar');
-      }, 1000);
-    };
-    const cancelPress = () => clearTimeout(pressTimer);
-    centralIcon.addEventListener('mousedown', startPress);
-    centralIcon.addEventListener('touchstart', startPress);
-    centralIcon.addEventListener('mouseup', cancelPress);
-    centralIcon.addEventListener('mouseleave', cancelPress);
-    centralIcon.addEventListener('touchend', cancelPress);
-  }
-  if (calendarTitle) {
-    calendarTitle.addEventListener('touchstart', e => {
-      titleTouchX = e.touches[0].clientX;
-    });
-    calendarTitle.addEventListener('touchend', e => {
-      const dx = e.changedTouches[0].clientX - titleTouchX;
-      if (dx < -50) {
-        changePeriod(1);
-      } else if (dx > 50) {
-        changePeriod(-1);
-      }
-    });
-    calendarTitle.addEventListener('mousedown', e => {
-      titleTouchX = e.clientX;
-    });
-    calendarTitle.addEventListener('mouseup', e => {
-      const dx = e.clientX - titleTouchX;
-      if (dx < -50) {
-        changePeriod(1);
-      } else if (dx > 50) {
-        changePeriod(-1);
-      }
-    });
-  }
   buildTasks();
-  buildCalendar();
   setInterval(() => {
     buildTasks();
-    buildCalendar();
+    if (window.buildCalendar) window.buildCalendar();
   }, 60000);
 }
 
@@ -166,7 +112,7 @@ function buildTasks() {
     const infoTime = t.startTime ? new Date(t.startTime).toLocaleString() : 'Sem horário';
     span.textContent = `${infoTime} | ${t.aspect} | ${t.type || 'Hábito'}`;
     div.appendChild(h3);
-    div.appendChild(p);
+    if (t.description) div.appendChild(p);
     div.appendChild(span);
     div.addEventListener('dblclick', () => {
       tasks[index].completed = true;
@@ -203,85 +149,7 @@ function buildTasks() {
   }
 }
 
-function buildCalendar() {
-  if (!calendarList || !calendarTitle) return;
-  const now = new Date();
-  const start = calendarStart;
-  const periodInfo = getPeriodInfo(start.getHours());
-  calendarTitle.textContent = `${formatDate(start)} (${periodInfo.label})`;
-  const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
-  const periodEnd = new Date(start.getTime() + 6 * 60 * 60 * 1000);
-  const periodTasks = tasks
-    .map((t, idx) => ({ ...t, idx }))
-    .filter(t => {
-      if (!t.startTime) return false;
-      const tStart = new Date(t.startTime).getTime();
-      const tEnd = tStart + (t.duration || 15) * 60000;
-      return tStart < periodEnd.getTime() && tEnd > start.getTime();
-    });
-  calendarList.innerHTML = '';
-  for (let minutes = 0; minutes < 6 * 60; minutes += 15) {
-    const blockTime = new Date(start.getTime() + minutes * 60000);
-    const label = `${String(blockTime.getHours()).padStart(2, '0')}:${String(blockTime.getMinutes()).padStart(2, '0')}`;
-    const boxtime = document.createElement('div');
-    boxtime.className = `boxtime ${periodInfo.className}`;
-    if (blockTime < now) {
-      boxtime.classList.add('past');
-    }
-    const timeDiv = document.createElement('div');
-    timeDiv.className = 'boxtime-time';
-    timeDiv.textContent = label;
-    boxtime.appendChild(timeDiv);
-    const icons = document.createElement('div');
-    icons.className = 'boxtime-icons';
-    const blockStart = blockTime.getTime();
-    const blockEnd = blockStart + 15 * 60000;
-    const matching = periodTasks.filter(t => {
-      const tStart = new Date(t.startTime).getTime();
-      const tEnd = tStart + (t.duration || 15) * 60000;
-      return tStart < blockEnd && tEnd > blockStart;
-    });
-    matching.slice(0, 4).forEach(t => {
-      const img = document.createElement('img');
-      img.src = aspectsMap[t.aspect]?.image || '';
-      img.alt = t.aspect;
-      img.width = 30;
-      img.height = 30;
-      const idx = t.idx;
-      img.addEventListener('click', () => openTaskModal(idx));
-      icons.appendChild(img);
-    });
-    boxtime.appendChild(icons);
-    calendarList.appendChild(boxtime);
-  }
-}
-
-function changePeriod(delta) {
-  calendarStart = new Date(calendarStart.getTime() + delta * 6 * 60 * 60 * 1000);
-  buildCalendar();
-}
-
-function getCurrentPeriodStart(now) {
-  const hour = now.getHours();
-  const startHour = hour < 6 ? 0 : hour < 12 ? 6 : hour < 18 ? 12 : 18;
-  return new Date(now.getFullYear(), now.getMonth(), now.getDate(), startHour, 0, 0, 0);
-}
-
-function getPeriodInfo(hour) {
-  if (hour < 6) return { label: 'Madrugada', className: 'dawn' };
-  if (hour < 12) return { label: 'Manhã', className: 'morning' };
-  if (hour < 18) return { label: 'Tarde', className: 'afternoon' };
-  return { label: 'Noite', className: 'night' };
-}
-
-function formatDate(date) {
-  const dd = String(date.getDate()).padStart(2, '0');
-  const mm = String(date.getMonth() + 1).padStart(2, '0');
-  const yy = String(date.getFullYear()).slice(-2);
-  return `${dd}|${mm}|${yy}`;
-}
-
-function openTaskModal(index = null, prefill = null) {
+export function openTaskModal(index = null, prefill = null) {
   editingTaskIndex = index;
   taskAspectInput.innerHTML = '';
   aspectKeys.forEach(k => {
@@ -292,27 +160,34 @@ function openTaskModal(index = null, prefill = null) {
   });
   taskTypeInput.value = 'Hábito';
   const now = new Date();
-  taskDateInput.value = now.toISOString().slice(0,10);
+  taskDateOption.value = 'today';
+  taskDateInput.classList.add('hidden');
+  taskCustomWeekDiv.classList.add('hidden');
   taskTimeInput.value = now.toTimeString().slice(0,5);
-  taskDurationInput.value = 15;
   taskNoTimeInput.value = '';
-  taskRepeatInputs.forEach(i => (i.checked = false));
+  taskHoursInput.value = 0;
+  taskMinutesInput.value = 0;
+  taskCustomInputs.forEach(i => (i.checked = false));
   if (index !== null) {
     const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
     const t = tasks[index];
     taskTitleInput.value = t.title;
-    taskDescInput.value = t.description;
     if (t.startTime) {
       const d = new Date(t.startTime);
+      taskDateOption.value = 'choose';
+      taskDateInput.classList.remove('hidden');
       taskDateInput.value = d.toISOString().slice(0,10);
       taskTimeInput.value = d.toTimeString().slice(0,5);
     } else {
-      taskDateInput.value = '';
+      taskDateOption.value = 'today';
+      taskDateInput.classList.add('hidden');
       taskTimeInput.value = '';
     }
     taskAspectInput.value = t.aspect;
     taskTypeInput.value = t.type || 'Hábito';
-    taskDurationInput.value = t.duration || 15;
+    const dur = t.duration || 0;
+    taskHoursInput.value = Math.floor(dur / 60);
+    taskMinutesInput.value = dur % 60;
     taskNoTimeInput.value = t.noTime || '';
     document.querySelector('#task-modal h2').textContent = 'Editar tarefa';
     if (!t.completed) {
@@ -325,12 +200,13 @@ function openTaskModal(index = null, prefill = null) {
     completeTaskBtn.classList.add('hidden');
     if (prefill) {
       taskTitleInput.value = prefill.title;
-      taskDescInput.value = prefill.description;
       taskAspectInput.value = prefill.aspect;
       taskTypeInput.value = prefill.type || 'Hábito';
+      const dur = prefill.duration || 0;
+      taskHoursInput.value = Math.floor(dur / 60);
+      taskMinutesInput.value = dur % 60;
     } else {
       taskTitleInput.value = '';
-      taskDescInput.value = '';
       taskAspectInput.value = aspectKeys[0] || '';
     }
   }
@@ -355,7 +231,7 @@ function suggestTask() {
   });
   localStorage.setItem('tasks', JSON.stringify(tasks));
   buildTasks();
-  buildCalendar();
+  if (window.buildCalendar) window.buildCalendar();
 }
 
 function closeTaskModal() {
@@ -395,44 +271,45 @@ function findConflicts(start, duration, tasks, ignoreIndex = null) {
 function saveTask() {
   const title = taskTitleInput.value.trim();
   if (!title) return;
-  const description = taskDescInput.value.trim();
+  const description = '';
   const aspect = taskAspectInput.value;
   const type = taskTypeInput.value;
-  const duration = parseInt(taskDurationInput.value, 10) || 15;
+  const duration = (parseInt(taskHoursInput.value, 10) || 0) * 60 + (parseInt(taskMinutesInput.value, 10) || 0);
   const noTime = taskNoTimeInput.value;
-  const date = taskDateInput.value;
   const time = taskTimeInput.value;
+  const dateOption = taskDateOption.value;
   const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
   if (!noTime) {
-    if (!date || !time) return;
-    const datetime = new Date(`${date}T${time}`);
+    if (!time) return;
+    let baseDate = new Date();
+    if (dateOption === 'tomorrow') baseDate.setDate(baseDate.getDate() + 1);
+    else if (dateOption === 'weekday2') baseDate.setDate(baseDate.getDate() + 2);
+    else if (dateOption === 'weekday3') baseDate.setDate(baseDate.getDate() + 3);
+    else if (dateOption === 'weekday4') baseDate.setDate(baseDate.getDate() + 4);
+    else if (dateOption === 'choose') {
+      if (!taskDateInput.value) return;
+      baseDate = new Date(taskDateInput.value);
+    }
+    const datetime = new Date(baseDate);
+    const [hh, mm] = time.split(':');
+    datetime.setHours(hh, mm, 0, 0);
     if (datetime <= new Date()) {
       alert('Selecione um horário futuro');
       return;
     }
-    const selectedDays = Array.from(taskRepeatInputs)
-      .filter(i => i.checked)
-      .map(i => parseInt(i.value));
-    const days = selectedDays.length ? selectedDays : [datetime.getDay()];
     const baseTask = {
       title: title.slice(0, 14),
-      description: (description || '').slice(0, 60),
+      description,
       aspect,
       type,
       duration,
       completed: false
     };
-    if (editingTaskIndex !== null) {
-      const conflicts = findConflicts(datetime, duration, tasks, editingTaskIndex);
-      if (conflicts.length) {
-        pendingTask = { ...baseTask, startTime: datetime.toISOString(), editIndex: editingTaskIndex };
-        conflictingIndices = conflicts.map(c => c.idx);
-        showConflicts(conflicts);
-        closeTaskModal();
-        return;
-      }
-      tasks[editingTaskIndex] = { ...baseTask, startTime: datetime.toISOString() };
-    } else {
+    if (dateOption === 'custom' && editingTaskIndex === null) {
+      const selectedDays = Array.from(taskCustomInputs)
+        .filter(i => i.checked)
+        .map(i => parseInt(i.value));
+      const days = selectedDays.length ? selectedDays : [datetime.getDay()];
       for (const day of days) {
         const d = new Date(datetime);
         const diff = (day - d.getDay() + 7) % 7;
@@ -446,6 +323,28 @@ function saveTask() {
           return;
         }
         tasks.push({ ...baseTask, startTime: d.toISOString() });
+      }
+    } else {
+      if (editingTaskIndex !== null) {
+        const conflicts = findConflicts(datetime, duration, tasks, editingTaskIndex);
+        if (conflicts.length) {
+          pendingTask = { ...baseTask, startTime: datetime.toISOString(), editIndex: editingTaskIndex };
+          conflictingIndices = conflicts.map(c => c.idx);
+          showConflicts(conflicts);
+          closeTaskModal();
+          return;
+        }
+        tasks[editingTaskIndex] = { ...baseTask, startTime: datetime.toISOString() };
+      } else {
+        const conflicts = findConflicts(datetime, duration, tasks);
+        if (conflicts.length) {
+          pendingTask = { ...baseTask, startTime: datetime.toISOString(), editIndex: null };
+          conflictingIndices = conflicts.map(c => c.idx);
+          showConflicts(conflicts);
+          closeTaskModal();
+          return;
+        }
+        tasks.push({ ...baseTask, startTime: datetime.toISOString() });
       }
     }
   } else {
@@ -467,7 +366,7 @@ function saveTask() {
   localStorage.setItem('tasks', JSON.stringify(tasks));
   closeTaskModal();
   buildTasks();
-  buildCalendar();
+  if (window.buildCalendar) window.buildCalendar();
 }
 
 function completeTask() {
@@ -477,7 +376,7 @@ function completeTask() {
   localStorage.setItem('tasks', JSON.stringify(tasks));
   closeTaskModal();
   buildTasks();
-  buildCalendar();
+  if (window.buildCalendar) window.buildCalendar();
 }
 
 function replaceAllConflicts() {
@@ -501,6 +400,6 @@ function replaceAllConflicts() {
   pendingTask = null;
   conflictingIndices = [];
   buildTasks();
-  buildCalendar();
+  if (window.buildCalendar) window.buildCalendar();
 }
 

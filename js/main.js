@@ -2,6 +2,7 @@ import { initTasks } from './tasks.js';
 import { initLaws } from './laws.js';
 import { initMindset } from './mindset.js';
 import { initStats, checkStatsPrompt } from './stats.js';
+import { initHistory } from './history.js';
 
 let aspectsData = {};
 let aspectKeys = [];
@@ -184,6 +185,7 @@ function initApp(firstTime) {
   initLaws(aspectKeys, lawsData, statsColors);
   initStats(aspectKeys, responses, statsColors);
   initMindset(aspectKeys, mindsetData, statsColors);
+  initHistory(aspectsData);
   scheduleNotifications();
   document.getElementById('main-header').classList.remove('hidden');
   document.getElementById('main-content').classList.remove('hidden');
@@ -252,15 +254,12 @@ function initCarousel() {
   ];
   let idx = 0;
   const img = document.createElement('img');
-  const span = document.createElement('span');
   menuCarousel.appendChild(img);
-  menuCarousel.appendChild(span);
 
   function render() {
     const item = items[idx];
     img.src = item.img;
     img.alt = item.label;
-    span.textContent = item.label;
     showPage(item.page);
   }
 
