@@ -373,7 +373,8 @@ li:hover { transform: scale(1.02); }
 
 #law-modal,
 #mindset-modal,
-#law-action-modal {
+#law-action-modal,
+#conflict-modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -388,7 +389,8 @@ li:hover { transform: scale(1.02); }
 
 #law-modal.show,
 #mindset-modal.show,
-#law-action-modal.show {
+#law-action-modal.show,
+#conflict-modal.show {
   display: flex;
 }
 

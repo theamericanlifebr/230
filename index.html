@@ -71,6 +71,10 @@
             <h2>Atrasadas</h2>
             <div class="task-group" id="overdue-list"></div>
           </div>
+          <div id="tasks-substituted">
+            <h2>Substituídas</h2>
+            <div class="task-group" id="substituted-list"></div>
+          </div>
         </div>
         <div id="calendar">
           <h2 id="calendar-title"></h2>
@@ -144,7 +148,7 @@
         <button id="to-step-3">Próximo</button>
       </div>
       <div class="task-step hidden" id="task-step-3">
-        <input type="number" id="task-duration" min="5" max="15" step="5" value="15" />
+        <input type="number" id="task-duration" min="5" max="480" step="5" value="15" />
         <select id="task-type">
           <option value="Hábito">Hábito</option>
           <option value="Tarefa">Tarefa</option>
@@ -154,6 +158,15 @@
       </div>
       <button id="complete-task" class="hidden">Concluir</button>
       <button id="cancel-task">Cancelar</button>
+    </div>
+  </div>
+
+  <div id="conflict-modal" class="hidden">
+    <div class="task-form">
+      <h2>Conflito de tarefas</h2>
+      <div id="conflict-list"></div>
+      <button id="replace-all">Substituir tudo</button>
+      <button id="cancel-conflict">Cancelar</button>
     </div>
   </div>
 
