@@ -31,6 +31,17 @@ export function initMindset(keys, data, colors) {
   acceptMindsetBtn.addEventListener('click', saveMindset);
   declineMindsetBtn.addEventListener('click', closeMindsetModal);
   deleteMindsetBtn.addEventListener('click', deleteMindset);
+  if (window.innerWidth <= 600) {
+    const icon = document.querySelector('#mindset .icone-central');
+    if (icon) {
+      let lastTap = 0;
+      icon.addEventListener('touchend', () => {
+        const now = Date.now();
+        if (now - lastTap < 300) suggestMindset();
+        lastTap = now;
+      });
+    }
+  }
   buildMindset();
 }
 

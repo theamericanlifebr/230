@@ -1,12 +1,12 @@
 [
   {
-    "title": "Beber água",
-    "description": "Beba dois copos de água para energizar seu corpo.",
-    "aspect": "Water",
-    "type": "Hábito",
-    "date": "Todos os dias",
+    "title": "Arrumar espaço",
+    "description": "Organize o ambiente ao seu redor.",
+    "aspect": "Ambiente",
+    "type": "Tarefa",
+    "date": "",
     "time": "",
-    "frequency": 2
+    "frequency": 1
   },
   {
     "title": "Refeição leve",
@@ -45,9 +45,9 @@
     "frequency": 1
   },
   {
-    "title": "Foco total",
-    "description": "Pare por cinco minutos e observe sua respiração.",
-    "aspect": "Mindfulness",
+    "title": "Pausa de energia",
+    "description": "Faça uma breve caminhada para renovar a disposição.",
+    "aspect": "Energia",
     "type": "Hábito",
     "date": "Todos os dias",
     "time": "",
@@ -63,11 +63,11 @@
     "frequency": 1
   },
   {
-    "title": "Chamar família",
-    "description": "Converse com um familiar e fortaleça seus laços.",
-    "aspect": "Family",
-    "type": "Tarefa",
-    "date": "",
+    "title": "Exercício rápido",
+    "description": "Realize uma sequência curta de exercícios físicos.",
+    "aspect": "Exercícios",
+    "type": "Hábito",
+    "date": "Todos os dias",
     "time": "",
     "frequency": 1
   },
@@ -90,18 +90,18 @@
     "frequency": 1
   },
   {
-    "title": "Rever metas",
-    "description": "Leia suas metas e ajuste ações para alinhá-las.",
-    "aspect": "Purpose",
-    "type": "Hábito",
-    "date": "Todos os dias",
+    "title": "Momento de lazer",
+    "description": "Separe um tempo para algo que você gosta.",
+    "aspect": "Lazer",
+    "type": "Tarefa",
+    "date": "",
     "time": "",
     "frequency": 1
   },
   {
-    "title": "Ação social",
-    "description": "Faça um ato de gentileza que ajude outra pessoa.",
-    "aspect": "Contribution",
+    "title": "Planejar trabalho",
+    "description": "Defina as prioridades do seu dia de trabalho.",
+    "aspect": "Trabalho",
     "type": "Tarefa",
     "date": "",
     "time": "",

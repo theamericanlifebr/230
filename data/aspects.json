@@ -1,13 +1,13 @@
 {
-  "Water": {
+  "Ambiente": {
     "image": "aspect1.png",
-    "importanceQuestion": "De 1 a 10, qual a importância da sua hidratação diária para o seu bem-estar?",
-    "levelQuestion": "Qual o nível atual da sua hidratação diária hoje?",
-    "speech": "Comprometo-me a manter meu corpo hidratado, combustível vital para a liderança da minha vida.",
+    "importanceQuestion": "De 1 a 10, qual a importância de manter um ambiente saudável para o seu bem-estar?",
+    "levelQuestion": "Qual o nível atual de saúde do seu ambiente hoje?",
+    "speech": "Manterei um ambiente saudável que fortaleça minha liderança.",
     "truths": [
-      "Sem água, o corpo e a mente entram em colapso.",
-      "Hidratação é energia em estado líquido.",
-      "Pequenas doses frequentes superam grandes doses raras."
+      "Ambiente limpo, mente clara.",
+      "O espaço ao redor molda o comportamento.",
+      "Cuidar do lugar é cuidar de si."
     ]
   },
   "Nutrition": {
@@ -54,15 +54,15 @@
       "Pausa antes da reação é poder."
     ]
   },
-  "Mindfulness": {
+  "Energia": {
     "image": "aspect6.png",
-    "importanceQuestion": "De 1 a 10, quão importante é manter foco e presença plena no dia a dia?",
-    "levelQuestion": "Qual o nível atual do seu foco e presença hoje?",
-    "speech": "Manterei foco e presença para honrar cada momento com intenção.",
+    "importanceQuestion": "De 1 a 10, quão importante é manter sua energia e disposição?",
+    "levelQuestion": "Qual o nível atual da sua energia hoje?",
+    "speech": "Cultivarei energia para agir e mover-me com propósito.",
     "truths": [
-      "Foco é dizer não ao que não importa.",
-      "Presença plena é poder absoluto.",
-      "Quem vive no agora, decide melhor."
+      "Energia alta impulsiona decisões.",
+      "Corpo em movimento, mente desperta.",
+      "Sem energia, nada se concretiza."
     ]
   },
   "Learning": {
@@ -76,15 +76,15 @@
       "Cada lição é uma ferramenta nova."
     ]
   },
-  "Family": {
+  "Exercícios": {
     "image": "aspect8.png",
-    "importanceQuestion": "De 1 a 10, quão importante é cuidar dos seus vínculos familiares?",
-    "levelQuestion": "Qual o nível atual do cuidado com seus vínculos familiares hoje?",
-    "speech": "Preservarei e fortalecerei meus laços familiares como núcleo de apoio.",
+    "importanceQuestion": "De 1 a 10, qual a importância dos exercícios físicos para sua vida?",
+    "levelQuestion": "Qual o nível atual dos seus exercícios físicos hoje?",
+    "speech": "Praticarei exercícios para sustentar minha energia e disciplina.",
     "truths": [
-      "Laços familiares sustentam momentos difíceis.",
-      "Família é história viva.",
-      "Quem cuida, colhe amor de volta."
+      "Corpo ativo, mente focada.",
+      "Movimento diário previne doenças.",
+      "Treinar fortalece a vontade."
     ]
   },
   "Relationships": {
@@ -109,26 +109,26 @@
       "Organização é o alicerce da liberdade econômica."
     ]
   },
-  "Purpose": {
+  "Lazer": {
     "image": "aspect11.png",
-    "importanceQuestion": "De 1 a 10, quão importante é ter propósito e metas de vida claras?",
-    "levelQuestion": "Qual o nível atual de clareza do seu propósito e metas hoje?",
-    "speech": "Viverei com propósito e metas claras, guiando cada passo com sentido.",
+    "importanceQuestion": "De 1 a 10, quão importante é ter momentos de lazer e diversão?",
+    "levelQuestion": "Qual o nível atual dos seus momentos de lazer hoje?",
+    "speech": "Buscarei o lazer para equilibrar corpo e mente.",
     "truths": [
-      "Quem tem um porquê, enfrenta qualquer como.",
-      "Metas claras aceleram decisões.",
-      "Viver com propósito dá sentido ao esforço."
+      "Descanso também produz resultados.",
+      "Lazer renova a motivação.",
+      "Diversão consciente evita o esgotamento."
     ]
   },
-  "Contribution": {
+  "Trabalho": {
     "image": "aspect12.png",
-    "importanceQuestion": "De 1 a 10, como você valoriza contribuir para o mundo de forma positiva?",
-    "levelQuestion": "Qual o nível atual da sua contribuição positiva hoje?",
-    "speech": "Contribuirei para um mundo melhor, deixando marcas positivas.",
+    "importanceQuestion": "De 1 a 10, quão importante é seu trabalho e produtividade?",
+    "levelQuestion": "Qual o nível atual do seu desempenho no trabalho hoje?",
+    "speech": "Dedicarei-me ao trabalho com foco para construir resultados.",
     "truths": [
-      "O que você dá volta multiplicado.",
-      "Contribuir é plantar legado.",
-      "Impacto positivo é a marca de líderes reais."
+      "Trabalho bem feito gera oportunidades.",
+      "Disciplina no trabalho cria liberdade.",
+      "Produtividade exige constância."
     ]
   }
 }

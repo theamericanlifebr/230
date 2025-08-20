@@ -4,6 +4,7 @@ let editingTaskIndex = null;
 let aspectsMap = {};
 let pendingTask = null;
 let conflictingIndices = [];
+let currentTaskStep = 1;
 
 const addTaskBtn = document.getElementById('add-task-btn');
 const suggestTaskBtn = document.getElementById('suggest-task-btn');
@@ -22,10 +23,6 @@ const taskNoTimeInput = document.getElementById('task-no-time');
 const saveTaskBtn = document.getElementById('save-task');
 const cancelTaskBtn = document.getElementById('cancel-task');
 const completeTaskBtn = document.getElementById('complete-task');
-const toStep2Btn = document.getElementById('to-step-2');
-const toStep3Btn = document.getElementById('to-step-3');
-const backStep1Btn = document.getElementById('back-step-1');
-const backStep2Btn = document.getElementById('back-step-2');
 const step1Div = document.getElementById('task-step-1');
 const step2Div = document.getElementById('task-step-2');
 const step3Div = document.getElementById('task-step-3');
@@ -35,6 +32,7 @@ const replaceAllBtn = document.getElementById('replace-all');
 const cancelConflictBtn = document.getElementById('cancel-conflict');
 
 function showTaskStep(step) {
+  currentTaskStep = step;
   step1Div.classList.add('hidden');
   step2Div.classList.add('hidden');
   step3Div.classList.add('hidden');
@@ -46,6 +44,14 @@ function showTaskStep(step) {
     step3Div.classList.remove('hidden');
   }
 }
+
+function nextTaskStep() {
+  if (currentTaskStep < 3) showTaskStep(currentTaskStep + 1);
+}
+
+function prevTaskStep() {
+  if (currentTaskStep > 1) showTaskStep(currentTaskStep - 1);
+}
 export function initTasks(keys, data, aspects) {
   aspectKeys = keys;
   tasksData = data;
@@ -55,10 +61,6 @@ export function initTasks(keys, data, aspects) {
   saveTaskBtn.addEventListener('click', saveTask);
   cancelTaskBtn.addEventListener('click', closeTaskModal);
   completeTaskBtn.addEventListener('click', completeTask);
-  toStep2Btn.addEventListener('click', () => showTaskStep(2));
-  toStep3Btn.addEventListener('click', () => showTaskStep(3));
-  backStep1Btn.addEventListener('click', () => showTaskStep(1));
-  backStep2Btn.addEventListener('click', () => showTaskStep(2));
   taskNoTimeInput.addEventListener('change', () => {
     taskTimeInput.disabled = taskNoTimeInput.value !== '';
   });
@@ -82,6 +84,32 @@ export function initTasks(keys, data, aspects) {
     pendingTask = null;
     conflictingIndices = [];
   });
+  if (window.innerWidth <= 600) {
+    let startX = 0;
+    taskModal.addEventListener('touchstart', e => {
+      startX = e.touches[0].clientX;
+    });
+    taskModal.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - startX;
+      if (dx < -50) nextTaskStep();
+      else if (dx > 50) prevTaskStep();
+    });
+    const icon = document.querySelector('#tasks .icone-central');
+    if (icon) {
+      let lastTap = 0;
+      icon.addEventListener('touchend', () => {
+        const now = Date.now();
+        if (now - lastTap < 300) suggestTask();
+        lastTap = now;
+      });
+    }
+  } else {
+    document.addEventListener('keydown', e => {
+      if (taskModal.classList.contains('hidden')) return;
+      if (e.key === 'ArrowRight') nextTaskStep();
+      if (e.key === 'ArrowLeft') prevTaskStep();
+    });
+  }
   buildTasks();
   setInterval(() => {
     buildTasks();
