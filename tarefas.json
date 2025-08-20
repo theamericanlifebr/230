@@ -1,5 +1,5 @@
 [
-  // ====== EMOCIONAL ======
+
   {
     "title": "Respiração consciente",
     "description": "Praticar 5 minutos de respiração profunda.",
@@ -181,7 +181,7 @@
     "frequency": 1
   },
 
-  // ====== ENERGIA ======
+
   {
     "title": "Alongamento matinal",
     "description": "Despertar corpo com alongamento de 5 minutos.",
@@ -363,7 +363,7 @@
     "frequency": 1
   },
 
-  // ====== LEARNING ======
+
   {
     "title": "Ler artigo curto",
     "description": "Ler artigo de 5 minutos em área de interesse.",
@@ -545,7 +545,6 @@
     "frequency": 1
   },
 
-  // ====== EXERCÍCIOS ======
   {
     "title": "Caminhada rápida",
     "description": "Andar 15 minutos em ritmo acelerado.",
@@ -727,7 +726,6 @@
     "frequency": 1
   },
 
-  // ====== RELATIONSHIPS ======
   {
     "title": "Mensagem família",
     "description": "Mandar mensagem para parente próximo.",
@@ -909,7 +907,7 @@
     "frequency": 1
   },
 
-  // ====== FINANCIAL ======
+
   {
     "title": "Anotar gastos",
     "description": "Registrar todas as despesas do dia.",
@@ -1082,8 +1080,7 @@
     "frequency": 1
   },
 
-  [
-  // ====== LAZER ======
+  
   {
     "title": "Tempo criativo",
     "description": "Desenhar, pintar ou escrever por prazer.",
@@ -1265,7 +1262,7 @@
     "frequency": 1
   },
 
-  // ====== TRABALHO ======
+
   {
     "title": "Prioridades do dia",
     "description": "Definir 3 tarefas prioritárias.",
@@ -1436,128 +1433,8 @@
     "date": "Semestral",
     "time": "",
     "frequency": 1
-  },
 
-  // ====== AMBIENTE ======
-  {
-    "title": "Arrumar mesa",
-    "description": "Organizar mesa de trabalho ao final do dia.",
-    "aspect": "Ambiente",
-    "type": "Tarefa",
-    "date": "Todos os dias",
-    "time": "Noite",
-    "frequency": 1
-  },
-  {
-    "title": "Lixo reciclável",
-    "description": "Separar resíduos recicláveis do lixo comum.",
-    "aspect": "Ambiente",
-    "type": "Hábito",
-    "date": "Todos os dias",
-    "time": "",
-    "frequency": 1
-  },
-  {
-    "title": "Plantas",
-    "description": "Cuidar e regar plantas.",
-    "aspect": "Ambiente",
-    "type": "Tarefa",
-    "date": "Semanal",
-    "time": "",
-    "frequency": 1
-  },
-  {
-    "title": "Luz natural",
-    "description": "Abrir janelas para entrada de luz.",
-    "aspect": "Ambiente",
-    "type": "Hábito",
-    "date": "Todos os dias",
-    "time": "Manhã",
-    "frequency": 1
-  },
-  {
-    "title": "Organizar quarto",
-    "description": "Deixar quarto limpo e organizado.",
-    "aspect": "Ambiente",
-    "type": "Tarefa",
-    "date": "Todos os dias",
-    "time": "Manhã",
-    "frequency": 1
-  },
-  {
-    "title": "Economizar energia",
-    "description": "Apagar luzes desnecessárias.",
-    "aspect": "Ambiente",
-    "type": "Hábito",
-    "date": "Todos os dias",
-    "time": "",
-    "frequency": 1
-  },
-  {
-    "title": "Ventilar casa",
-    "description": "Abrir janelas para circulação de ar.",
-    "aspect": "Ambiente",
-    "type": "Hábito",
-    "date": "Todos os dias",
-    "time": "Manhã",
-    "frequency": 1
-  },
-  {
-    "title": "Organizar documentos",
-    "description": "Guardar papéis importantes no lugar certo.",
-    "aspect": "Ambiente",
-    "type": "Tarefa",
-    "date": "Mensal",
-    "time": "",
-    "frequency": 1
-  },
-  {
-    "title": "Trocar roupa de cama",
-    "description": "Manter cama limpa semanalmente.",
-    "aspect": "Ambiente",
-    "type": "Tarefa",
-    "date": "Semanal",
-    "time": "Domingo",
-    "frequency": 1
-  },
-  {
-    "title": "Limpeza rápida",
-    "description": "Dedicar 10 minutos à limpeza de um cômodo.",
-    "aspect": "Ambiente",
-    "type": "Tarefa",
-    "date": "Todos os dias",
-    "time": "",
-    "frequency": 1
-  },
-  {
-    "title": "Cuidar da cozinha",
-    "description": "Lavar louça e limpar pia após uso.",
-    "aspect": "Ambiente",
-    "type": "Hábito",
-    "date": "Todos os dias",
-    "time": "Após refeições",
-    "frequency": 1
-  },
-  {
-    "title": "Higienizar eletrônicos",
-    "description": "Limpar celulares e computadores.",
-    "aspect": "Ambiente",
-    "type": "Tarefa",
-    "date": "Semanal",
-    "time": "",
-    "frequency": 1
-  },
-  {
-    "title": "Destralhar",
-    "description": "Separar itens para doação.",
-    "aspect": "Ambiente",
-    "type": "Tarefa",
-    "date": "Mensal",
-    "time": "",
-    "frequency": 1
-  },
 
-  ]
-
-  
+    }
+]
 
