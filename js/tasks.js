@@ -5,6 +5,8 @@ let aspectsMap = {};
 let touchStartX = 0;
 let calendarStart = getCurrentPeriodStart(new Date());
 let titleTouchX = 0;
+let pendingTask = null;
+let conflictingIndices = [];
 
 const addTaskBtn = document.getElementById('add-task-btn');
 const suggestTaskBtn = document.getElementById('suggest-task-btn');
@@ -28,6 +30,10 @@ const step1Div = document.getElementById('task-step-1');
 const step2Div = document.getElementById('task-step-2');
 const step3Div = document.getElementById('task-step-3');
 const taskRepeatInputs = document.querySelectorAll('#task-repeat input');
+const conflictModal = document.getElementById('conflict-modal');
+const conflictList = document.getElementById('conflict-list');
+const replaceAllBtn = document.getElementById('replace-all');
+const cancelConflictBtn = document.getElementById('cancel-conflict');
 
 function showTaskStep(step) {
   step1Div.classList.add('hidden');
@@ -60,6 +66,13 @@ export function initTasks(keys, data, aspects) {
   backStep2Btn.addEventListener('click', () => showTaskStep(2));
   taskNoTimeInput.addEventListener('change', () => {
     taskTimeInput.disabled = taskNoTimeInput.value !== '';
+  });
+  replaceAllBtn.addEventListener('click', replaceAllConflicts);
+  cancelConflictBtn.addEventListener('click', () => {
+    conflictModal.classList.add('hidden');
+    conflictModal.classList.remove('show');
+    pendingTask = null;
+    conflictingIndices = [];
   });
   tasksSection.addEventListener('touchstart', e => {
     touchStartX = e.touches[0].clientX;
@@ -134,9 +147,11 @@ function buildTasks() {
   const pending = document.getElementById('pending-list');
   const completed = document.getElementById('completed-list');
   const overdue = document.getElementById('overdue-list');
+  const substituted = document.getElementById('substituted-list');
   pending.innerHTML = '';
   completed.innerHTML = '';
   overdue.innerHTML = '';
+  substituted.innerHTML = '';
   const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
   const now = Date.now();
   tasks.forEach((t, index) => {
@@ -169,7 +184,10 @@ function buildTasks() {
     div.addEventListener('mouseleave', cancel);
     div.addEventListener('touchend', cancel);
     const time = t.startTime ? new Date(t.startTime).getTime() : null;
-    if (t.completed) {
+    if (t.substituted) {
+      div.classList.add('overdue');
+      substituted.appendChild(div);
+    } else if (t.completed) {
       div.classList.add('completed');
       completed.appendChild(div);
     } else if (time && time < now) {
@@ -193,10 +211,14 @@ function buildCalendar() {
   calendarTitle.textContent = `${formatDate(start)} (${periodInfo.label})`;
   const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
   const periodEnd = new Date(start.getTime() + 6 * 60 * 60 * 1000);
-  const periodTasks = tasks.filter(t => {
-    const d = new Date(t.startTime);
-    return d >= start && d < periodEnd;
-  });
+  const periodTasks = tasks
+    .map((t, idx) => ({ ...t, idx }))
+    .filter(t => {
+      if (!t.startTime) return false;
+      const tStart = new Date(t.startTime).getTime();
+      const tEnd = tStart + (t.duration || 15) * 60000;
+      return tStart < periodEnd.getTime() && tEnd > start.getTime();
+    });
   calendarList.innerHTML = '';
   for (let minutes = 0; minutes < 6 * 60; minutes += 15) {
     const blockTime = new Date(start.getTime() + minutes * 60000);
@@ -212,9 +234,12 @@ function buildCalendar() {
     boxtime.appendChild(timeDiv);
     const icons = document.createElement('div');
     icons.className = 'boxtime-icons';
+    const blockStart = blockTime.getTime();
+    const blockEnd = blockStart + 15 * 60000;
     const matching = periodTasks.filter(t => {
-      const d = new Date(t.startTime);
-      return d.getHours() === blockTime.getHours() && Math.floor(d.getMinutes() / 15) * 15 === blockTime.getMinutes();
+      const tStart = new Date(t.startTime).getTime();
+      const tEnd = tStart + (t.duration || 15) * 60000;
+      return tStart < blockEnd && tEnd > blockStart;
     });
     matching.slice(0, 4).forEach(t => {
       const img = document.createElement('img');
@@ -222,7 +247,7 @@ function buildCalendar() {
       img.alt = t.aspect;
       img.width = 30;
       img.height = 30;
-      const idx = tasks.indexOf(t);
+      const idx = t.idx;
       img.addEventListener('click', () => openTaskModal(idx));
       icons.appendChild(img);
     });
@@ -339,6 +364,34 @@ function closeTaskModal() {
   editingTaskIndex = null;
 }
 
+function showConflicts(conflicts) {
+  conflictList.innerHTML = '';
+  conflicts.forEach(c => {
+    const div = document.createElement('div');
+    div.className = 'task-item';
+    const h3 = document.createElement('h3');
+    h3.textContent = c.title;
+    div.appendChild(h3);
+    conflictList.appendChild(div);
+  });
+  conflictModal.classList.remove('hidden');
+  conflictModal.classList.add('show');
+}
+
+function findConflicts(start, duration, tasks, ignoreIndex = null) {
+  const startMs = start.getTime();
+  const endMs = startMs + duration * 60000;
+  return tasks
+    .map((t, idx) => ({ ...t, idx }))
+    .filter(t => {
+      if (ignoreIndex !== null && t.idx === ignoreIndex) return false;
+      if (!t.startTime) return false;
+      const tStart = new Date(t.startTime).getTime();
+      const tEnd = tStart + (t.duration || 15) * 60000;
+      return startMs < tEnd && endMs > tStart;
+    });
+}
+
 function saveTask() {
   const title = taskTitleInput.value.trim();
   if (!title) return;
@@ -350,18 +403,6 @@ function saveTask() {
   const date = taskDateInput.value;
   const time = taskTimeInput.value;
   const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
-  function blockUsage(d) {
-    const blockStart = new Date(d);
-    blockStart.setMinutes(Math.floor(blockStart.getMinutes() / 15) * 15, 0, 0);
-    const blockEnd = new Date(blockStart.getTime() + 15 * 60000);
-    return tasks
-      .filter(t => {
-        if (!t.startTime) return false;
-        const td = new Date(t.startTime);
-        return td >= blockStart && td < blockEnd;
-      })
-      .reduce((sum, t) => sum + (t.duration || 15), 0);
-  }
   if (!noTime) {
     if (!date || !time) return;
     const datetime = new Date(`${date}T${time}`);
@@ -373,37 +414,39 @@ function saveTask() {
       .filter(i => i.checked)
       .map(i => parseInt(i.value));
     const days = selectedDays.length ? selectedDays : [datetime.getDay()];
+    const baseTask = {
+      title: title.slice(0, 14),
+      description: (description || '').slice(0, 60),
+      aspect,
+      type,
+      duration,
+      completed: false
+    };
     if (editingTaskIndex !== null) {
-      if (blockUsage(datetime) + duration > 15) {
-        alert('Bloco de 15 minutos já está cheio');
+      const conflicts = findConflicts(datetime, duration, tasks, editingTaskIndex);
+      if (conflicts.length) {
+        pendingTask = { ...baseTask, startTime: datetime.toISOString(), editIndex: editingTaskIndex };
+        conflictingIndices = conflicts.map(c => c.idx);
+        showConflicts(conflicts);
+        closeTaskModal();
         return;
       }
-      tasks[editingTaskIndex] = {
-        title: title.slice(0, 14),
-        description: (description || '').slice(0, 60),
-        startTime: datetime.toISOString(),
-        aspect,
-        type,
-        duration,
-        completed: false
-      };
+      tasks[editingTaskIndex] = { ...baseTask, startTime: datetime.toISOString() };
     } else {
-      days.forEach(day => {
+      for (const day of days) {
         const d = new Date(datetime);
         const diff = (day - d.getDay() + 7) % 7;
         d.setDate(d.getDate() + diff);
-        if (blockUsage(d) + duration <= 15) {
-          tasks.push({
-            title: title.slice(0, 14),
-            description: (description || '').slice(0, 60),
-            startTime: d.toISOString(),
-            aspect,
-            type,
-            duration,
-            completed: false
-          });
+        const conflicts = findConflicts(d, duration, tasks);
+        if (conflicts.length) {
+          pendingTask = { ...baseTask, startTime: d.toISOString(), editIndex: null };
+          conflictingIndices = conflicts.map(c => c.idx);
+          showConflicts(conflicts);
+          closeTaskModal();
+          return;
         }
-      });
+        tasks.push({ ...baseTask, startTime: d.toISOString() });
+      }
     }
   } else {
     const taskObj = {
@@ -433,6 +476,30 @@ function completeTask() {
   tasks[editingTaskIndex].completed = true;
   localStorage.setItem('tasks', JSON.stringify(tasks));
   closeTaskModal();
+  buildTasks();
+  buildCalendar();
+}
+
+function replaceAllConflicts() {
+  const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+  conflictingIndices.forEach(i => {
+    if (tasks[i]) {
+      tasks[i].startTime = null;
+      tasks[i].substituted = true;
+    }
+  });
+  if (pendingTask) {
+    if (pendingTask.editIndex !== null) {
+      tasks[pendingTask.editIndex] = pendingTask;
+    } else {
+      tasks.push(pendingTask);
+    }
+  }
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+  conflictModal.classList.add('hidden');
+  conflictModal.classList.remove('show');
+  pendingTask = null;
+  conflictingIndices = [];
   buildTasks();
   buildCalendar();
 }
