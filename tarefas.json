@@ -1,0 +1,110 @@
+[
+  {
+    "title": "Beber água",
+    "description": "Beba dois copos de água para energizar seu corpo.",
+    "aspect": "Water",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "",
+    "frequency": 2
+  },
+  {
+    "title": "Refeição leve",
+    "description": "Planeje uma refeição equilibrada com verduras e proteínas.",
+    "aspect": "Nutrition",
+    "type": "Tarefa",
+    "date": "",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Sono cedo",
+    "description": "Durma cedo e garanta oito horas de recuperação.",
+    "aspect": "Sleep",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "22:00",
+    "frequency": 1
+  },
+  {
+    "title": "Higiene dia",
+    "description": "Cuide do corpo com banho e escovação completos hoje.",
+    "aspect": "Hygiene",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Auto controle",
+    "description": "Respire fundo antes de reagir a cada situação.",
+    "aspect": "Emotional",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Foco total",
+    "description": "Pare por cinco minutos e observe sua respiração.",
+    "aspect": "Mindfulness",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Estudo curto",
+    "description": "Leia ou aprenda algo novo por quinze minutos.",
+    "aspect": "Learning",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Chamar família",
+    "description": "Converse com um familiar e fortaleça seus laços.",
+    "aspect": "Family",
+    "type": "Tarefa",
+    "date": "",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Conectar rede",
+    "description": "Envie mensagem sincera para um amigo distante.",
+    "aspect": "Relationships",
+    "type": "Tarefa",
+    "date": "",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Revisar conta",
+    "description": "Cheque gastos de hoje e atualize seu orçamento.",
+    "aspect": "Financial",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Rever metas",
+    "description": "Leia suas metas e ajuste ações para alinhá-las.",
+    "aspect": "Purpose",
+    "type": "Hábito",
+    "date": "Todos os dias",
+    "time": "",
+    "frequency": 1
+  },
+  {
+    "title": "Ação social",
+    "description": "Faça um ato de gentileza que ajude outra pessoa.",
+    "aspect": "Contribution",
+    "type": "Tarefa",
+    "date": "",
+    "time": "",
+    "frequency": 1
+  }
+]

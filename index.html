@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Presidencial</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="dark">
+  <div id="logo-screen" class="center">
+    <img src="logo.png" alt="Logo" id="logo" />
+    <p id="logo-text" class="hidden">Construa a si mesmo</p>
+  </div>
+
+  <div id="question-screen" class="hidden center">
+    <h1 id="question-title"></h1>
+    <img id="aspect-image" class="aspect-image" alt="Aspecto" />
+    <div class="progress-container">
+      <div id="progress-bar"></div>
+    </div>
+    <div id="slider-feedback" class="slider-feedback"></div>
+    <div class="slider-container">
+      <input type="range" min="0" max="100" value="50" id="slider" />
+    </div>
+    <button id="next-btn">Próximo</button>
+  </div>
+
+  <div id="name-screen" class="hidden center">
+    <h1>Assuma a Presidência</h1>
+    <p id="oath-text"></p>
+    <input type="text" id="username" placeholder="Seu nome" />
+    <label class="agree"><input type="checkbox" id="agree" /> Concordo</label>
+    <button id="start-btn" disabled>Continuar</button>
+  </div>
+
+  <header id="main-header" class="hidden">
+    <div class="header-container">
+      <img src="logo.png" alt="Logo" class="header-logo" id="header-logo" />
+    </div>
+  </header>
+
+  <main id="main-content" class="hidden">
+    <div id="menu-carousel" class="menu-carousel"></div>
+    <section id="menu" class="page active">
+      <div class="menu-grid">
+        <div class="menu-item" data-page="tasks"><img src="acoes.png" alt="Tarefas" /><span>Tarefas</span></div>
+        <div class="menu-item" data-page="laws"><img src="leis.png" alt="Leis" /><span>Leis</span></div>
+        <div class="menu-item" data-page="stats"><img src="estatisticas.png" alt="Estatísticas" /><span>Estatísticas</span></div>
+        <div class="menu-item" data-page="mindset"><img src="mindset.png" alt="Mindset" /><span>Mindset</span></div>
+        <div class="menu-item" data-page="options"><img src="constituicao.png" alt="Opções" /><span>Opções</span></div>
+        <div class="menu-item" data-page="history"><img src="historico.png" alt="Histórico" /><span>Histórico</span></div>
+      </div>
+    </section>
+    <section id="tasks" class="page">
+      <img src="acoes.png" alt="Tarefas" class="icone-central" />
+      <div id="tasks-tabs">
+        <div id="tasks-content">
+          <div id="tasks-hub">
+            <button id="add-task-btn">Nova tarefa</button>
+            <button id="suggest-task-btn">Ver ideias</button>
+          </div>
+          <div id="tasks-pending">
+            <h2>Pendentes</h2>
+            <div class="task-group" id="pending-list"></div>
+          </div>
+          <div id="tasks-completed">
+            <h2>Concluídas</h2>
+            <div class="task-group" id="completed-list"></div>
+          </div>
+          <div id="tasks-overdue">
+            <h2>Atrasadas</h2>
+            <div class="task-group" id="overdue-list"></div>
+          </div>
+        </div>
+        <div id="calendar">
+          <h2 id="calendar-title"></h2>
+          <div id="calendar-list"></div>
+        </div>
+      </div>
+    </section>
+    <section id="laws" class="page">
+      <img src="leis.png" alt="Leis" class="icone-central" />
+      <div id="laws-hub">
+        <button id="add-law-btn">Nova lei</button>
+        <button id="suggest-law-btn">Ver ideias</button>
+      </div>
+      <div id="laws-list"></div>
+    </section>
+    <section id="stats" class="page">
+      <img src="estatisticas.png" alt="Estatísticas" class="icone-central" />
+      <div id="stats-content"></div>
+    </section>
+    <section id="mindset" class="page">
+      <img src="mindset.png" alt="Mindset" class="icone-central" />
+      <div id="mindset-hub">
+        <button id="add-mindset-btn">Criar mindset</button>
+        <button id="suggest-mindset-btn">Ver ideias</button>
+      </div>
+      <div id="mindset-content"></div>
+    </section>
+    <section id="history" class="page">
+      <img src="historico.png" alt="Histórico" class="icone-central" />
+      <p>Em desenvolvimento...</p>
+    </section>
+    <section id="options" class="page">
+      <img src="constituicao.png" alt="Opções" class="icone-central" />
+      <div id="options-content"></div>
+    </section>
+  </main>
+
+  <div id="task-modal" class="hidden">
+    <div class="task-form">
+      <h2>Nova tarefa</h2>
+      <input type="text" id="task-title" placeholder="Título" />
+      <textarea id="task-desc" placeholder="Descrição"></textarea>
+      <input type="datetime-local" id="task-datetime" />
+      <select id="task-aspect"></select>
+      <select id="task-type">
+        <option value="Hábito">Hábito</option>
+        <option value="Tarefa">Tarefa</option>
+      </select>
+      <button id="save-task">Salvar</button>
+      <button id="complete-task" class="hidden">Concluir</button>
+      <button id="cancel-task">Cancelar</button>
+    </div>
+  </div>
+
+  <div id="law-modal" class="hidden">
+    <div class="task-form">
+      <h2>Nova lei</h2>
+      <input type="text" id="law-title" placeholder="Nome da lei" maxlength="24" />
+      <textarea id="law-desc" placeholder="Descrição (até 60 caracteres)" maxlength="60"></textarea>
+      <select id="law-aspect-select"></select>
+      <div class="modal-buttons">
+        <button id="save-law">Salvar</button>
+        <button id="accept-law" class="hidden accept-btn">Aceitar</button>
+        <button id="decline-law" class="hidden decline-btn">Declinar</button>
+        <button id="cancel-law">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="law-action-modal" class="hidden">
+    <div class="task-form">
+      <h2>Lei</h2>
+      <button id="revoke-law" class="decline-btn">Revogar</button>
+      <button id="cancel-law-action">Voltar</button>
+    </div>
+  </div>
+
+  <div id="mindset-modal" class="hidden">
+    <div class="task-form">
+      <h2>Novo mindset</h2>
+      <input type="text" id="mindset-title" placeholder="Título" maxlength="24" />
+      <textarea id="mindset-desc" placeholder="Descrição (até 60 caracteres)" maxlength="60"></textarea>
+      <label for="mindset-rate">Importância: <span id="mindset-rate-value">50</span></label>
+      <input type="range" id="mindset-rate" min="0" max="100" value="50" />
+      <select id="mindset-aspect-select"></select>
+      <div class="modal-buttons">
+        <button id="save-mindset">Salvar</button>
+        <button id="accept-mindset" class="hidden accept-btn">Aceitar</button>
+        <button id="decline-mindset" class="hidden decline-btn">Declinar</button>
+        <button id="delete-mindset" class="hidden decline-btn">Remover</button>
+        <button id="cancel-mindset">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="stats-modal" class="hidden">
+    <h2 id="stats-question"></h2>
+    <div class="slider-container">
+      <input type="range" min="1" max="10" value="5" id="stats-slider" />
+      <span id="stats-slider-value">5</span>
+    </div>
+    <button id="stats-next">Próximo</button>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
