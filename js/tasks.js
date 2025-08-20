@@ -11,12 +11,36 @@ const suggestTaskBtn = document.getElementById('suggest-task-btn');
 const taskModal = document.getElementById('task-modal');
 const taskTitleInput = document.getElementById('task-title');
 const taskDescInput = document.getElementById('task-desc');
-const taskDatetimeInput = document.getElementById('task-datetime');
+const taskDateInput = document.getElementById('task-date');
+const taskTimeInput = document.getElementById('task-time');
+const taskDurationInput = document.getElementById('task-duration');
 const taskAspectInput = document.getElementById('task-aspect');
 const taskTypeInput = document.getElementById('task-type');
+const taskNoTimeInput = document.getElementById('task-no-time');
 const saveTaskBtn = document.getElementById('save-task');
 const cancelTaskBtn = document.getElementById('cancel-task');
 const completeTaskBtn = document.getElementById('complete-task');
+const toStep2Btn = document.getElementById('to-step-2');
+const toStep3Btn = document.getElementById('to-step-3');
+const backStep1Btn = document.getElementById('back-step-1');
+const backStep2Btn = document.getElementById('back-step-2');
+const step1Div = document.getElementById('task-step-1');
+const step2Div = document.getElementById('task-step-2');
+const step3Div = document.getElementById('task-step-3');
+const taskRepeatInputs = document.querySelectorAll('#task-repeat input');
+
+function showTaskStep(step) {
+  step1Div.classList.add('hidden');
+  step2Div.classList.add('hidden');
+  step3Div.classList.add('hidden');
+  if (step === 1) {
+    step1Div.classList.remove('hidden');
+  } else if (step === 2) {
+    step2Div.classList.remove('hidden');
+  } else if (step === 3) {
+    step3Div.classList.remove('hidden');
+  }
+}
 const calendarTitle = document.getElementById('calendar-title');
 const calendarList = document.getElementById('calendar-list');
 const tasksSection = document.getElementById('tasks');
@@ -30,6 +54,13 @@ export function initTasks(keys, data, aspects) {
   saveTaskBtn.addEventListener('click', saveTask);
   cancelTaskBtn.addEventListener('click', closeTaskModal);
   completeTaskBtn.addEventListener('click', completeTask);
+  toStep2Btn.addEventListener('click', () => showTaskStep(2));
+  toStep3Btn.addEventListener('click', () => showTaskStep(3));
+  backStep1Btn.addEventListener('click', () => showTaskStep(1));
+  backStep2Btn.addEventListener('click', () => showTaskStep(2));
+  taskNoTimeInput.addEventListener('change', () => {
+    taskTimeInput.disabled = taskNoTimeInput.value !== '';
+  });
   tasksSection.addEventListener('touchstart', e => {
     touchStartX = e.touches[0].clientX;
   });
@@ -117,7 +148,8 @@ function buildTasks() {
     const p = document.createElement('p');
     p.textContent = t.description;
     const span = document.createElement('span');
-    span.textContent = `${new Date(t.startTime).toLocaleString()} | ${t.aspect} | ${t.type || 'Hábito'}`;
+    const infoTime = t.startTime ? new Date(t.startTime).toLocaleString() : 'Sem horário';
+    span.textContent = `${infoTime} | ${t.aspect} | ${t.type || 'Hábito'}`;
     div.appendChild(h3);
     div.appendChild(p);
     div.appendChild(span);
@@ -136,11 +168,11 @@ function buildTasks() {
     div.addEventListener('mouseup', cancel);
     div.addEventListener('mouseleave', cancel);
     div.addEventListener('touchend', cancel);
-    const time = new Date(t.startTime).getTime();
+    const time = t.startTime ? new Date(t.startTime).getTime() : null;
     if (t.completed) {
       div.classList.add('completed');
       completed.appendChild(div);
-    } else if (time < now) {
+    } else if (time && time < now) {
       div.classList.add('overdue');
       overdue.appendChild(div);
     } else {
@@ -234,16 +266,29 @@ function openTaskModal(index = null, prefill = null) {
     taskAspectInput.appendChild(opt);
   });
   taskTypeInput.value = 'Hábito';
-  const now = new Date().toISOString().slice(0, 16);
-  taskDatetimeInput.min = now;
+  const now = new Date();
+  taskDateInput.value = now.toISOString().slice(0,10);
+  taskTimeInput.value = now.toTimeString().slice(0,5);
+  taskDurationInput.value = 15;
+  taskNoTimeInput.value = '';
+  taskRepeatInputs.forEach(i => (i.checked = false));
   if (index !== null) {
     const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
     const t = tasks[index];
     taskTitleInput.value = t.title;
     taskDescInput.value = t.description;
-    taskDatetimeInput.value = t.startTime.slice(0, 16);
+    if (t.startTime) {
+      const d = new Date(t.startTime);
+      taskDateInput.value = d.toISOString().slice(0,10);
+      taskTimeInput.value = d.toTimeString().slice(0,5);
+    } else {
+      taskDateInput.value = '';
+      taskTimeInput.value = '';
+    }
     taskAspectInput.value = t.aspect;
     taskTypeInput.value = t.type || 'Hábito';
+    taskDurationInput.value = t.duration || 15;
+    taskNoTimeInput.value = t.noTime || '';
     document.querySelector('#task-modal h2').textContent = 'Editar tarefa';
     if (!t.completed) {
       completeTaskBtn.classList.remove('hidden');
@@ -256,16 +301,15 @@ function openTaskModal(index = null, prefill = null) {
     if (prefill) {
       taskTitleInput.value = prefill.title;
       taskDescInput.value = prefill.description;
-      taskDatetimeInput.value = now;
       taskAspectInput.value = prefill.aspect;
       taskTypeInput.value = prefill.type || 'Hábito';
     } else {
       taskTitleInput.value = '';
       taskDescInput.value = '';
-      taskDatetimeInput.value = now;
       taskAspectInput.value = aspectKeys[0] || '';
     }
   }
+  showTaskStep(1);
   taskModal.classList.add('show');
   taskModal.classList.remove('hidden');
 }
@@ -281,6 +325,7 @@ function suggestTask() {
     startTime: now,
     aspect: idea.aspect,
     type: idea.type || 'Hábito',
+    duration: 15,
     completed: false
   });
   localStorage.setItem('tasks', JSON.stringify(tasks));
@@ -298,27 +343,83 @@ function saveTask() {
   const title = taskTitleInput.value.trim();
   if (!title) return;
   const description = taskDescInput.value.trim();
-  const datetime = taskDatetimeInput.value;
-  if (!datetime) return;
   const aspect = taskAspectInput.value;
   const type = taskTypeInput.value;
-  if (new Date(datetime) <= new Date()) {
-    alert('Selecione um horário futuro');
-    return;
-  }
+  const duration = parseInt(taskDurationInput.value, 10) || 15;
+  const noTime = taskNoTimeInput.value;
+  const date = taskDateInput.value;
+  const time = taskTimeInput.value;
   const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
-  const taskObj = {
-    title: title.slice(0, 14),
-    description: (description || '').slice(0, 60),
-    startTime: new Date(datetime).toISOString(),
-    aspect,
-    type,
-    completed: false
-  };
-  if (editingTaskIndex !== null) {
-    tasks[editingTaskIndex] = taskObj;
+  function blockUsage(d) {
+    const blockStart = new Date(d);
+    blockStart.setMinutes(Math.floor(blockStart.getMinutes() / 15) * 15, 0, 0);
+    const blockEnd = new Date(blockStart.getTime() + 15 * 60000);
+    return tasks
+      .filter(t => {
+        if (!t.startTime) return false;
+        const td = new Date(t.startTime);
+        return td >= blockStart && td < blockEnd;
+      })
+      .reduce((sum, t) => sum + (t.duration || 15), 0);
+  }
+  if (!noTime) {
+    if (!date || !time) return;
+    const datetime = new Date(`${date}T${time}`);
+    if (datetime <= new Date()) {
+      alert('Selecione um horário futuro');
+      return;
+    }
+    const selectedDays = Array.from(taskRepeatInputs)
+      .filter(i => i.checked)
+      .map(i => parseInt(i.value));
+    const days = selectedDays.length ? selectedDays : [datetime.getDay()];
+    if (editingTaskIndex !== null) {
+      if (blockUsage(datetime) + duration > 15) {
+        alert('Bloco de 15 minutos já está cheio');
+        return;
+      }
+      tasks[editingTaskIndex] = {
+        title: title.slice(0, 14),
+        description: (description || '').slice(0, 60),
+        startTime: datetime.toISOString(),
+        aspect,
+        type,
+        duration,
+        completed: false
+      };
+    } else {
+      days.forEach(day => {
+        const d = new Date(datetime);
+        const diff = (day - d.getDay() + 7) % 7;
+        d.setDate(d.getDate() + diff);
+        if (blockUsage(d) + duration <= 15) {
+          tasks.push({
+            title: title.slice(0, 14),
+            description: (description || '').slice(0, 60),
+            startTime: d.toISOString(),
+            aspect,
+            type,
+            duration,
+            completed: false
+          });
+        }
+      });
+    }
   } else {
-    tasks.push(taskObj);
+    const taskObj = {
+      title: title.slice(0, 14),
+      description: (description || '').slice(0, 60),
+      aspect,
+      type,
+      duration,
+      noTime,
+      completed: false
+    };
+    if (editingTaskIndex !== null) {
+      tasks[editingTaskIndex] = taskObj;
+    } else {
+      tasks.push(taskObj);
+    }
   }
   localStorage.setItem('tasks', JSON.stringify(tasks));
   closeTaskModal();

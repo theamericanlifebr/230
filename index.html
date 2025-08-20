@@ -60,7 +60,7 @@
             <button id="suggest-task-btn">Ver ideias</button>
           </div>
           <div id="tasks-pending">
-            <h2>Pendentes</h2>
+            <h2>Tarefas agendadas</h2>
             <div class="task-group" id="pending-list"></div>
           </div>
           <div id="tasks-completed">
@@ -111,15 +111,47 @@
   <div id="task-modal" class="hidden">
     <div class="task-form">
       <h2>Nova tarefa</h2>
-      <input type="text" id="task-title" placeholder="Título" />
-      <textarea id="task-desc" placeholder="Descrição"></textarea>
-      <input type="datetime-local" id="task-datetime" />
-      <select id="task-aspect"></select>
-      <select id="task-type">
-        <option value="Hábito">Hábito</option>
-        <option value="Tarefa">Tarefa</option>
-      </select>
-      <button id="save-task">Salvar</button>
+      <div class="task-step" id="task-step-1">
+        <input type="text" id="task-title" placeholder="Tarefa" />
+        <textarea id="task-desc" placeholder="Descrição"></textarea>
+        <select id="task-aspect"></select>
+        <button id="to-step-2">Próximo</button>
+      </div>
+      <div class="task-step hidden" id="task-step-2">
+        <input type="date" id="task-date" />
+        <div id="task-repeat">
+          <label><input type="checkbox" value="0">D</label>
+          <label><input type="checkbox" value="1">S</label>
+          <label><input type="checkbox" value="2">T</label>
+          <label><input type="checkbox" value="3">Q</label>
+          <label><input type="checkbox" value="4">Q</label>
+          <label><input type="checkbox" value="5">S</label>
+          <label><input type="checkbox" value="6">S</label>
+        </div>
+        <input type="time" id="task-time" step="300" />
+        <select id="task-no-time">
+          <option value="">Com horário fixo</option>
+          <option value="morning">Concluir essa manhã</option>
+          <option value="afternoon">Concluir essa tarde</option>
+          <option value="night">Concluir essa noite</option>
+          <option value="today">Para hoje</option>
+          <option value="tomorrow">Para amanhã</option>
+          <option value="week">Para essa semana</option>
+          <option value="month">Para esse mês</option>
+          <option value="year">Para esse ano</option>
+        </select>
+        <button id="back-step-1">Voltar</button>
+        <button id="to-step-3">Próximo</button>
+      </div>
+      <div class="task-step hidden" id="task-step-3">
+        <input type="number" id="task-duration" min="5" max="15" step="5" value="15" />
+        <select id="task-type">
+          <option value="Hábito">Hábito</option>
+          <option value="Tarefa">Tarefa</option>
+        </select>
+        <button id="back-step-2">Voltar</button>
+        <button id="save-task">Salvar</button>
+      </div>
       <button id="complete-task" class="hidden">Concluir</button>
       <button id="cancel-task">Cancelar</button>
     </div>
