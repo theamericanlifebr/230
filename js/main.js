@@ -91,28 +91,46 @@ Promise.all([
 
 function showQuestion() {
   const key = aspectKeys[currentIndex];
-  document.getElementById('question-title').textContent = aspectsData[key].question;
+  const title = currentStep === 0
+    ? `Você considera ${key.toLowerCase()} importante?`
+    : `Qual o nível atual da sua ${key.toLowerCase()} hoje?`;
+  document.getElementById('question-title').textContent = title;
   aspectImage.src = aspectsData[key].image;
   aspectImage.alt = key;
-  slider.value = responses[key]?.importance || 50;
+  const value = currentStep === 0
+    ? (responses[key]?.importance || 50)
+    : (responses[key]?.level || 50);
+  slider.value = value;
   updateFeedback();
-  const progress = (currentIndex / aspectKeys.length) * 100;
+  const totalSteps = aspectKeys.length * 2;
+  const stepIndex = currentIndex * 2 + currentStep;
+  const progress = (stepIndex / totalSteps) * 100;
   document.getElementById('progress-bar').style.width = progress + '%';
 }
 
-function getFeedback(val) {
+function getImportanceFeedback(val) {
   const v = Number(val);
-  if (v <= 10) return 'Totalmente irrelevante';
-  if (v <= 25) return 'Não é importante';
-  if (v <= 50) return 'Sem prioridade';
-  if (v <= 70) return 'Relevante';
-  if (v <= 85) return 'Muito importante';
-  if (v <= 92) return 'Pilar da vida';
-  return 'Base da vida';
+  if (v <= 20) return 'Totalmente irrelevante';
+  if (v <= 40) return 'Pouco importante';
+  if (v <= 60) return 'Importância moderada';
+  if (v <= 80) return 'Importante';
+  return 'Muito importante';
+}
+
+function getLevelFeedback(val, key) {
+  const v = Number(val);
+  if (v <= 20) return `Nível de ${key} péssimo hoje`;
+  if (v <= 40) return `Nível de ${key} não está bom`;
+  if (v <= 60) return `Nível de ${key} regular`;
+  if (v <= 80) return `Nível de ${key} bom`;
+  return `Nível de ${key} excelente`;
 }
 
 function updateFeedback() {
-  sliderFeedback.textContent = getFeedback(slider.value);
+  const key = aspectKeys[currentIndex];
+  sliderFeedback.textContent = currentStep === 0
+    ? getImportanceFeedback(slider.value)
+    : getLevelFeedback(slider.value, key);
 }
 
 slider.addEventListener('input', updateFeedback);
@@ -183,7 +201,7 @@ function initApp(firstTime) {
   buildOptions();
   initTasks(aspectKeys, tasksData, aspectsData);
   initLaws(aspectKeys, lawsData, statsColors);
-  initStats(aspectKeys, responses, statsColors);
+  initStats(aspectKeys, responses, statsColors, aspectsData);
   initMindset(aspectKeys, mindsetData, statsColors);
   initHistory(aspectsData);
   scheduleNotifications();
