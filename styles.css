@@ -19,7 +19,7 @@
   font-style: normal;
 }
 
-.dark {
+.black {
   --bg-color: #222;
   --text-color: #eee;
   --button-bg: #555;
@@ -28,6 +28,43 @@
   --header-text: #eee;
   --dropdown-bg: #111;
   --dropdown-hover-bg: #222;
+}
+
+.turquoise {
+  --bg-color: #40E0D0;
+  --text-color: #000;
+  --button-bg: #2aa198;
+  --button-hover-bg: #3fd0d0;
+  --header-bg: linear-gradient(to bottom, #5f9ea0, #40E0D0);
+  --header-text: #000;
+  --dropdown-bg: rgba(0,0,0,0.2);
+  --dropdown-hover-bg: rgba(0,0,0,0.3);
+}
+
+.whitecolor {
+  --bg-color: #ffffff;
+  --text-color: #000;
+  --button-bg: #dddddd;
+  --button-hover-bg: #cccccc;
+  --header-bg: linear-gradient(to bottom, #f0f0f0, #dddddd);
+  --header-text: #000;
+  --dropdown-bg: #ffffff;
+  --dropdown-hover-bg: #eeeeee;
+}
+
+.minimalist {
+  --bg-color: #f5f5f5;
+  --text-color: #000;
+  --button-bg: #bbbbbb;
+  --button-hover-bg: #aaaaaa;
+  --header-bg: linear-gradient(to bottom, #e0e0e0, #bbbbbb);
+  --header-text: #000;
+  --dropdown-bg: #ffffff;
+  --dropdown-hover-bg: #eeeeee;
+}
+
+.minimalist img {
+  filter: grayscale(100%);
 }
 
 body {
@@ -143,6 +180,7 @@ li:hover { transform: scale(1.02); }
   top: 0;
   left: 0;
   width: 100%;
+  padding-top: 50px;
   z-index: 1000;
 }
 
@@ -156,6 +194,10 @@ li:hover { transform: scale(1.02); }
 
 .header-logo {
   height: 40px;
+}
+
+#main-content {
+  margin-top: 100px;
 }
 
 #logo-screen #logo {
@@ -366,6 +408,7 @@ li:hover { transform: scale(1.02); }
   gap: 20px;
   justify-items: center;
   padding: 20px 0;
+  margin: 0 auto;
 }
 
 .stats-item img {
@@ -378,6 +421,18 @@ li:hover { transform: scale(1.02); }
   margin-top: 8px;
   color: #ccc;
   text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+}
+
+@media (min-width: 601px) {
+  .boxtime {
+    max-width: 624px;
+  }
+  .stats-item img {
+    width: 131px;
+    height: 131px;
+  }
 }
 
 #task-modal {
@@ -544,8 +599,9 @@ li:hover { transform: scale(1.02); }
   justify-content: flex-start;
   width: 100%;
   max-width: 520px;
-  padding: 5px 15px;
+  padding: 6.5px 15px;
   border-radius: 8px;
+  min-height: 39px;
 }
 .boxtime-time {
   font-size: 32px;
@@ -562,7 +618,12 @@ li:hover { transform: scale(1.02); }
   height: 30px;
 }
 .boxtime.past {
-  opacity: 0.4;
+  background: linear-gradient(to right, #cccccc, #ffffff);
+  color: #000;
+}
+
+.boxtime.past .boxtime-time {
+  color: rgba(0,0,0,0.75);
 }
 .boxtime.morning {
   background: linear-gradient(to right, #40E0D0, #ffffff);
@@ -575,6 +636,10 @@ li:hover { transform: scale(1.02); }
 }
 .boxtime.dawn {
   background: linear-gradient(to right, #000000, #000030);
+}
+
+#calendar {
+  margin-top: 50px;
 }
 
 .accept-btn {

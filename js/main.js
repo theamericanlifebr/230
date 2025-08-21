@@ -29,6 +29,11 @@ const statsColors = {
   Trabalho: ['#ffffff', '#f5f5f5']
 };
 
+const storedAspectColors = JSON.parse(localStorage.getItem('aspectColors') || '{}');
+Object.keys(storedAspectColors).forEach(k => {
+  statsColors[k] = [storedAspectColors[k], storedAspectColors[k]];
+});
+
 // Prevent copying, context menu, and zoom interactions
 document.addEventListener('contextmenu', e => e.preventDefault());
 document.addEventListener('copy', e => e.preventDefault());
@@ -52,7 +57,10 @@ const aspectImage = document.getElementById('aspect-image');
 const headerLogo = document.getElementById('header-logo');
 const menuCarousel = document.getElementById('menu-carousel');
 
-document.body.classList.add('dark');
+let savedTheme = localStorage.getItem('theme') || 'black';
+document.body.classList.add(savedTheme);
+const savedBg = localStorage.getItem('customBg');
+if (savedBg) document.body.style.backgroundImage = `url(${savedBg})`;
 headerLogo.addEventListener('click', () => showPage('menu'));
 
 Promise.all([
@@ -214,9 +222,76 @@ function initApp(firstTime) {
   }
 }
 
+function applyTheme(theme) {
+  document.body.classList.remove('black', 'turquoise', 'whitecolor', 'minimalist');
+  document.body.classList.add(theme);
+  localStorage.setItem('theme', theme);
+  savedTheme = theme;
+}
+
 function buildOptions() {
   const container = document.getElementById('options-content');
   container.innerHTML = '';
+
+  const themeDiv = document.createElement('div');
+  const themeLabel = document.createElement('label');
+  themeLabel.textContent = 'Tema:';
+  const themeSelect = document.createElement('select');
+  [
+    { value: 'black', label: 'Black' },
+    { value: 'turquoise', label: 'Blue Turquesa' },
+    { value: 'whitecolor', label: 'White and Color' },
+    { value: 'minimalist', label: 'Minimalist' }
+  ].forEach(t => {
+    const opt = document.createElement('option');
+    opt.value = t.value;
+    opt.textContent = t.label;
+    themeSelect.appendChild(opt);
+  });
+  themeSelect.value = savedTheme;
+  themeSelect.addEventListener('change', e => applyTheme(e.target.value));
+  themeDiv.appendChild(themeLabel);
+  themeDiv.appendChild(themeSelect);
+  container.appendChild(themeDiv);
+
+  const bgDiv = document.createElement('div');
+  const bgLabel = document.createElement('label');
+  bgLabel.textContent = 'Imagem de fundo:';
+  const bgInput = document.createElement('input');
+  bgInput.type = 'file';
+  bgInput.accept = 'image/*';
+  bgInput.addEventListener('change', e => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      localStorage.setItem('customBg', reader.result);
+      document.body.style.backgroundImage = `url(${reader.result})`;
+    };
+    reader.readAsDataURL(file);
+  });
+  bgDiv.appendChild(bgLabel);
+  bgDiv.appendChild(bgInput);
+  container.appendChild(bgDiv);
+
+  const aspectColors = JSON.parse(localStorage.getItem('aspectColors') || '{}');
+  aspectKeys.forEach(k => {
+    const colorWrap = document.createElement('div');
+    const colorLabel = document.createElement('label');
+    colorLabel.textContent = `${k} cor:`;
+    const colorInput = document.createElement('input');
+    colorInput.type = 'color';
+    colorInput.value = aspectColors[k] || '#ffffff';
+    colorInput.addEventListener('input', e => {
+      aspectColors[k] = e.target.value;
+      statsColors[k] = [e.target.value, e.target.value];
+      localStorage.setItem('aspectColors', JSON.stringify(aspectColors));
+    });
+    colorWrap.appendChild(colorLabel);
+    colorWrap.appendChild(colorInput);
+    container.appendChild(colorWrap);
+  });
+
   const categories = [
     { title: 'Princípios fundamentais', filter: v => v === 10 },
     { title: 'Pilares de uma vida equilibrada', filter: v => v >= 8 && v <= 9 },
