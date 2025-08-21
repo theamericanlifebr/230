@@ -1,16 +1,18 @@
 let aspectKeys = [];
 let responses = {};
 let statsColors = {};
+let aspectsData = {};
 
 const statsSlider = document.getElementById('stats-slider');
 const statsSliderValue = document.getElementById('stats-slider-value');
 let statsIndex = 0;
 let statsResponses = {};
 
-export function initStats(keys, res, colors) {
+export function initStats(keys, res, colors, aspects) {
   aspectKeys = keys;
   responses = res;
   statsColors = colors;
+  aspectsData = aspects;
   statsSlider.addEventListener('input', () => {
     statsSliderValue.textContent = statsSlider.value;
   });
@@ -35,29 +37,20 @@ function buildStats() {
   const container = document.getElementById('stats-content');
   container.innerHTML = '';
   aspectKeys.forEach(k => {
-    const box = document.createElement('div');
-    box.className = 'stats-box';
+    const item = document.createElement('div');
+    item.className = 'stats-item';
 
-    const title = document.createElement('span');
-    title.className = 'stats-title';
-    title.textContent = k;
-    box.appendChild(title);
+    const img = document.createElement('img');
+    img.src = aspectsData[k].image;
+    img.alt = k;
+    item.appendChild(img);
 
-    const progress = document.createElement('div');
-    progress.className = 'stats-progress';
+    const name = document.createElement('span');
+    name.className = 'stats-name';
+    name.textContent = k;
+    item.appendChild(name);
 
-    const bar = document.createElement('div');
-    bar.className = 'stats-bar';
-    const level = responses[k]?.level || 0;
-    bar.style.width = level + '%';
-    const colors = statsColors[k];
-    if (colors) {
-      bar.style.background = `linear-gradient(to right, ${colors[0]}, ${colors[1]})`;
-    }
-    progress.appendChild(bar);
-    box.appendChild(progress);
-
-    container.appendChild(box);
+    container.appendChild(item);
   });
 }
 
