@@ -89,18 +89,35 @@ Promise.all([
   }
 });
 
+const levelPrefixes = {
+  Ambiente: 'Meu ambiente',
+  Nutrition: 'Minha alimentação',
+  Sleep: 'Meu sono',
+  Hygiene: 'Minha higiene',
+  Emocional: 'Meu equilíbrio emocional',
+  Energia: 'Minha energia',
+  Learning: 'Meu aprendizado',
+  Exercícios: 'Meus exercícios',
+  Relationships: 'Minhas relações',
+  Financial: 'Minha vida financeira',
+  Lazer: 'Meu lazer',
+  Trabalho: 'Meu trabalho'
+};
+
 function showQuestion() {
   const key = aspectKeys[currentIndex];
-  document.getElementById('question-title').textContent = aspectsData[key].question;
+  const title = currentStep === 0 ? aspectsData[key].importanceQuestion : aspectsData[key].levelQuestion;
+  document.getElementById('question-title').textContent = title;
   aspectImage.src = aspectsData[key].image;
   aspectImage.alt = key;
-  slider.value = responses[key]?.importance || 50;
+  const val = currentStep === 0 ? (responses[key]?.importance ?? 50) : (responses[key]?.level ?? 50);
+  slider.value = val;
   updateFeedback();
   const progress = (currentIndex / aspectKeys.length) * 100;
   document.getElementById('progress-bar').style.width = progress + '%';
 }
 
-function getFeedback(val) {
+function getImportanceFeedback(val) {
   const v = Number(val);
   if (v <= 10) return 'Totalmente irrelevante';
   if (v <= 25) return 'Não é importante';
@@ -111,8 +128,20 @@ function getFeedback(val) {
   return 'Base da vida';
 }
 
+function getLevelFeedback(key, val) {
+  const prefix = levelPrefixes[key] || 'Meu estado';
+  const v = Number(val);
+  if (v <= 20) return `${prefix} está péssimo hoje`;
+  if (v <= 40) return `${prefix} não está bom`;
+  if (v <= 60) return `${prefix} está regular`;
+  if (v <= 80) return `${prefix} está bom`;
+  return `${prefix} está excelente`;
+}
+
 function updateFeedback() {
-  sliderFeedback.textContent = getFeedback(slider.value);
+  const key = aspectKeys[currentIndex];
+  const val = slider.value;
+  sliderFeedback.textContent = currentStep === 0 ? getImportanceFeedback(val) : getLevelFeedback(key, val);
 }
 
 slider.addEventListener('input', updateFeedback);
@@ -183,7 +212,7 @@ function initApp(firstTime) {
   buildOptions();
   initTasks(aspectKeys, tasksData, aspectsData);
   initLaws(aspectKeys, lawsData, statsColors);
-  initStats(aspectKeys, responses, statsColors);
+  initStats(aspectKeys, responses, statsColors, aspectsData);
   initMindset(aspectKeys, mindsetData, statsColors);
   initHistory(aspectsData);
   scheduleNotifications();
