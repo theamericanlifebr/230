@@ -15,18 +15,18 @@ let responses = JSON.parse(localStorage.getItem('responses') || '{}');
 let previousLogin = 0;
 
 const statsColors = {
-  Ambiente: ['#224F87', '#4885CF'],
-  Nutrition: ['#B34B14', '#D4642C'],
-  Sleep: ['#B34B14', '#1C3873'],
-  Hygiene: ['#1486B8', '#60C1EB'],
-  Emocional: ['#1486B8', '#83BDC9'],
-  Energia: ['#BA4A0F', '#0B0E52'],
-  Learning: ['#0E0338', '#245085'],
-  Exercícios: ['#82090F', '#C24A00'],
-  Relationships: ['#82090F', '#6B0641'],
-  Financial: ['#125E2D', '#0FA841'],
-  Lazer: ['#125E2D', '#5D0BA3'],
-  Trabalho: ['#000000', '#363675']
+  Exercícios: ['#ff4d4d', '#ff6666'],
+  Relationships: ['#ffd700', '#ffea00'],
+  Nutrition: ['#66bb6a', '#81c784'],
+  Sleep: ['#003366', '#004080'],
+  Ambiente: ['#00bcd4', '#26c6da'],
+  Emocional: ['#64b5f6', '#90caf9'],
+  Hygiene: ['#b3e5fc', '#e1f5fe'],
+  Energia: ['#c0c0c0', '#d3d3d3'],
+  Learning: ['#ffb300', '#ffca28'],
+  Financial: ['#2e7d32', '#388e3c'],
+  Lazer: ['#7e57c2', '#9575cd'],
+  Trabalho: ['#ffffff', '#f5f5f5']
 };
 
 const storedAspectColors = JSON.parse(localStorage.getItem('aspectColors') || '{}');
@@ -54,12 +54,14 @@ document.addEventListener('keydown', e => {
 const slider = document.getElementById('slider');
 const sliderFeedback = document.getElementById('slider-feedback');
 const aspectImage = document.getElementById('aspect-image');
+const headerLogo = document.getElementById('header-logo');
 const menuCarousel = document.getElementById('menu-carousel');
 
 let savedTheme = localStorage.getItem('theme') || 'black';
 document.body.classList.add(savedTheme);
 const savedBg = localStorage.getItem('customBg');
 if (savedBg) document.body.style.backgroundImage = `url(${savedBg})`;
+headerLogo.addEventListener('click', () => showPage('menu'));
 
 Promise.all([
   fetch('data/aspects.json').then(r => r.json()),
@@ -74,6 +76,7 @@ Promise.all([
   aspectKeys = Object.keys(aspects);
   if (Object.keys(responses).length) {
     document.getElementById('logo-screen').style.display = 'none';
+    document.getElementById('main-header').classList.remove('hidden');
     document.getElementById('main-content').classList.remove('hidden');
     initApp(false);
   } else {
@@ -205,11 +208,12 @@ function initApp(firstTime) {
   }
   buildOptions();
   initTasks(aspectKeys, tasksData, aspectsData);
-  initLaws(aspectKeys, lawsData, statsColors, aspectsData);
+  initLaws(aspectKeys, lawsData, statsColors);
   initStats(aspectKeys, responses, statsColors, aspectsData);
-  initMindset(aspectKeys, mindsetData, statsColors, aspectsData);
+  initMindset(aspectKeys, mindsetData, statsColors);
   initHistory(aspectsData);
   scheduleNotifications();
+  document.getElementById('main-header').classList.remove('hidden');
   document.getElementById('main-content').classList.remove('hidden');
   setInterval(checkStatsPrompt, 60000);
   checkStatsPrompt();

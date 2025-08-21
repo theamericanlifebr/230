@@ -1,7 +1,6 @@
 let aspectKeys = [];
 let mindsetData = [];
 let statsColors = {};
-let aspectsData = {};
 let editingMindsetIndex = null;
 
 const addMindsetBtn = document.getElementById('add-mindset-btn');
@@ -18,11 +17,10 @@ const declineMindsetBtn = document.getElementById('decline-mindset');
 const cancelMindsetBtn = document.getElementById('cancel-mindset');
 const deleteMindsetBtn = document.getElementById('delete-mindset');
 
-export function initMindset(keys, data, colors, aspects) {
+export function initMindset(keys, data, colors) {
   aspectKeys = keys;
   mindsetData = data;
   statsColors = colors;
-  aspectsData = aspects;
   mindsetRateInput.addEventListener('input', () => {
     mindsetRateValue.textContent = mindsetRateInput.value;
   });
@@ -56,14 +54,12 @@ function buildMindset() {
     div.className = 'mindset-box';
     const colors = statsColors[m.aspect] || ['#555', '#777'];
     div.style.background = `linear-gradient(135deg, ${colors[0]}, ${colors[1]})`;
-    const img = document.createElement('img');
-    img.src = aspectsData[m.aspect].image;
-    img.alt = m.aspect;
-    img.className = 'mindset-aspect-icon';
-    div.appendChild(img);
     const h3 = document.createElement('h3');
     h3.textContent = m.title;
+    const p = document.createElement('p');
+    p.textContent = m.description;
     div.appendChild(h3);
+    div.appendChild(p);
     let pressTimer;
     div.addEventListener('dblclick', () => openMindsetModal(idx, m));
     div.addEventListener('touchstart', () => {
