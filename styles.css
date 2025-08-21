@@ -173,8 +173,31 @@ li:hover { transform: scale(1.02); }
   transition: opacity 1s ease;
 }
 
+#main-header {
+  background: var(--header-bg);
+  color: var(--header-text);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-top: 50px;
+  z-index: 1000;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 30px;
+  position: relative;
+}
+
+.header-logo {
+  height: 40px;
+}
+
 #main-content {
-  margin-top: 20px;
+  margin-top: 100px;
 }
 
 #logo-screen #logo {
@@ -391,7 +414,6 @@ li:hover { transform: scale(1.02); }
 .stats-item img {
   width: 75px;
   height: 75px;
-  margin-top: -30px;
 }
 
 .stats-name {
@@ -410,7 +432,6 @@ li:hover { transform: scale(1.02); }
   .stats-item img {
     width: 131px;
     height: 131px;
-    margin-top: -30px;
   }
 }
 
@@ -528,20 +549,6 @@ li:hover { transform: scale(1.02); }
   margin-bottom: 10px;
   border-radius: 8px;
   color: #fff;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.law-aspect-icon,
-.mindset-aspect-icon {
-  width: 24px;
-  height: 24px;
-}
-
-.law-box h3,
-.mindset-box h3 {
-  margin: 0;
 }
 
 #tasks-tabs {
@@ -668,6 +675,9 @@ li:hover { transform: scale(1.02); }
   .aspect-image { width: 210px; }
   .menu-item img,
   .menu-carousel img { width: 140px; height: 140px; }
+  #main-header { height: 42px; }
+  .header-container { padding: 7px 30px; }
+  .header-logo { height: 28px; }
   #slider, #stats-slider { width: 210px; }
   .progress-container { height: 6px; }
   #progress-bar { border-radius: 3px; }
