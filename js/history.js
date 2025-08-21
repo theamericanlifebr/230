@@ -42,7 +42,7 @@ export function buildCalendar() {
   const now = new Date();
   const start = calendarStart;
   const periodInfo = getPeriodInfo(start.getHours());
-  calendarTitle.textContent = `${formatDate(start)} (${periodInfo.label})`;
+  calendarTitle.textContent = formatDate(start);
   const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
   const periodEnd = new Date(start.getTime() + 6 * 60 * 60 * 1000);
   const periodTasks = tasks
@@ -59,7 +59,6 @@ export function buildCalendar() {
     const label = `${String(blockTime.getHours()).padStart(2, '0')}:${String(blockTime.getMinutes()).padStart(2, '0')}`;
     const boxtime = document.createElement('div');
     boxtime.className = `boxtime ${periodInfo.className}`;
-    if (blockTime < now) boxtime.classList.add('past');
     const timeDiv = document.createElement('div');
     timeDiv.className = 'boxtime-time';
     timeDiv.textContent = label;
@@ -68,6 +67,7 @@ export function buildCalendar() {
     icons.className = 'boxtime-icons';
     const blockStart = blockTime.getTime();
     const blockEnd = blockStart + 15 * 60000;
+    if (blockEnd <= now.getTime()) boxtime.classList.add('past');
     const matching = periodTasks.filter(t => {
       const tStart = new Date(t.startTime).getTime();
       const tEnd = tStart + (t.duration || 15) * 60000;
@@ -100,15 +100,24 @@ function getCurrentPeriodStart(now) {
 }
 
 function getPeriodInfo(hour) {
-  if (hour < 6) return { label: 'Madrugada', className: 'dawn' };
-  if (hour < 12) return { label: 'Manhã', className: 'morning' };
-  if (hour < 18) return { label: 'Tarde', className: 'afternoon' };
-  return { label: 'Noite', className: 'night' };
+  if (hour < 6) return { className: 'dawn' };
+  if (hour < 12) return { className: 'morning' };
+  if (hour < 18) return { className: 'afternoon' };
+  return { className: 'night' };
 }
 
 function formatDate(date) {
-  const dd = String(date.getDate()).padStart(2, '0');
-  const mm = String(date.getMonth() + 1).padStart(2, '0');
-  const yy = String(date.getFullYear()).slice(-2);
-  return `${dd}|${mm}|${yy}`;
+  const today = new Date();
+  const tomorrow = new Date();
+  tomorrow.setDate(today.getDate() + 1);
+  if (isSameDate(date, today)) return 'Hoje';
+  if (isSameDate(date, tomorrow)) return 'Amanhã';
+  const months = ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+  return `${date.getDate()} de ${months[date.getMonth()]} de ${date.getFullYear()}`;
+}
+
+function isSameDate(a, b) {
+  return a.getFullYear() === b.getFullYear() &&
+         a.getMonth() === b.getMonth() &&
+         a.getDate() === b.getDate();
 }
