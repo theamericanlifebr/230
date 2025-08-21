@@ -282,7 +282,7 @@ function suggestTask() {
   const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
   const now = new Date(Date.now() + 3600000).toISOString();
   tasks.push({
-    title: idea.title.slice(0, 14),
+    title: idea.title.slice(0, 27),
     description: (idea.description || '').slice(0, 60),
     startTime: now,
     aspect: idea.aspect,
@@ -359,7 +359,7 @@ function saveTask() {
       return;
     }
     const baseTask = {
-      title: title.slice(0, 14),
+      title: title.slice(0, 27),
       description: description.slice(0, 60),
       aspect,
       type,
@@ -410,7 +410,7 @@ function saveTask() {
     }
   } else {
     const taskObj = {
-      title: title.slice(0, 14),
+      title: title.slice(0, 27),
       description: (description || '').slice(0, 60),
       aspect,
       type,

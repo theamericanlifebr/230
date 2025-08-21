@@ -1,6 +1,7 @@
 let aspectKeys = [];
 let lawsData = [];
 let statsColors = {};
+let aspectsData = {};
 
 const addLawBtn = document.getElementById('add-law-btn');
 const suggestLawBtn = document.getElementById('suggest-law-btn');
@@ -16,10 +17,11 @@ const lawActionModal = document.getElementById('law-action-modal');
 const revokeLawBtn = document.getElementById('revoke-law');
 const cancelLawActionBtn = document.getElementById('cancel-law-action');
 
-export function initLaws(keys, data, colors) {
+export function initLaws(keys, data, colors, aspects) {
   aspectKeys = keys;
   lawsData = data;
   statsColors = colors;
+  aspectsData = aspects;
   addLawBtn.addEventListener('click', () => openLawModal());
   suggestLawBtn.addEventListener('click', suggestLaw);
   saveLawBtn.addEventListener('click', saveLaw);
@@ -58,12 +60,14 @@ function buildLaws() {
     div.className = 'law-box';
     const colors = statsColors[l.aspect] || ['#555', '#777'];
     div.style.background = `linear-gradient(135deg, ${colors[0]}, ${colors[1]})`;
+    const img = document.createElement('img');
+    img.src = aspectsData[l.aspect].image;
+    img.alt = l.aspect;
+    img.className = 'law-aspect-icon';
+    div.appendChild(img);
     const h3 = document.createElement('h3');
     h3.textContent = l.title;
-    const p = document.createElement('p');
-    p.textContent = l.description;
     div.appendChild(h3);
-    div.appendChild(p);
     div.dataset.index = index;
     let pressTimer;
     const start = () => { pressTimer = setTimeout(() => openLawActionModal(index), 500); };
