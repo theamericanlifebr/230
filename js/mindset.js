@@ -1,3 +1,5 @@
+import { applyCascade, hexToRgba } from './utils.js';
+
 let aspectKeys = [];
 let mindsetData = [];
 let statsColors = {};
@@ -53,7 +55,10 @@ function buildMindset() {
     const div = document.createElement('div');
     div.className = 'mindset-box';
     const colors = statsColors[m.aspect] || ['#555', '#777'];
-    div.style.background = `linear-gradient(135deg, ${colors[0]}, ${colors[1]})`;
+    const neon = colors[1];
+    div.style.backgroundColor = hexToRgba(neon, 0.3);
+    div.style.border = `7px solid ${neon}`;
+    div.style.boxShadow = `0 0 10px ${neon}, 0 0 20px ${neon}`;
     const h3 = document.createElement('h3');
     h3.textContent = m.title;
     const p = document.createElement('p');
@@ -70,7 +75,11 @@ function buildMindset() {
     });
     container.appendChild(div);
   });
-  if (!mindsets.length) container.textContent = 'Sem mindsets ainda';
+  if (!mindsets.length) {
+    container.textContent = 'Sem mindsets ainda';
+  } else {
+    applyCascade(container);
+  }
 }
 
 function openMindsetModal(index = null, prefill = null, suggestion = false) {
