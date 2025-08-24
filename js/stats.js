@@ -1,3 +1,5 @@
+import { applyCascade } from './utils.js';
+
 let aspectKeys = [];
 let responses = {};
 let statsColors = {};
@@ -52,6 +54,7 @@ function buildStats() {
 
     container.appendChild(item);
   });
+  applyCascade(container);
 }
 
 function showStatsQuestion() {

@@ -1,3 +1,5 @@
+import { applyCascade, hexToRgba } from './utils.js';
+
 let aspectKeys = [];
 let lawsData = [];
 let statsColors = {};
@@ -57,7 +59,10 @@ function buildLaws() {
     const div = document.createElement('div');
     div.className = 'law-box';
     const colors = statsColors[l.aspect] || ['#555', '#777'];
-    div.style.background = `linear-gradient(135deg, ${colors[0]}, ${colors[1]})`;
+    const neon = colors[1];
+    div.style.backgroundColor = hexToRgba(neon, 0.3);
+    div.style.border = `7px solid ${neon}`;
+    div.style.boxShadow = `0 0 10px ${neon}, 0 0 20px ${neon}`;
     const h3 = document.createElement('h3');
     h3.textContent = l.title;
     const p = document.createElement('p');
@@ -75,7 +80,11 @@ function buildLaws() {
     div.addEventListener('touchend', cancel);
     container.appendChild(div);
   });
-  if (!laws.length) container.textContent = 'Sem leis ainda';
+  if (!laws.length) {
+    container.textContent = 'Sem leis ainda';
+  } else {
+    applyCascade(container);
+  }
 }
 
 function openLawModal(prefill = null, suggestion = false) {

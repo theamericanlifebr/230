@@ -13,6 +13,8 @@ let currentIndex = 0;
 let stage = 0; // 0 matters, 1 level
 let responses = JSON.parse(localStorage.getItem('responses') || '{}');
 let previousLogin = 0;
+let pendingReturnPage = null;
+let suppressVoting = false;
 
 const introMattersMessages = [
   'Este é o iLife Prime\nEstamos preparando tudo pra você',
@@ -314,13 +316,24 @@ document.getElementById('next-btn').addEventListener('click', () => {
     if (currentIndex < aspectKeys.length) {
       showQuestion();
     } else {
-      currentIndex = 0;
-      stage = 1;
-      document.getElementById('question-screen').classList.add('hidden');
-      playIntro(levelIntroMessages, 'intro-level', () => {
-        document.getElementById('question-screen').classList.remove('hidden');
-        showQuestion();
-      });
+      if (pendingReturnPage) {
+        localStorage.setItem('responses', JSON.stringify(responses));
+        document.getElementById('question-screen').classList.add('hidden');
+        document.getElementById('main-header').classList.remove('hidden');
+        document.getElementById('main-content').classList.remove('hidden');
+        suppressVoting = true;
+        showPage(pendingReturnPage);
+        suppressVoting = false;
+        pendingReturnPage = null;
+      } else {
+        currentIndex = 0;
+        stage = 1;
+        document.getElementById('question-screen').classList.add('hidden');
+        playIntro(levelIntroMessages, 'intro-level', () => {
+          document.getElementById('question-screen').classList.remove('hidden');
+          showQuestion();
+        });
+      }
     }
   } else {
     responses[key].level = Number(slider.value);
@@ -330,8 +343,17 @@ document.getElementById('next-btn').addEventListener('click', () => {
     } else {
       localStorage.setItem('responses', JSON.stringify(responses));
       document.getElementById('question-screen').classList.add('hidden');
-      document.getElementById('oath-text').textContent = buildOath();
-      document.getElementById('name-screen').classList.remove('hidden');
+      if (pendingReturnPage) {
+        document.getElementById('main-header').classList.remove('hidden');
+        document.getElementById('main-content').classList.remove('hidden');
+        suppressVoting = true;
+        showPage(pendingReturnPage);
+        suppressVoting = false;
+        pendingReturnPage = null;
+      } else {
+        document.getElementById('oath-text').textContent = buildOath();
+        document.getElementById('name-screen').classList.remove('hidden');
+      }
     }
   }
 });
@@ -549,5 +571,29 @@ function showPage(pageId) {
   document.querySelectorAll('.page').forEach(sec => sec.classList.remove('active'));
   const section = document.getElementById(pageId);
   if (section) section.classList.add('active');
+  if (!suppressVoting) {
+    if (pageId === 'laws') startMattersVoting();
+    if (pageId === 'stats') startLevelVoting();
+  }
+}
+
+function startMattersVoting() {
+  pendingReturnPage = 'laws';
+  currentIndex = 0;
+  stage = 0;
+  document.getElementById('main-header').classList.add('hidden');
+  document.getElementById('main-content').classList.add('hidden');
+  document.getElementById('question-screen').classList.remove('hidden');
+  showQuestion();
+}
+
+function startLevelVoting() {
+  pendingReturnPage = 'stats';
+  currentIndex = 0;
+  stage = 1;
+  document.getElementById('main-header').classList.add('hidden');
+  document.getElementById('main-content').classList.add('hidden');
+  document.getElementById('question-screen').classList.remove('hidden');
+  showQuestion();
 }
 
