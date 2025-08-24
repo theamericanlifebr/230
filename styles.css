@@ -30,15 +30,22 @@
   --dropdown-hover-bg: #222;
 }
 
-.turquoise {
-  --bg-color: #40E0D0;
-  --text-color: #000;
-  --button-bg: #2aa198;
-  --button-hover-bg: #3fd0d0;
-  --header-bg: linear-gradient(to bottom, #5f9ea0, #40E0D0);
-  --header-text: #000;
-  --dropdown-bg: rgba(0,0,0,0.2);
-  --dropdown-hover-bg: rgba(0,0,0,0.3);
+.neon {
+  --bg-color: #0b0f1a;
+  --text-color: #cfe9ff;
+  --button-bg: #0f1524;
+  --button-hover-bg: #152237;
+  --header-bg: linear-gradient(180deg, #0b0f1a, #140b1f);
+  --header-text: #bfe6ff;
+  --dropdown-bg: rgba(27,36,70,0.85);
+  --dropdown-hover-bg: rgba(17,24,45,0.76);
+}
+body.neon {
+  background:
+    radial-gradient(1200px 600px at 80% 120%, #1b1140 0%, transparent 60%),
+    radial-gradient(800px 500px at 10% -10%, #0f2a44 0%, transparent 60%),
+    linear-gradient(180deg, #0b0f1a, #140b1f);
+  color: var(--text-color);
 }
 
 .whitecolor {
@@ -487,7 +494,7 @@ li:hover { transform: scale(1.02); }
 }
 
 .task-form {
-  background: linear-gradient(135deg, #40E0D0, #1E90FF);
+  background: linear-gradient(135deg, #5ef0ff, #7a5cff);
   color: #fff;
   padding: 20px;
   border-radius: 8px;
@@ -512,7 +519,7 @@ li:hover { transform: scale(1.02); }
   padding: 8px;
   border: none;
   border-radius: 4px;
-  background: #40E0D0;
+  background: #7a5cff;
   color: #fff;
 }
 
@@ -637,16 +644,16 @@ li:hover { transform: scale(1.02); }
   color: rgba(0,0,0,0.75);
 }
 .boxtime.morning {
-  background: linear-gradient(to right, #40E0D0, #ffffff);
+  background: linear-gradient(to right, #5ef0ff, #ffffff);
 }
 .boxtime.afternoon {
-  background: linear-gradient(to right, #ffa500, #40E0D0);
+  background: linear-gradient(to right, #ff5cc8, #5ef0ff);
 }
 .boxtime.night {
-  background: linear-gradient(to right, #00008B, #00004D);
+  background: linear-gradient(to right, #140b1f, #0b0f1a);
 }
 .boxtime.dawn {
-  background: linear-gradient(to right, #000000, #000030);
+  background: linear-gradient(to right, #0b0f1a, #1b1140);
 }
 
 #calendar {

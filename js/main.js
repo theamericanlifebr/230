@@ -174,8 +174,14 @@ const aspectImage = document.getElementById('aspect-image');
 const headerLogo = document.getElementById('header-logo');
 const menuCarousel = document.getElementById('menu-carousel');
 
-let savedTheme = localStorage.getItem('theme') || 'black';
+let savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'turquoise') {
+  savedTheme = 'neon';
+  localStorage.setItem('theme', 'neon');
+}
+savedTheme = savedTheme || 'black';
 document.body.classList.add(savedTheme);
+
 const savedBg = localStorage.getItem('customBg');
 if (savedBg) document.body.style.backgroundImage = `url(${savedBg})`;
 headerLogo.addEventListener('click', () => showPage('menu'));
@@ -387,7 +393,8 @@ function initApp(firstTime) {
 }
 
 function applyTheme(theme) {
-  document.body.classList.remove('black', 'turquoise', 'whitecolor', 'minimalist');
+  if (theme === 'turquoise') theme = 'neon';
+  document.body.classList.remove('black', 'turquoise', 'neon', 'whitecolor', 'minimalist');
   document.body.classList.add(theme);
   localStorage.setItem('theme', theme);
   savedTheme = theme;
@@ -403,7 +410,7 @@ function buildOptions() {
   const themeSelect = document.createElement('select');
   [
     { value: 'black', label: 'Black' },
-    { value: 'turquoise', label: 'Blue Turquesa' },
+    { value: 'neon', label: 'Futurista Neon' },
     { value: 'whitecolor', label: 'White and Color' },
     { value: 'minimalist', label: 'Minimalist' }
   ].forEach(t => {
