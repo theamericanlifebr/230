@@ -20,14 +20,15 @@
 }
 
 .black {
-  --bg-color: #222;
-  --text-color: #eee;
-  --button-bg: #555;
-  --button-hover-bg: #666;
-  --header-bg: linear-gradient(to bottom, #333, #000);
-  --header-text: #eee;
-  --dropdown-bg: #111;
-  --dropdown-hover-bg: #222;
+  --bg-color: #000;
+  --text-color: #39ff14;
+  --button-bg: #111;
+  --button-hover-bg: #222;
+  --header-bg: linear-gradient(to bottom, #000, #111);
+  --header-text: #39ff14;
+  --dropdown-bg: #000;
+  --dropdown-hover-bg: #111;
+  --neon-color: #39ff14;
 }
 
 .neon {
@@ -102,6 +103,46 @@ body {
   -ms-user-select: none;
   -webkit-touch-callout: none;
   touch-action: manipulation;
+}
+
+body.black {
+  background: #000;
+  color: var(--text-color);
+}
+
+body.black h1,
+body.black h2,
+body.black p,
+body.black span,
+body.black label,
+body.black button,
+body.black li {
+  color: var(--text-color);
+  text-shadow: 0 0 5px var(--text-color);
+}
+
+body.black .menu-item img,
+body.black .menu-carousel img,
+body.black #header-logo,
+body.black .icone-central {
+  filter: drop-shadow(0 0 10px var(--neon-color));
+}
+
+body.black .progress-container {
+  background: #111;
+}
+
+body.black #progress-bar {
+  background: var(--neon-color);
+  box-shadow: 0 0 10px var(--neon-color);
+}
+
+body.black .law-box,
+body.black .mindset-box,
+body.black .task-form {
+  background: linear-gradient(135deg, #000, var(--neon-color));
+  box-shadow: 0 0 10px var(--neon-color);
+  text-shadow: 0 0 5px var(--neon-color);
 }
 
 .center {
@@ -347,15 +388,18 @@ li:hover { transform: scale(1.02); }
 }
 
 .task-item.pending {
-    background: linear-gradient(135deg, #000000, #40e0d0);
+  background: linear-gradient(135deg, #000, #00bfff);
+  box-shadow: 0 0 10px #00bfff;
 }
 
 .task-item.overdue {
-  background: linear-gradient(135deg, #000000, #40e0d0);
+  background: linear-gradient(135deg, #000, #ff073a);
+  box-shadow: 0 0 10px #ff073a;
 }
 
 .task-item.completed {
-    background: linear-gradient(135deg, #000000, #40e0d0);
+  background: linear-gradient(135deg, #000, #39ff14);
+  box-shadow: 0 0 10px #39ff14;
 }
 
 .task-item h3 {
@@ -363,9 +407,13 @@ li:hover { transform: scale(1.02); }
   font-size: 20px;
 }
 
+.task-item h3,
+.task-item span {
+  color: #fff;
+  text-shadow: 0 0 5px #fff;
+}
 .task-item span {
   font-size: 14px;
-  color: #555;
 }
 
 .task-aspect-icon {
@@ -627,6 +675,7 @@ li:hover { transform: scale(1.02); }
   padding: 15px 15px 10px;
   flex: 1;
   overflow-y: auto;
+  margin-top: 100px;
 }
 .boxtime {
   display: flex;
@@ -637,8 +686,9 @@ li:hover { transform: scale(1.02); }
   padding: 6.5px 15px;
   border-radius: 8px;
   min-height: 39px;
-  background: linear-gradient(to right, #000000, #40e0d0);
+  background: linear-gradient(to right, #000, var(--neon-color));
   color: #fff;
+  text-shadow: 0 0 5px #fff;
 }
 .boxtime-time {
   font-size: 32px;
@@ -654,13 +704,20 @@ li:hover { transform: scale(1.02); }
   width: 30px;
   height: 30px;
 }
-.boxtime.past,
-.boxtime.morning,
-.boxtime.afternoon,
-.boxtime.night,
+.boxtime.morning {
+  background: linear-gradient(to right, #000, #00bfff);
+}
+
+.boxtime.afternoon {
+  background: linear-gradient(to right, #000, #ffa500);
+}
+
+.boxtime.night {
+  background: linear-gradient(to right, #000, #00008b);
+}
+
 .boxtime.dawn {
-  background: linear-gradient(to right, #000000, #40e0d0);
-  color: #fff;
+  background: linear-gradient(to right, #000, #b900ff);
 }
 
 .boxtime.past .boxtime-time {
