@@ -367,7 +367,7 @@
   {
     "title": "Ler artigo curto",
     "description": "Ler artigo de 5 minutos em área de interesse.",
-    "aspect": "Learning",
+    "aspect": "Estudo",
     "type": "Tarefa",
     "date": "Todos os dias",
     "time": "Manhã",
@@ -376,7 +376,7 @@
   {
     "title": "Assistir vídeo educativo",
     "description": "Ver vídeo de 10 minutos sobre novo tema.",
-    "aspect": "Learning",
+    "aspect": "Estudo",
     "type": "Tarefa",
     "date": "Todos os dias",
     "time": "Tarde",
@@ -385,7 +385,7 @@
   {
     "title": "Audiobook diário",
     "description": "Ouvir audiobook por 15 minutos.",
-    "aspect": "Learning",
+    "aspect": "Estudo",
     "type": "Hábito",
     "date": "Todos os dias",
     "time": "Noite",
@@ -394,7 +394,7 @@
   {
     "title": "Resumo escrito",
     "description": "Escrever resumo curto do que aprendeu hoje.",
-    "aspect": "Learning",
+    "aspect": "Estudo",
     "type": "Tarefa",
     "date": "Todos os dias",
     "time": "Noite",
@@ -403,7 +403,7 @@
   {
     "title": "Aprender palavra nova",
     "description": "Pesquisar uma palavra nova em inglês.",
-    "aspect": "Learning",
+    "aspect": "Estudo",
     "type": "Hábito",
     "date": "Todos os dias",
     "time": "Manhã",
@@ -412,7 +412,7 @@
   {
     "title": "Ouvir podcast",
     "description": "Escutar 10 minutos de podcast educativo.",
-    "aspect": "Learning",
+    "aspect": "Estudo",
     "type": "Hábito",
     "date": "Todos os dias",
     "time": "Tarde",
@@ -421,7 +421,7 @@
   {
     "title": "Pesquisar tema novo",
     "description": "Investigar tema que você não conhece.",
-    "aspect": "Learning",
+    "aspect": "Estudo",
     "type": "Tarefa",
     "date": "Semanal",
     "time": "",
@@ -430,7 +430,7 @@
   {
     "title": "Estudo programado",
     "description": "Reservar 30 minutos fixos para estudo.",
-    "aspect": "Learning",
+    "aspect": "Estudo",
     "type": "Hábito",
     "date": "Todos os dias",
     "time": "20:00",
@@ -439,7 +439,7 @@
   {
     "title": "Flashcards",
     "description": "Revisar flashcards por 10 minutos.",
-    "aspect": "Learning",
+    "aspect": "Estudo",
     "type": "Hábito",
     "date": "Todos os dias",
     "time": "Tarde",
@@ -448,7 +448,7 @@
   {
     "title": "Assistir palestra",
     "description": "Ver palestra curta (TED ou similar).",
-    "aspect": "Learning",
+    "aspect": "Estudo",
     "type": "Tarefa",
     "date": "Semanal",
     "time": "",
@@ -457,7 +457,7 @@
   {
     "title": "Tomar notas",
     "description": "Anotar 3 ideias principais do dia.",
-    "aspect": "Learning",
+    "aspect": "Estudo",
     "type": "Hábito",
     "date": "Todos os dias",
     "time": "Noite",
@@ -466,7 +466,7 @@
   {
     "title": "Livro técnico",
     "description": "Ler 5 páginas de livro técnico.",
-    "aspect": "Learning",
+    "aspect": "Estudo",
     "type": "Hábito",
     "date": "Todos os dias",
     "time": "Manhã",
@@ -475,7 +475,7 @@
   {
     "title": "Discutir aprendizado",
     "description": "Compartilhar algo aprendido com alguém.",
-    "aspect": "Learning",
+    "aspect": "Estudo",
     "type": "Tarefa",
     "date": "Todos os dias",
     "time": "",
@@ -484,7 +484,7 @@
   {
     "title": "Pesquisar dúvida",
     "description": "Procurar resposta para uma dúvida específica.",
-    "aspect": "Learning",
+    "aspect": "Estudo",
     "type": "Tarefa",
     "date": "Todos os dias",
     "time": "",
@@ -493,7 +493,7 @@
   {
     "title": "Revisão semanal",
     "description": "Revisar anotações da semana.",
-    "aspect": "Learning",
+    "aspect": "Estudo",
     "type": "Tarefa",
     "date": "Semanal",
     "time": "Domingo",
@@ -502,7 +502,7 @@
   {
     "title": "Mapa mental",
     "description": "Criar um mapa mental simples.",
-    "aspect": "Learning",
+    "aspect": "Estudo",
     "type": "Tarefa",
     "date": "Semanal",
     "time": "",
@@ -511,7 +511,7 @@
   {
     "title": "Leitura rápida",
     "description": "Praticar leitura rápida por 10 minutos.",
-    "aspect": "Learning",
+    "aspect": "Estudo",
     "type": "Hábito",
     "date": "Todos os dias",
     "time": "Manhã",
@@ -520,7 +520,7 @@
   {
     "title": "Aplicar conhecimento",
     "description": "Usar algo aprendido em tarefa prática.",
-    "aspect": "Learning",
+    "aspect": "Estudo",
     "type": "Tarefa",
     "date": "Todos os dias",
     "time": "",
@@ -529,7 +529,7 @@
   {
     "title": "Estudo em dupla",
     "description": "Estudar com outra pessoa por 20 minutos.",
-    "aspect": "Learning",
+    "aspect": "Estudo",
     "type": "Tarefa",
     "date": "Semanal",
     "time": "",
@@ -538,7 +538,7 @@
   {
     "title": "Assistir documentário",
     "description": "Ver parte de documentário educativo.",
-    "aspect": "Learning",
+    "aspect": "Estudo",
     "type": "Tarefa",
     "date": "Semanal",
     "time": "",
@@ -729,7 +729,7 @@
   {
     "title": "Mensagem família",
     "description": "Mandar mensagem para parente próximo.",
-    "aspect": "Relationships",
+    "aspect": "Relacionamentos",
     "type": "Tarefa",
     "date": "Todos os dias",
     "time": "Noite",
@@ -738,7 +738,7 @@
   {
     "title": "Ligar amigo",
     "description": "Telefonar para um amigo distante.",
-    "aspect": "Relationships",
+    "aspect": "Relacionamentos",
     "type": "Tarefa",
     "date": "Semanal",
     "time": "",
@@ -747,7 +747,7 @@
   {
     "title": "Almoço família",
     "description": "Compartilhar refeição com família.",
-    "aspect": "Relationships",
+    "aspect": "Relacionamentos",
     "type": "Tarefa",
     "date": "Semanal",
     "time": "Domingo",
@@ -756,7 +756,7 @@
   {
     "title": "Elogio sincero",
     "description": "Fazer um elogio genuíno a alguém.",
-    "aspect": "Relationships",
+    "aspect": "Relacionamentos",
     "type": "Hábito",
     "date": "Todos os dias",
     "time": "",
@@ -765,7 +765,7 @@
   {
     "title": "Mensagem inesperada",
     "description": "Mandar mensagem positiva para surpresa.",
-    "aspect": "Relationships",
+    "aspect": "Relacionamentos",
     "type": "Tarefa",
     "date": "Semanal",
     "time": "",
@@ -774,7 +774,7 @@
   {
     "title": "Escuta ativa",
     "description": "Praticar ouvir sem interromper.",
-    "aspect": "Relationships",
+    "aspect": "Relacionamentos",
     "type": "Hábito",
     "date": "Todos os dias",
     "time": "",
@@ -783,7 +783,7 @@
   {
     "title": "Tempo com amigo",
     "description": "Marcar encontro presencial ou online.",
-    "aspect": "Relationships",
+    "aspect": "Relacionamentos",
     "type": "Tarefa",
     "date": "Semanal",
     "time": "",
@@ -792,7 +792,7 @@
   {
     "title": "Apoio emocional",
     "description": "Oferecer apoio a alguém em dificuldade.",
-    "aspect": "Relationships",
+    "aspect": "Relacionamentos",
     "type": "Tarefa",
     "date": "Semanal",
     "time": "",
@@ -801,7 +801,7 @@
   {
     "title": "Desconectar telas",
     "description": "Passar 1h focado em tempo de qualidade.",
-    "aspect": "Relationships",
+    "aspect": "Relacionamentos",
     "type": "Hábito",
     "date": "Todos os dias",
     "time": "Noite",
@@ -810,7 +810,7 @@
   {
     "title": "Atividade em grupo",
     "description": "Participar de atividade coletiva.",
-    "aspect": "Relationships",
+    "aspect": "Relacionamentos",
     "type": "Tarefa",
     "date": "Semanal",
     "time": "",
@@ -819,7 +819,7 @@
   {
     "title": "Surpresa pequena",
     "description": "Fazer gesto pequeno de carinho.",
-    "aspect": "Relationships",
+    "aspect": "Relacionamentos",
     "type": "Tarefa",
     "date": "Mensal",
     "time": "",
@@ -828,7 +828,7 @@
   {
     "title": "Caminhada família",
     "description": "Dar uma volta junto com familiares.",
-    "aspect": "Relationships",
+    "aspect": "Relacionamentos",
     "type": "Tarefa",
     "date": "Semanal",
     "time": "Sábado",
@@ -837,7 +837,7 @@
   {
     "title": "Carta ou email",
     "description": "Escrever carta/email para alguém especial.",
-    "aspect": "Relationships",
+    "aspect": "Relacionamentos",
     "type": "Tarefa",
     "date": "Mensal",
     "time": "",
@@ -846,7 +846,7 @@
   {
     "title": "Jantar em grupo",
     "description": "Preparar jantar em conjunto.",
-    "aspect": "Relationships",
+    "aspect": "Relacionamentos",
     "type": "Tarefa",
     "date": "Mensal",
     "time": "",
@@ -855,7 +855,7 @@
   {
     "title": "Gratidão verbal",
     "description": "Dizer obrigado conscientemente.",
-    "aspect": "Relationships",
+    "aspect": "Relacionamentos",
     "type": "Hábito",
     "date": "Todos os dias",
     "time": "",
@@ -864,7 +864,7 @@
   {
     "title": "Visita familiar",
     "description": "Fazer visita a familiar idoso.",
-    "aspect": "Relationships",
+    "aspect": "Relacionamentos",
     "type": "Tarefa",
     "date": "Mensal",
     "time": "",
@@ -873,7 +873,7 @@
   {
     "title": "Atividade divertida",
     "description": "Compartilhar jogo ou filme juntos.",
-    "aspect": "Relationships",
+    "aspect": "Relacionamentos",
     "type": "Tarefa",
     "date": "Semanal",
     "time": "Noite",
@@ -882,7 +882,7 @@
   {
     "title": "Feedback positivo",
     "description": "Dar feedback positivo a colega.",
-    "aspect": "Relationships",
+    "aspect": "Relacionamentos",
     "type": "Tarefa",
     "date": "Semanal",
     "time": "",
@@ -891,7 +891,7 @@
   {
     "title": "Abraço",
     "description": "Dar um abraço em alguém próximo.",
-    "aspect": "Relationships",
+    "aspect": "Relacionamentos",
     "type": "Hábito",
     "date": "Todos os dias",
     "time": "",
@@ -900,7 +900,7 @@
   {
     "title": "Relembrar boas memórias",
     "description": "Compartilhar história divertida com alguém.",
-    "aspect": "Relationships",
+    "aspect": "Relacionamentos",
     "type": "Tarefa",
     "date": "Semanal",
     "time": "",
@@ -911,7 +911,7 @@
   {
     "title": "Anotar gastos",
     "description": "Registrar todas as despesas do dia.",
-    "aspect": "Financial",
+    "aspect": "Financeiro",
     "type": "Hábito",
     "date": "Todos os dias",
     "time": "Noite",
@@ -920,7 +920,7 @@
   {
     "title": "Revisar saldo",
     "description": "Checar extrato bancário diariamente.",
-    "aspect": "Financial",
+    "aspect": "Financeiro",
     "type": "Tarefa",
     "date": "Todos os dias",
     "time": "Manhã",
@@ -929,7 +929,7 @@
   {
     "title": "Planejar orçamento",
     "description": "Definir limites de gasto da semana.",
-    "aspect": "Financial",
+    "aspect": "Financeiro",
     "type": "Tarefa",
     "date": "Semanal",
     "time": "Segunda-feira",
@@ -938,7 +938,7 @@
   {
     "title": "Separar poupança",
     "description": "Guardar pequena quantia em poupança.",
-    "aspect": "Financial",
+    "aspect": "Financeiro",
     "type": "Hábito",
     "date": "Todos os dias",
     "time": "Noite",
@@ -947,7 +947,7 @@
   {
     "title": "Investir aprendizado",
     "description": "Estudar 10 minutos sobre finanças.",
-    "aspect": "Financial",
+    "aspect": "Financeiro",
     "type": "Tarefa",
     "date": "Semanal",
     "time": "",
@@ -956,7 +956,7 @@
   {
     "title": "Evitar compras por impulso",
     "description": "Esperar 24h antes de compra não planejada.",
-    "aspect": "Financial",
+    "aspect": "Financeiro",
     "type": "Hábito",
     "date": "Todos os dias",
     "time": "",
@@ -965,7 +965,7 @@
   {
     "title": "Revisar metas financeiras",
     "description": "Checar progresso das metas financeiras.",
-    "aspect": "Financial",
+    "aspect": "Financeiro",
     "type": "Tarefa",
     "date": "Semanal",
     "time": "",
@@ -974,7 +974,7 @@
   {
     "title": "Lista de compras",
     "description": "Criar lista antes de ir ao mercado.",
-    "aspect": "Financial",
+    "aspect": "Financeiro",
     "type": "Tarefa",
     "date": "Semanal",
     "time": "",
@@ -983,7 +983,7 @@
   {
     "title": "Comparar preços",
     "description": "Pesquisar preço antes de comprar.",
-    "aspect": "Financial",
+    "aspect": "Financeiro",
     "type": "Hábito",
     "date": "Todos os dias",
     "time": "",
@@ -992,7 +992,7 @@
   {
     "title": "Evitar dívidas",
     "description": "Não usar cartão de crédito para supérfluos.",
-    "aspect": "Financial",
+    "aspect": "Financeiro",
     "type": "Hábito",
     "date": "Todos os dias",
     "time": "",
@@ -1001,7 +1001,7 @@
   {
     "title": "Revisão mensal",
     "description": "Revisar orçamento do mês.",
-    "aspect": "Financial",
+    "aspect": "Financeiro",
     "type": "Tarefa",
     "date": "Mensal",
     "time": "",
@@ -1010,7 +1010,7 @@
   {
     "title": "Definir meta de economia",
     "description": "Estabelecer valor para economizar no mês.",
-    "aspect": "Financial",
+    "aspect": "Financeiro",
     "type": "Tarefa",
     "date": "Mensal",
     "time": "",
@@ -1019,7 +1019,7 @@
   {
     "title": "Controle de assinaturas",
     "description": "Verificar assinaturas ativas e cancelar inúteis.",
-    "aspect": "Financial",
+    "aspect": "Financeiro",
     "type": "Tarefa",
     "date": "Mensal",
     "time": "",
@@ -1028,7 +1028,7 @@
   {
     "title": "Revisar investimentos",
     "description": "Checar carteira de investimentos.",
-    "aspect": "Financial",
+    "aspect": "Financeiro",
     "type": "Tarefa",
     "date": "Semanal",
     "time": "Segunda-feira",
@@ -1037,7 +1037,7 @@
   {
     "title": "Separar emergência",
     "description": "Colocar 5% do ganho em reserva emergencial.",
-    "aspect": "Financial",
+    "aspect": "Financeiro",
     "type": "Hábito",
     "date": "Mensal",
     "time": "",
@@ -1046,7 +1046,7 @@
   {
     "title": "Evitar supérfluos",
     "description": "Não gastar em itens desnecessários hoje.",
-    "aspect": "Financial",
+    "aspect": "Financeiro",
     "type": "Hábito",
     "date": "Todos os dias",
     "time": "",
@@ -1055,7 +1055,7 @@
   {
     "title": "Controle semanal",
     "description": "Fechar contas da semana.",
-    "aspect": "Financial",
+    "aspect": "Financeiro",
     "type": "Tarefa",
     "date": "Semanal",
     "time": "Domingo",
@@ -1064,7 +1064,7 @@
   {
     "title": "Revisar ganhos",
     "description": "Checar todas entradas de renda do mês.",
-    "aspect": "Financial",
+    "aspect": "Financeiro",
     "type": "Tarefa",
     "date": "Mensal",
     "time": "",
@@ -1073,7 +1073,7 @@
   {
     "title": "Educação financeira",
     "description": "Assistir vídeo curto sobre finanças pessoais.",
-    "aspect": "Financial",
+    "aspect": "Financeiro",
     "type": "Tarefa",
     "date": "Semanal",
     "time": "",
@@ -1084,7 +1084,7 @@
   {
     "title": "Tempo criativo",
     "description": "Desenhar, pintar ou escrever por prazer.",
-    "aspect": "Lazer",
+    "aspect": "Propósito",
     "type": "Tarefa",
     "date": "Todos os dias",
     "time": "Tarde",
@@ -1093,7 +1093,7 @@
   {
     "title": "Filme relaxante",
     "description": "Assistir a um filme leve à noite.",
-    "aspect": "Lazer",
+    "aspect": "Propósito",
     "type": "Tarefa",
     "date": "Semanal",
     "time": "Sexta-feira",
@@ -1102,7 +1102,7 @@
   {
     "title": "Jogo de tabuleiro",
     "description": "Jogar algo divertido com amigos ou família.",
-    "aspect": "Lazer",
+    "aspect": "Propósito",
     "type": "Tarefa",
     "date": "Semanal",
     "time": "Sábado",
@@ -1111,7 +1111,7 @@
   {
     "title": "Ouvir música",
     "description": "Escutar músicas favoritas por 20 minutos.",
-    "aspect": "Lazer",
+    "aspect": "Propósito",
     "type": "Hábito",
     "date": "Todos os dias",
     "time": "Noite",
@@ -1120,7 +1120,7 @@
   {
     "title": "Passeio leve",
     "description": "Dar uma volta sem destino certo.",
-    "aspect": "Lazer",
+    "aspect": "Propósito",
     "type": "Tarefa",
     "date": "Semanal",
     "time": "Domingo",
@@ -1129,7 +1129,7 @@
   {
     "title": "Ler por prazer",
     "description": "Ler um livro apenas por diversão.",
-    "aspect": "Lazer",
+    "aspect": "Propósito",
     "type": "Hábito",
     "date": "Todos os dias",
     "time": "Tarde",
@@ -1138,7 +1138,7 @@
   {
     "title": "Explorar hobby",
     "description": "Dedicar 30 minutos a um hobby pessoal.",
-    "aspect": "Lazer",
+    "aspect": "Propósito",
     "type": "Hábito",
     "date": "Semanal",
     "time": "",
@@ -1147,7 +1147,7 @@
   {
     "title": "Jogos digitais",
     "description": "Jogar videogame de forma equilibrada.",
-    "aspect": "Lazer",
+    "aspect": "Propósito",
     "type": "Tarefa",
     "date": "Semanal",
     "time": "",
@@ -1156,7 +1156,7 @@
   {
     "title": "Atividade cultural",
     "description": "Visitar museu, exposição ou cinema.",
-    "aspect": "Lazer",
+    "aspect": "Propósito",
     "type": "Tarefa",
     "date": "Mensal",
     "time": "",
@@ -1165,7 +1165,7 @@
   {
     "title": "Descobrir música nova",
     "description": "Ouvir artista novo ou playlist diferente.",
-    "aspect": "Lazer",
+    "aspect": "Propósito",
     "type": "Hábito",
     "date": "Semanal",
     "time": "",
@@ -1174,7 +1174,7 @@
   {
     "title": "Jogar cartas",
     "description": "Organizar partida rápida de cartas.",
-    "aspect": "Lazer",
+    "aspect": "Propósito",
     "type": "Tarefa",
     "date": "Mensal",
     "time": "",
@@ -1183,7 +1183,7 @@
   {
     "title": "Relaxar ao sol",
     "description": "Tomar sol de forma relaxante por 15 minutos.",
-    "aspect": "Lazer",
+    "aspect": "Propósito",
     "type": "Hábito",
     "date": "Semanal",
     "time": "Manhã",
@@ -1192,7 +1192,7 @@
   {
     "title": "Fotografia divertida",
     "description": "Tirar fotos criativas durante o dia.",
-    "aspect": "Lazer",
+    "aspect": "Propósito",
     "type": "Tarefa",
     "date": "Semanal",
     "time": "",
@@ -1201,7 +1201,7 @@
   {
     "title": "Brincadeira com pet",
     "description": "Dedicar 15 minutos a brincar com um animal.",
-    "aspect": "Lazer",
+    "aspect": "Propósito",
     "type": "Tarefa",
     "date": "Todos os dias",
     "time": "",
@@ -1210,7 +1210,7 @@
   {
     "title": "Desenho livre",
     "description": "Desenhar sem compromisso artístico.",
-    "aspect": "Lazer",
+    "aspect": "Propósito",
     "type": "Tarefa",
     "date": "Semanal",
     "time": "",
@@ -1219,7 +1219,7 @@
   {
     "title": "Provar receita nova",
     "description": "Cozinhar algo novo apenas por diversão.",
-    "aspect": "Lazer",
+    "aspect": "Propósito",
     "type": "Tarefa",
     "date": "Mensal",
     "time": "",
@@ -1228,7 +1228,7 @@
   {
     "title": "Ver pôr do sol",
     "description": "Assistir ao pôr do sol de um lugar calmo.",
-    "aspect": "Lazer",
+    "aspect": "Propósito",
     "type": "Tarefa",
     "date": "Semanal",
     "time": "Fim de tarde",
@@ -1237,7 +1237,7 @@
   {
     "title": "Aprender jogo novo",
     "description": "Experimentar um novo jogo de cartas ou tabuleiro.",
-    "aspect": "Lazer",
+    "aspect": "Propósito",
     "type": "Tarefa",
     "date": "Mensal",
     "time": "",
@@ -1246,7 +1246,7 @@
   {
     "title": "Dia sem tarefas",
     "description": "Reservar um período apenas para descanso e lazer.",
-    "aspect": "Lazer",
+    "aspect": "Propósito",
     "type": "Tarefa",
     "date": "Mensal",
     "time": "Domingo",
@@ -1255,7 +1255,7 @@
   {
     "title": "Explorar cidade",
     "description": "Visitar um lugar novo na cidade sem pressa.",
-    "aspect": "Lazer",
+    "aspect": "Propósito",
     "type": "Tarefa",
     "date": "Mensal",
     "time": "Sábado",
