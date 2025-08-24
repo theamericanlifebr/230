@@ -1,48 +1,4 @@
 {
-  "Ambiente": {
-    "image": "aspect1.png",
-    "importanceQuestion": "De 1 a 10, qual a importância de manter um ambiente saudável para o seu bem-estar?",
-    "levelQuestion": "Qual o nível atual de saúde do seu ambiente hoje?",
-    "speech": "Manterei um ambiente saudável que fortaleça minha liderança.",
-    "truths": [
-      "Ambiente limpo, mente clara.",
-      "O espaço ao redor molda o comportamento.",
-      "Cuidar do lugar é cuidar de si."
-    ]
-  },
-  "Nutrition": {
-    "image": "aspect2.png",
-    "importanceQuestion": "De 1 a 10, qual a importância de manter uma alimentação equilibrada para sua vida?",
-    "levelQuestion": "Qual o nível atual da sua alimentação equilibrada hoje?",
-    "speech": "Prometo alimentar meu corpo com equilíbrio para sustentar força e clareza mental.",
-    "truths": [
-      "Você é o que absorve, não só o que come.",
-      "Comer bem é investir em energia futura.",
-      "Má alimentação sabota até o melhor plano."
-    ]
-  },
-  "Sleep": {
-    "image": "aspect3.png",
-    "importanceQuestion": "De 1 a 10, quão essencial é ter um sono de qualidade para seu desempenho diário?",
-    "levelQuestion": "Qual o nível atual da qualidade do seu sono hoje?",
-    "speech": "Defendo o sono de qualidade como pilar de energia e decisões acertadas.",
-    "truths": [
-      "Dormir bem é como reiniciar o sistema.",
-      "Privação de sono rouba clareza e paciência.",
-      "Recuperação é parte do treinamento."
-    ]
-  },
-  "Hygiene": {
-    "image": "aspect4.png",
-    "importanceQuestion": "De 1 a 10, quão importante é manter bons hábitos de higiene para sua saúde?",
-    "levelQuestion": "Qual o nível atual dos seus hábitos de higiene hoje?",
-    "speech": "Manterei a higiene como escudo contra doenças e base para a confiança.",
-    "truths": [
-      "Cuidar do corpo evita doenças invisíveis.",
-      "Higiene é respeito próprio.",
-      "Limpeza física apoia clareza mental."
-    ]
-  },
   "Emocional": {
     "image": "aspect5.png",
     "importanceQuestion": "De 1 a 10, como você valoriza o autocontrole emocional e a resiliência?",
@@ -65,15 +21,59 @@
       "Sem energia, nada se concretiza."
     ]
   },
-  "Learning": {
-    "image": "aspect7.png",
-    "importanceQuestion": "De 1 a 10, como você valoriza aprender coisas novas constantemente?",
-    "levelQuestion": "Qual o nível atual do seu aprendizado constante hoje?",
-    "speech": "Investirei no aprendizado contínuo como chave para minha evolução.",
+  "Relacionamentos": {
+    "image": "aspect9.png",
+    "importanceQuestion": "De 1 a 10, quão importante é manter relações externas saudáveis?",
+    "levelQuestion": "Qual o nível atual das suas relações externas hoje?",
+    "speech": "Construirei conexões saudáveis que ampliem minha visão e força.",
     "truths": [
-      "Aprender é ampliar a liberdade.",
-      "Conhecimento é combustível de oportunidades.",
-      "Cada lição é uma ferramenta nova."
+      "Boas relações abrem portas invisíveis.",
+      "Você é a média das pessoas com quem convive.",
+      "Relações saudáveis fortalecem a saúde mental."
+    ]
+  },
+  "Propósito": {
+    "image": "aspect11.png",
+    "importanceQuestion": "De 1 a 10, quão importante é ter um propósito claro em sua vida?",
+    "levelQuestion": "Qual o nível atual de clareza do seu propósito hoje?",
+    "speech": "Viverei com propósito para orientar minhas ações.",
+    "truths": [
+      "Um propósito claro guia decisões.",
+      "Sem propósito, é fácil se perder.",
+      "Viver com propósito traz realização."
+    ]
+  },
+  "Nutrição": {
+    "image": "aspect2.png",
+    "importanceQuestion": "De 1 a 10, qual a importância de manter uma alimentação equilibrada para sua vida?",
+    "levelQuestion": "Qual o nível atual da sua alimentação equilibrada hoje?",
+    "speech": "Prometo alimentar meu corpo com equilíbrio para sustentar força e clareza mental.",
+    "truths": [
+      "Você é o que absorve, não só o que come.",
+      "Comer bem é investir em energia futura.",
+      "Má alimentação sabota até o melhor plano."
+    ]
+  },
+  "Sono": {
+    "image": "aspect3.png",
+    "importanceQuestion": "De 1 a 10, quão essencial é ter um sono de qualidade para seu desempenho diário?",
+    "levelQuestion": "Qual o nível atual da qualidade do seu sono hoje?",
+    "speech": "Defendo o sono de qualidade como pilar de energia e decisões acertadas.",
+    "truths": [
+      "Dormir bem é como reiniciar o sistema.",
+      "Privação de sono rouba clareza e paciência.",
+      "Recuperação é parte do treinamento."
+    ]
+  },
+  "Higiene": {
+    "image": "aspect4.png",
+    "importanceQuestion": "De 1 a 10, quão importante é manter bons hábitos de higiene para sua saúde?",
+    "levelQuestion": "Qual o nível atual dos seus hábitos de higiene hoje?",
+    "speech": "Manterei a higiene como escudo contra doenças e base para a confiança.",
+    "truths": [
+      "Cuidar do corpo evita doenças invisíveis.",
+      "Higiene é respeito próprio.",
+      "Limpeza física apoia clareza mental."
     ]
   },
   "Exercícios": {
@@ -87,18 +87,18 @@
       "Treinar fortalece a vontade."
     ]
   },
-  "Relationships": {
-    "image": "aspect9.png",
-    "importanceQuestion": "De 1 a 10, quão importante é manter relações externas saudáveis?",
-    "levelQuestion": "Qual o nível atual das suas relações externas hoje?",
-    "speech": "Construirei conexões saudáveis que ampliem minha visão e força.",
+  "Trabalho": {
+    "image": "aspect12.png",
+    "importanceQuestion": "De 1 a 10, quão importante é seu trabalho e produtividade?",
+    "levelQuestion": "Qual o nível atual do seu desempenho no trabalho hoje?",
+    "speech": "Dedicarei-me ao trabalho com foco para construir resultados.",
     "truths": [
-      "Boas relações abrem portas invisíveis.",
-      "Você é a média das pessoas com quem convive.",
-      "Relações saudáveis fortalecem a saúde mental."
+      "Trabalho bem feito gera oportunidades.",
+      "Disciplina no trabalho cria liberdade.",
+      "Produtividade exige constância."
     ]
   },
-  "Financial": {
+  "Financeiro": {
     "image": "aspect10.png",
     "importanceQuestion": "De 1 a 10, como você valoriza sua segurança e liberdade financeira?",
     "levelQuestion": "Qual o nível atual da sua segurança e liberdade financeira hoje?",
@@ -109,26 +109,26 @@
       "Organização é o alicerce da liberdade econômica."
     ]
   },
-  "Lazer": {
-    "image": "aspect11.png",
-    "importanceQuestion": "De 1 a 10, quão importante é ter momentos de lazer e diversão?",
-    "levelQuestion": "Qual o nível atual dos seus momentos de lazer hoje?",
-    "speech": "Buscarei o lazer para equilibrar corpo e mente.",
+  "Estudo": {
+    "image": "aspect7.png",
+    "importanceQuestion": "De 1 a 10, como você valoriza aprender coisas novas constantemente?",
+    "levelQuestion": "Qual o nível atual do seu aprendizado constante hoje?",
+    "speech": "Investirei no aprendizado contínuo como chave para minha evolução.",
     "truths": [
-      "Descanso também produz resultados.",
-      "Lazer renova a motivação.",
-      "Diversão consciente evita o esgotamento."
+      "Aprender é ampliar a liberdade.",
+      "Conhecimento é combustível de oportunidades.",
+      "Cada lição é uma ferramenta nova."
     ]
   },
-  "Trabalho": {
-    "image": "aspect12.png",
-    "importanceQuestion": "De 1 a 10, quão importante é seu trabalho e produtividade?",
-    "levelQuestion": "Qual o nível atual do seu desempenho no trabalho hoje?",
-    "speech": "Dedicarei-me ao trabalho com foco para construir resultados.",
+  "Ambiente": {
+    "image": "aspect1.png",
+    "importanceQuestion": "De 1 a 10, qual a importância de manter um ambiente saudável para o seu bem-estar?",
+    "levelQuestion": "Qual o nível atual de saúde do seu ambiente hoje?",
+    "speech": "Manterei um ambiente saudável que fortaleça minha liderança.",
     "truths": [
-      "Trabalho bem feito gera oportunidades.",
-      "Disciplina no trabalho cria liberdade.",
-      "Produtividade exige constância."
+      "Ambiente limpo, mente clara.",
+      "O espaço ao redor molda o comportamento.",
+      "Cuidar do lugar é cuidar de si."
     ]
   }
 }

@@ -10,23 +10,140 @@ let tasksData = [];
 let lawsData = [];
 let mindsetData = [];
 let currentIndex = 0;
-let currentStep = 0; // 0 importance, 1 level
+let stage = 0; // 0 matters, 1 level
 let responses = JSON.parse(localStorage.getItem('responses') || '{}');
 let previousLogin = 0;
 
+const introMattersMessages = [
+  'Este é o iLife Prime\nEstamos preparando tudo pra você',
+  'Você fez a escolha certa...\nTudo muda a partir de agora..',
+  'Primeiro vamos definir...\nO que você realmente quer..\nDeslise para cima para aceitar..\nou para baixo para não aceitar..'
+];
+
+const levelIntroMessages = [
+  'Excelente, já sabemos pra onde ir ..,.',
+  'Hora de saber onde estamos ..',
+  'Defina abaixo seus niveis atuais para cada um dos aspectos ..',
+  'Responda com honestidade ...',
+  'E vamos alcançar passo a passo ..'
+];
+
+const importanceQuestions = {
+  Emocional: 'Quer dominar suas emoções?',
+  Energia: 'Quer mais energia todo dia?',
+  Relacionamentos: 'Quer relações mais fortes?',
+  'Propósito': 'Quer viver com propósito?',
+  'Nutrição': 'Quer se alimentar melhor?',
+  'Sono': 'Quer dormir e acordar bem?',
+  'Higiene': 'Quer cuidar mais de você?',
+  'Exercícios': 'Quer ter um corpo ativo?',
+  'Trabalho': 'Quer crescer no trabalho?',
+  'Financeiro': 'Quer mais liberdade financeira?',
+  'Estudo': 'Quer aprender sem parar?',
+  'Ambiente': 'Quer um espaço que te inspire?'
+};
+
+const levelMessages = {
+  Emocional: [
+    'Meu emocional está péssimo',
+    'Meu emocional não está bom',
+    'Meu emocional está regular',
+    'Meu emocional está bom',
+    'Meu emocional está excelente'
+  ],
+  Energia: [
+    'Minha energia está péssima',
+    'Minha energia não está boa',
+    'Minha energia está regular',
+    'Minha energia está boa',
+    'Minha energia está excelente'
+  ],
+  Relacionamentos: [
+    'Meus relacionamentos estão péssimos',
+    'Meus relacionamentos não estão bons',
+    'Meus relacionamentos estão regulares',
+    'Meus relacionamentos estão bons',
+    'Meus relacionamentos estão excelentes'
+  ],
+  'Propósito': [
+    'Não tenho propósito nenhum',
+    'Meu propósito não está claro',
+    'Meu propósito é regular',
+    'Meu propósito está bom',
+    'Meu propósito está excelente'
+  ],
+  'Nutrição': [
+    'Minha alimentação está péssima',
+    'Minha alimentação não está boa',
+    'Minha alimentação está regular',
+    'Minha alimentação está boa',
+    'Minha alimentação está excelente'
+  ],
+  'Sono': [
+    'Meu sono está péssimo',
+    'Meu sono não está bom',
+    'Meu sono está regular',
+    'Meu sono está bom',
+    'Meu sono está excelente'
+  ],
+  'Higiene': [
+    'Minha higiene está péssima',
+    'Minha higiene não está boa',
+    'Minha higiene está regular',
+    'Minha higiene está boa',
+    'Minha higiene está excelente'
+  ],
+  'Exercícios': [
+    'Não faço exercício nenhum',
+    'Meus exercícios não estão bons',
+    'Meus exercícios são regulares',
+    'Meus exercícios estão bons',
+    'Meus exercícios estão excelentes'
+  ],
+  'Trabalho': [
+    'Meu trabalho está péssimo',
+    'Meu trabalho não está bom',
+    'Meu trabalho está regular',
+    'Meu trabalho está bom',
+    'Meu trabalho está excelente'
+  ],
+  'Financeiro': [
+    'Minha vida financeira está péssima',
+    'Minha vida financeira não está boa',
+    'Minha vida financeira está regular',
+    'Minha vida financeira está boa',
+    'Minha vida financeira está excelente'
+  ],
+  'Estudo': [
+    'Meus estudos estão péssimos',
+    'Meus estudos não estão bons',
+    'Meus estudos estão regulares',
+    'Meus estudos estão bons',
+    'Meus estudos estão excelentes'
+  ],
+  'Ambiente': [
+    'Meu ambiente está péssimo',
+    'Meu ambiente não está bom',
+    'Meu ambiente está regular',
+    'Meu ambiente está bom',
+    'Meu ambiente está excelente'
+  ]
+};
+
+
 const statsColors = {
-  Exercícios: ['#ff4d4d', '#ff6666'],
-  Relationships: ['#ffd700', '#ffea00'],
-  Nutrition: ['#66bb6a', '#81c784'],
-  Sleep: ['#003366', '#004080'],
-  Ambiente: ['#00bcd4', '#26c6da'],
   Emocional: ['#64b5f6', '#90caf9'],
-  Hygiene: ['#b3e5fc', '#e1f5fe'],
   Energia: ['#c0c0c0', '#d3d3d3'],
-  Learning: ['#ffb300', '#ffca28'],
-  Financial: ['#2e7d32', '#388e3c'],
-  Lazer: ['#7e57c2', '#9575cd'],
-  Trabalho: ['#ffffff', '#f5f5f5']
+  Relacionamentos: ['#ffd700', '#ffea00'],
+  Propósito: ['#7e57c2', '#9575cd'],
+  Nutrição: ['#66bb6a', '#81c784'],
+  Sono: ['#003366', '#004080'],
+  Higiene: ['#b3e5fc', '#e1f5fe'],
+  Exercícios: ['#ff4d4d', '#ff6666'],
+  Trabalho: ['#ffffff', '#f5f5f5'],
+  Financeiro: ['#2e7d32', '#388e3c'],
+  Estudo: ['#ffb300', '#ffca28'],
+  Ambiente: ['#00bcd4', '#26c6da']
 };
 
 const storedAspectColors = JSON.parse(localStorage.getItem('aspectColors') || '{}');
@@ -90,28 +207,69 @@ Promise.all([
       logoScreen.classList.add('fade-out');
       setTimeout(() => {
         logoScreen.style.display = 'none';
-        document.getElementById('question-screen').classList.remove('hidden');
-        showQuestion();
+        playIntro(introMattersMessages, 'intro-matters', () => {
+          document.getElementById('question-screen').classList.remove('hidden');
+          showQuestion();
+        }, true);
       }, 1000);
     }, 4000);
   }
 });
 
+function playIntro(messages, screenId, callback, requireSwipe = false) {
+  const screen = document.getElementById(screenId);
+  const textEl = screen.querySelector('p');
+  screen.classList.remove('hidden');
+  let idx = 0;
+  function showNext() {
+    if (idx >= messages.length) {
+      if (!requireSwipe) {
+        screen.classList.add('hidden');
+        callback();
+      }
+      return;
+    }
+    textEl.innerHTML = messages[idx].replace(/\n/g, '<br>');
+    textEl.classList.add('show');
+    if (requireSwipe && idx === messages.length - 1) {
+      let startY = 0;
+      screen.addEventListener('touchstart', e => startY = e.touches[0].clientY, { once: true });
+      screen.addEventListener('touchend', e => {
+        const dy = e.changedTouches[0].clientY - startY;
+        if (dy < -50) {
+          textEl.classList.remove('show');
+          setTimeout(() => { screen.classList.add('hidden'); callback(); }, 500);
+        } else if (dy > 50) {
+          location.reload();
+        } else {
+          showNext();
+        }
+      }, { once: true });
+    } else {
+      setTimeout(() => {
+        textEl.classList.remove('show');
+        setTimeout(() => { idx++; showNext(); }, 500);
+      }, 2500);
+    }
+  }
+  showNext();
+}
+
 function showQuestion() {
   const key = aspectKeys[currentIndex];
-  const title = currentStep === 0
-    ? `Você considera ${key.toLowerCase()} importante?`
-    : `Qual o nível atual da sua ${key.toLowerCase()} hoje?`;
+  const title = stage === 0
+    ? importanceQuestions[key]
+    : `Qual o nível atual do seu ${key.toLowerCase()}?`;
   document.getElementById('question-title').textContent = title;
   aspectImage.src = aspectsData[key].image;
   aspectImage.alt = key;
-  const value = currentStep === 0
+  const value = stage === 0
     ? (responses[key]?.importance || 50)
     : (responses[key]?.level || 50);
   slider.value = value;
   updateFeedback();
   const totalSteps = aspectKeys.length * 2;
-  const stepIndex = currentIndex * 2 + currentStep;
+  const stepIndex = stage === 0 ? currentIndex : aspectKeys.length + currentIndex;
   const progress = (stepIndex / totalSteps) * 100;
   document.getElementById('progress-bar').style.width = progress + '%';
 }
@@ -126,17 +284,15 @@ function getImportanceFeedback(val) {
 }
 
 function getLevelFeedback(val, key) {
-  const v = Number(val);
-  if (v <= 20) return `Nível de ${key} péssimo hoje`;
-  if (v <= 40) return `Nível de ${key} não está bom`;
-  if (v <= 60) return `Nível de ${key} regular`;
-  if (v <= 80) return `Nível de ${key} bom`;
-  return `Nível de ${key} excelente`;
+  const msgs = levelMessages[key];
+  if (!msgs) return '';
+  const idx = Math.min(4, Math.floor(Number(val) / 20));
+  return msgs[idx];
 }
 
 function updateFeedback() {
   const key = aspectKeys[currentIndex];
-  sliderFeedback.textContent = currentStep === 0
+  sliderFeedback.textContent = stage === 0
     ? getImportanceFeedback(slider.value)
     : getLevelFeedback(slider.value, key);
 }
@@ -145,20 +301,28 @@ slider.addEventListener('input', updateFeedback);
 
 document.getElementById('next-btn').addEventListener('click', () => {
   const key = aspectKeys[currentIndex];
-  if (!responses[key]) responses[key] = { importance: 0, level: 50 };
-  if (currentStep === 0) {
+  if (!responses[key]) responses[key] = { importance: 50, level: 50 };
+  if (stage === 0) {
     responses[key].importance = Number(slider.value);
-    currentStep = 1;
-    slider.value = responses[key].level || 50;
-    updateFeedback();
-    showQuestion();
-  } else {
-    responses[key].level = Number(slider.value);
-    currentStep = 0;
     currentIndex++;
     if (currentIndex < aspectKeys.length) {
       showQuestion();
     } else {
+      currentIndex = 0;
+      stage = 1;
+      document.getElementById('question-screen').classList.add('hidden');
+      playIntro(levelIntroMessages, 'intro-level', () => {
+        document.getElementById('question-screen').classList.remove('hidden');
+        showQuestion();
+      });
+    }
+  } else {
+    responses[key].level = Number(slider.value);
+    currentIndex++;
+    if (currentIndex < aspectKeys.length) {
+      showQuestion();
+    } else {
+      localStorage.setItem('responses', JSON.stringify(responses));
       document.getElementById('question-screen').classList.add('hidden');
       document.getElementById('oath-text').textContent = buildOath();
       document.getElementById('name-screen').classList.remove('hidden');
