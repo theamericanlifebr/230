@@ -65,18 +65,6 @@ body.turquoise {
   color: var(--text-color);
 }
 
-body.turquoise * {
-  outline: 1px solid #40e0d0;
-  box-shadow: 0 0 6px #40e0d0;
-  transition: box-shadow 0.3s ease-in-out;
-  animation: neonPulse 2s ease-in-out infinite alternate;
-}
-
-@keyframes neonPulse {
-  from { box-shadow: 0 0 4px #40e0d0; }
-  to   { box-shadow: 0 0 12px #40e0d0; }
-}
-
 .whitecolor {
   --bg-color: #ffffff;
   --text-color: #000;
