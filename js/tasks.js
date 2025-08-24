@@ -2,6 +2,7 @@ let aspectKeys = [];
 let tasksData = [];
 let editingTaskIndex = null;
 let aspectsMap = {};
+let statsColors = {};
 let pendingTask = null;
 let conflictingIndices = [];
 let currentTaskStep = 1;
@@ -63,10 +64,11 @@ function formatDuration(mins) {
   if (mm) return `${mm}m`;
   return '';
 }
-export function initTasks(keys, data, aspects) {
+export function initTasks(keys, data, aspects, colors) {
   aspectKeys = keys;
   tasksData = data;
   aspectsMap = aspects;
+  statsColors = colors;
   addTaskBtn.addEventListener('click', () => openTaskModal());
   suggestTaskBtn.addEventListener('click', suggestTask);
   saveTaskBtn.addEventListener('click', saveTask);
@@ -143,6 +145,8 @@ function buildTasks() {
     const div = document.createElement('div');
     div.className = 'task-item';
     div.dataset.index = index;
+    const colors = statsColors[t.aspect] || ['#000000', '#40e0d0'];
+    div.style.background = `linear-gradient(135deg, ${colors[0]}, ${colors[1]})`;
 
     const icon = document.createElement('img');
     icon.className = 'task-aspect-icon';
@@ -306,6 +310,8 @@ function showConflicts(conflicts) {
   conflicts.forEach(c => {
     const div = document.createElement('div');
     div.className = 'task-item';
+    const colors = statsColors[c.aspect] || ['#000000', '#40e0d0'];
+    div.style.background = `linear-gradient(135deg, ${colors[0]}, ${colors[1]})`;
     const h3 = document.createElement('h3');
     h3.textContent = c.title;
     div.appendChild(h3);

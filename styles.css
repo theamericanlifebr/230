@@ -48,6 +48,23 @@ body.neon {
   color: var(--text-color);
 }
 
+/* Azul Turquesa neon theme */
+.turquoise {
+  --bg-color: #000;
+  --text-color: #e0ffff;
+  --button-bg: #004d4d;
+  --button-hover-bg: #008080;
+  --header-bg: linear-gradient(180deg, #000, #002222);
+  --header-text: #40e0d0;
+  --dropdown-bg: rgba(0,32,32,0.85);
+  --dropdown-hover-bg: rgba(0,48,48,0.76);
+}
+
+body.turquoise {
+  background: linear-gradient(180deg, #000, #001010);
+  color: var(--text-color);
+}
+
 .whitecolor {
   --bg-color: #ffffff;
   --text-color: #000;
@@ -329,17 +346,6 @@ li:hover { transform: scale(1.02); }
   align-items: center;
 }
 
-.task-item.pending {
-    background: linear-gradient(135deg, #00A2E8, #33B8FF);
-}
-
-.task-item.overdue {
-  background: linear-gradient(135deg, #FF5F6D, #FFC371);
-}
-
-.task-item.completed {
-    background: linear-gradient(135deg, #44B816, #6CD932);
-}
 
 .task-item h3 {
   margin: 0 0 5px 0;
@@ -494,7 +500,7 @@ li:hover { transform: scale(1.02); }
 }
 
 .task-form {
-  background: linear-gradient(135deg, #5ef0ff, #7a5cff);
+  background: linear-gradient(135deg, #000000, #40e0d0);
   color: #fff;
   padding: 20px;
   border-radius: 8px;
@@ -519,7 +525,7 @@ li:hover { transform: scale(1.02); }
   padding: 8px;
   border: none;
   border-radius: 4px;
-  background: #7a5cff;
+  background: #004d4d;
   color: #fff;
 }
 
@@ -528,12 +534,12 @@ li:hover { transform: scale(1.02); }
 }
 
 #save-task {
-  background: linear-gradient(135deg, #00ff7f, #32cd32);
+  background: linear-gradient(135deg, #000000, #40e0d0);
   color: #fff;
 }
 
 #cancel-task {
-  background: linear-gradient(135deg, #ff6347, #ff0000);
+  background: linear-gradient(135deg, #000000, #40e0d0);
   color: #fff;
 }
 
@@ -620,6 +626,8 @@ li:hover { transform: scale(1.02); }
   padding: 6.5px 15px;
   border-radius: 8px;
   min-height: 39px;
+  background: linear-gradient(to right, #000000, #40e0d0);
+  color: #fff;
 }
 .boxtime-time {
   font-size: 32px;
@@ -635,25 +643,17 @@ li:hover { transform: scale(1.02); }
   width: 30px;
   height: 30px;
 }
-.boxtime.past {
-  background: linear-gradient(to right, #cccccc, #ffffff);
-  color: #000;
+.boxtime.past,
+.boxtime.morning,
+.boxtime.afternoon,
+.boxtime.night,
+.boxtime.dawn {
+  background: linear-gradient(to right, #000000, #40e0d0);
+  color: #fff;
 }
 
 .boxtime.past .boxtime-time {
-  color: rgba(0,0,0,0.75);
-}
-.boxtime.morning {
-  background: linear-gradient(to right, #5ef0ff, #ffffff);
-}
-.boxtime.afternoon {
-  background: linear-gradient(to right, #ff5cc8, #5ef0ff);
-}
-.boxtime.night {
-  background: linear-gradient(to right, #140b1f, #0b0f1a);
-}
-.boxtime.dawn {
-  background: linear-gradient(to right, #0b0f1a, #1b1140);
+  color: rgba(255, 255, 255, 0.75);
 }
 
 #calendar {

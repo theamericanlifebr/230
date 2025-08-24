@@ -131,20 +131,26 @@ const levelMessages = {
 };
 
 
-const statsColors = {
-  Emocional: ['#64b5f6', '#90caf9'],
-  Energia: ['#c0c0c0', '#d3d3d3'],
-  Relacionamentos: ['#ffd700', '#ffea00'],
-  Propósito: ['#7e57c2', '#9575cd'],
-  Nutrição: ['#66bb6a', '#81c784'],
-  Sono: ['#003366', '#004080'],
-  Higiene: ['#b3e5fc', '#e1f5fe'],
-  Exercícios: ['#ff4d4d', '#ff6666'],
-  Trabalho: ['#ffffff', '#f5f5f5'],
-  Financeiro: ['#2e7d32', '#388e3c'],
-  Estudo: ['#ffb300', '#ffca28'],
-  Ambiente: ['#00bcd4', '#26c6da']
-};
+const aspectPalette = ['#40e0d0', '#ff6700', '#8a2be2'];
+const aspectNames = [
+  'Emocional',
+  'Energia',
+  'Relacionamentos',
+  'Propósito',
+  'Nutrição',
+  'Sono',
+  'Higiene',
+  'Exercícios',
+  'Trabalho',
+  'Financeiro',
+  'Estudo',
+  'Ambiente'
+];
+const statsColors = {};
+aspectNames.forEach((name, idx) => {
+  const color = aspectPalette[idx % aspectPalette.length];
+  statsColors[name] = ['#000000', color];
+});
 
 const storedAspectColors = JSON.parse(localStorage.getItem('aspectColors') || '{}');
 Object.keys(storedAspectColors).forEach(k => {
@@ -377,7 +383,7 @@ function initApp(firstTime) {
     responses = JSON.parse(localStorage.getItem('responses') || '{}');
   }
   buildOptions();
-  initTasks(aspectKeys, tasksData, aspectsData);
+  initTasks(aspectKeys, tasksData, aspectsData, statsColors);
   initLaws(aspectKeys, lawsData, statsColors);
   initStats(aspectKeys, responses, statsColors, aspectsData);
   initMindset(aspectKeys, mindsetData, statsColors);
