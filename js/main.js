@@ -132,18 +132,18 @@ const levelMessages = {
 
 
 const statsColors = {
-  Emocional: ['#64b5f6', '#90caf9'],
-  Energia: ['#c0c0c0', '#d3d3d3'],
-  Relacionamentos: ['#ffd700', '#ffea00'],
-  Propósito: ['#7e57c2', '#9575cd'],
-  Nutrição: ['#66bb6a', '#81c784'],
-  Sono: ['#003366', '#004080'],
-  Higiene: ['#b3e5fc', '#e1f5fe'],
-  Exercícios: ['#ff4d4d', '#ff6666'],
-  Trabalho: ['#ffffff', '#f5f5f5'],
-  Financeiro: ['#2e7d32', '#388e3c'],
-  Estudo: ['#ffb300', '#ffca28'],
-  Ambiente: ['#00bcd4', '#26c6da']
+  Emocional: ['#000000', '#40e0d0'],
+  Energia: ['#000000', '#40e0d0'],
+  Relacionamentos: ['#000000', '#40e0d0'],
+  Propósito: ['#000000', '#40e0d0'],
+  Nutrição: ['#000000', '#40e0d0'],
+  Sono: ['#000000', '#40e0d0'],
+  Higiene: ['#000000', '#40e0d0'],
+  Exercícios: ['#000000', '#40e0d0'],
+  Trabalho: ['#000000', '#40e0d0'],
+  Financeiro: ['#000000', '#40e0d0'],
+  Estudo: ['#000000', '#40e0d0'],
+  Ambiente: ['#000000', '#40e0d0']
 };
 
 const storedAspectColors = JSON.parse(localStorage.getItem('aspectColors') || '{}');
