@@ -273,7 +273,7 @@ li:hover { transform: scale(1.02); }
 }
 
 .header-logo {
-  height: 20px;
+  height: 26px;
 }
 
 #main-content {
@@ -473,7 +473,7 @@ li:hover { transform: scale(1.02); }
   align-items: center;
   justify-content: center;
   height: 100%;
-  overflow: hidden;
+  overflow: visible;
   position: relative;
   margin-top: 0;
 }
@@ -515,6 +515,7 @@ li:hover { transform: scale(1.02); }
   width: 338px;
   height: 338px;
   border-radius: 50%;
+  clip-path: circle(50% at 50% 50%);
 }
 
 .stats-name {
@@ -722,7 +723,7 @@ li:hover { transform: scale(1.02); }
   .menu-carousel img { width: 140px; height: 140px; }
   #main-header { height: 42px; }
   .header-container { padding: 3px 30px; }
-  .header-logo { height: 28px; }
+  .header-logo { height: 36px; }
   #slider { width: 210px; }
   .progress-container { height: 6px; }
   #progress-bar { border-radius: 3px; }
