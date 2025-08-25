@@ -9,7 +9,7 @@ let titleTouchX = 0;
 export function initHistory(aspects) {
   aspectsMap = aspects;
   calendarTitle = document.getElementById('calendar-title');
-  calendarList = document.getElementById('calendar-list');
+  calendarList = document.getElementById('history-calendar-list');
   if (calendarTitle) {
     calendarTitle.addEventListener('touchstart', e => {
       titleTouchX = e.touches[0].clientX;

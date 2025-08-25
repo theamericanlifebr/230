@@ -635,11 +635,11 @@ li:hover { transform: scale(1.02); }
   overflow: hidden;
 }
 #tasks-content,
-#calendar {
+#tasks #calendar {
   width: 100%;
   transition: transform 0.3s ease;
 }
-#calendar {
+#tasks #calendar {
   position: absolute;
   top: 100%;
   left: 0;
@@ -653,6 +653,14 @@ li:hover { transform: scale(1.02); }
 #tasks.show-calendar #calendar {
   transform: translateY(-100%);
 }
+#history-calendar {
+  position: relative;
+  top: auto;
+  left: auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 #calendar-title {
   height: 60px;
   width: 100%;
@@ -663,7 +671,7 @@ li:hover { transform: scale(1.02); }
   font-family: 'Lato', sans-serif;
   font-size: 20px;
 }
-#calendar-list {
+#history-calendar-list {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -710,7 +718,7 @@ li:hover { transform: scale(1.02); }
   color: rgba(255, 255, 255, 0.75);
 }
 
-#calendar {
+#history-calendar {
   margin-top: 0;
 }
 
