@@ -126,7 +126,6 @@ export function initTasks(keys, data, aspects) {
   buildTasks();
   setInterval(() => {
     buildTasks();
-    if (window.buildCalendar) window.buildCalendar();
   }, 1000);
 }
 
@@ -306,7 +305,6 @@ function suggestTask() {
   });
   localStorage.setItem('tasks', JSON.stringify(tasks));
   buildTasks();
-  if (window.buildCalendar) window.buildCalendar();
 }
 
 function closeTaskModal() {
@@ -441,7 +439,6 @@ function saveTask() {
   localStorage.setItem('tasks', JSON.stringify(tasks));
   closeTaskModal();
   buildTasks();
-  if (window.buildCalendar) window.buildCalendar();
 }
 
 function completeTask() {
@@ -451,7 +448,6 @@ function completeTask() {
   localStorage.setItem('tasks', JSON.stringify(tasks));
   closeTaskModal();
   buildTasks();
-  if (window.buildCalendar) window.buildCalendar();
 }
 
 function replaceAllConflicts() {
@@ -475,6 +471,5 @@ function replaceAllConflicts() {
   pendingTask = null;
   conflictingIndices = [];
   buildTasks();
-  if (window.buildCalendar) window.buildCalendar();
 }
 

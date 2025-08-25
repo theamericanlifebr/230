@@ -2,7 +2,6 @@ import { initTasks } from './tasks.js';
 import { initLaws } from './laws.js';
 import { initMindset, openMindsetModal, suggestMindset } from './mindset.js';
 import { initStats } from './stats.js';
-import { initHistory } from './history.js';
 
 let aspectsData = {};
 let aspectKeys = [];
@@ -447,7 +446,6 @@ function initApp(firstTime) {
   initLaws(aspectKeys, lawsData, statsColors);
   initStats(aspectKeys, responses, statsColors, aspectsData);
   initMindset(aspectKeys, mindsetData, statsColors);
-  initHistory(aspectsData);
   scheduleNotifications();
   document.getElementById('main-header').classList.remove('hidden');
   document.getElementById('main-content').classList.remove('hidden');
