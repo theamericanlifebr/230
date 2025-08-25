@@ -382,10 +382,6 @@ li:hover { transform: scale(1.02); }
 
 .page.active { display: block; }
 
-#history {
-  padding-top: 10px;
-}
-
 
 .task-item {
   padding: 11px;
@@ -634,92 +630,9 @@ li:hover { transform: scale(1.02); }
   position: relative;
   overflow: hidden;
 }
-#tasks-content,
-#tasks #calendar {
+#tasks-content {
   width: 100%;
   transition: transform 0.3s ease;
-}
-#tasks #calendar {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-#tasks.show-calendar #tasks-content {
-  transform: translateY(-100%);
-}
-#tasks.show-calendar #calendar {
-  transform: translateY(-100%);
-}
-#history-calendar {
-  position: relative;
-  top: auto;
-  left: auto;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-#calendar-title {
-  height: 60px;
-  width: 100%;
-  background: rgba(0, 0, 0, 0);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Lato', sans-serif;
-  font-size: 20px;
-}
-#history-calendar-list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-  padding: 15px 15px 10px;
-  flex: 1;
-  overflow-y: auto;
-  margin-top: 0;
-}
-.boxtime {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  width: 100%;
-  max-width: 520px;
-  padding: 8.5px 15px;
-  border-radius: 8px;
-  min-height: 51px;
-  background: linear-gradient(135deg, #000, var(--boxtime-color));
-  box-shadow: 0 0 10px var(--boxtime-color);
-  color: #fff;
-  text-shadow: 0 0 5px #fff;
-}
-.boxtime-time {
-  font-size: 32px;
-  color: rgba(255, 255, 255, 0.75);
-}
-.boxtime-icons {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  margin-left: 20px;
-}
-.boxtime-icons img {
-  width: 30px;
-  height: 30px;
-}
-.boxtime.morning { --boxtime-color: #00bfff; }
-.boxtime.afternoon { --boxtime-color: #ffa500; }
-.boxtime.night { --boxtime-color: #00008b; }
-.boxtime.dawn { --boxtime-color: #b900ff; }
-
-.boxtime.past .boxtime-time {
-  color: rgba(255, 255, 255, 0.75);
-}
-
-#history-calendar {
-  margin-top: 0;
 }
 
 .accept-btn {
