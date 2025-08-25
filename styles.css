@@ -382,6 +382,10 @@ li:hover { transform: scale(1.02); }
 
 .page.active { display: block; }
 
+#history {
+  padding-top: 10px;
+}
+
 
 .task-item {
   padding: 11px;
@@ -675,9 +679,9 @@ li:hover { transform: scale(1.02); }
   justify-content: flex-start;
   width: 100%;
   max-width: 520px;
-  padding: 6.5px 15px;
+  padding: 8.5px 15px;
   border-radius: 8px;
-  min-height: 39px;
+  min-height: 51px;
   background: linear-gradient(135deg, #000, var(--boxtime-color));
   box-shadow: 0 0 10px var(--boxtime-color);
   color: #fff;
