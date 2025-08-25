@@ -2,6 +2,7 @@ import { initTasks } from './tasks.js';
 import { initLaws } from './laws.js';
 import { initMindset, openMindsetModal, suggestMindset } from './mindset.js';
 import { initStats } from './stats.js';
+import { initHistory } from './history.js';
 
 let aspectsData = {};
 let aspectKeys = [];
@@ -449,6 +450,7 @@ function initApp(firstTime) {
   initLaws(aspectKeys, lawsData, statsColors);
   initStats(aspectKeys, responses, statsColors, aspectsData);
   initMindset(aspectKeys, mindsetData, statsColors);
+  initHistory();
   scheduleNotifications();
   document.getElementById('main-header').classList.remove('hidden');
   document.getElementById('main-content').classList.remove('hidden');
@@ -575,6 +577,7 @@ document.querySelectorAll('.menu-item').forEach(item => {
 function initCarousel() {
   const items = [
     { page: 'tasks', img: 'acoes.png', label: 'Tarefas' },
+    { page: 'history', img: 'tarefas.png', label: 'Histórico' },
     { page: 'laws', img: 'leis.png', label: 'Leis' },
     { page: 'stats', img: 'estatisticas.png', label: 'Estatísticas' },
     { page: 'mindset', img: 'mindset.png', label: 'Mindset' },
@@ -624,6 +627,9 @@ function showPage(pageId) {
     }
   } else if (pageId === 'stats') {
     initStats(aspectKeys, responses, statsColors, aspectsData);
+  }
+  if (pageId === 'history') {
+    initHistory();
   }
 }
 

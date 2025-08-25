@@ -682,6 +682,27 @@ li:hover { transform: scale(1.02); }
   background: #FFC371;
 }
 
+#history-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.history-slot {
+  display: flex;
+  border-bottom: 1px solid #444;
+  padding: 4px;
+  min-height: 20px;
+}
+
+.history-time {
+  width: 60px;
+  font-weight: bold;
+}
+
+.history-task {
+  margin-left: 10px;
+}
+
 @media (max-width: 600px) {
   body {
     overflow-x: hidden;
