@@ -1,7 +1,7 @@
 import { initTasks } from './tasks.js';
 import { initLaws } from './laws.js';
 import { initMindset, openMindsetModal, suggestMindset } from './mindset.js';
-import { initStats } from './stats.js';
+import { initStats, needsLevelPrompt } from './stats.js';
 
 let aspectsData = {};
 let aspectKeys = [];
@@ -388,10 +388,12 @@ document.getElementById('next-btn').addEventListener('click', () => {
       showQuestion();
     } else {
       localStorage.setItem('responses', JSON.stringify(responses));
+      localStorage.setItem('levelDone', 'true');
       document.getElementById('question-screen').classList.add('hidden');
       if (pendingReturnPage) {
         document.getElementById('main-header').classList.remove('hidden');
         document.getElementById('main-content').classList.remove('hidden');
+        initStats(aspectKeys, responses, statsColors, aspectsData);
         suppressVoting = true;
         showPage(pendingReturnPage);
         suppressVoting = false;
@@ -612,7 +614,7 @@ function showPage(pageId) {
   if (section) section.classList.add('active');
   if (!suppressVoting) {
     if (pageId === 'laws') startMattersVoting();
-    if (pageId === 'stats') startLevelVoting();
+    if (pageId === 'stats' && needsLevelPrompt()) startLevelVoting();
   }
 }
 
