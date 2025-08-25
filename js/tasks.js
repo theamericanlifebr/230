@@ -190,13 +190,13 @@ function buildTasks() {
         const mm = Math.floor((diffMs % 3600000) / 60000);
         txt = `${hh.toString().padStart(2,'0')}:${mm
           .toString()
-          .padStart(2, '0')}+h`;
+          .padStart(2, '0')}h`;
       } else {
         const mm = Math.floor(diffMs / 60000);
         const ss = Math.floor((diffMs % 60000) / 1000);
         txt = `${mm.toString().padStart(2,'0')}:${ss
           .toString()
-          .padStart(2, '0')}+m`;
+          .padStart(2, '0')}m`;
       }
       timer.textContent = txt;
       div.appendChild(timer);
