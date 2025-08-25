@@ -667,7 +667,7 @@ li:hover { transform: scale(1.02); }
   padding: 15px 15px 10px;
   flex: 1;
   overflow-y: auto;
-  margin-top: 100px;
+  margin-top: 0;
 }
 .boxtime {
   display: flex;
@@ -678,7 +678,8 @@ li:hover { transform: scale(1.02); }
   padding: 6.5px 15px;
   border-radius: 8px;
   min-height: 39px;
-  background: linear-gradient(to right, #000, var(--neon-color));
+  background: linear-gradient(135deg, #000, var(--boxtime-color));
+  box-shadow: 0 0 10px var(--boxtime-color);
   color: #fff;
   text-shadow: 0 0 5px #fff;
 }
@@ -696,28 +697,17 @@ li:hover { transform: scale(1.02); }
   width: 30px;
   height: 30px;
 }
-.boxtime.morning {
-  background: linear-gradient(to right, #000, #00bfff);
-}
-
-.boxtime.afternoon {
-  background: linear-gradient(to right, #000, #ffa500);
-}
-
-.boxtime.night {
-  background: linear-gradient(to right, #000, #00008b);
-}
-
-.boxtime.dawn {
-  background: linear-gradient(to right, #000, #b900ff);
-}
+.boxtime.morning { --boxtime-color: #00bfff; }
+.boxtime.afternoon { --boxtime-color: #ffa500; }
+.boxtime.night { --boxtime-color: #00008b; }
+.boxtime.dawn { --boxtime-color: #b900ff; }
 
 .boxtime.past .boxtime-time {
   color: rgba(255, 255, 255, 0.75);
 }
 
 #calendar {
-  margin-top: 50px;
+  margin-top: 0;
 }
 
 .accept-btn {
@@ -753,9 +743,9 @@ li:hover { transform: scale(1.02); }
   .aspect-image { width: 210px; }
   .menu-item img,
   .menu-carousel img { width: 140px; height: 140px; }
-  #main-header { height: 21px; }
+  #main-header { height: 42px; }
   .header-container { padding: 3px 30px; }
-  .header-logo { height: 14px; }
+  .header-logo { height: 28px; }
   #slider { width: 210px; }
   .progress-container { height: 6px; }
   #progress-bar { border-radius: 3px; }
