@@ -96,10 +96,6 @@
       <div id="stats-content"></div>
     </section>
     <section id="mindset" class="page">
-      <div id="mindset-hub">
-        <button id="add-mindset-btn">Criar mindset</button>
-        <button id="suggest-mindset-btn">Ver ideias</button>
-      </div>
       <div id="mindset-content"></div>
     </section>
     <section id="history" class="page">
@@ -117,7 +113,7 @@
     <div class="task-form">
       <h2>Nova tarefa</h2>
       <div class="task-step" id="task-step-1">
-        <input type="text" id="task-title" placeholder="Tarefa" />
+        <input type="text" id="task-title" placeholder="Tarefa" maxlength="27" />
         <select id="task-aspect"></select>
       </div>
       <div class="task-step hidden" id="task-step-2">
@@ -184,8 +180,7 @@
   <div id="law-modal" class="hidden">
     <div class="task-form">
       <h2>Nova lei</h2>
-      <input type="text" id="law-title" placeholder="Nome da lei" maxlength="24" />
-      <textarea id="law-desc" placeholder="Descrição (até 60 caracteres)" maxlength="60"></textarea>
+      <input type="text" id="law-title" placeholder="Nome da lei" maxlength="80" />
       <select id="law-aspect-select"></select>
       <div class="modal-buttons">
         <button id="save-law">Salvar</button>
@@ -220,15 +215,6 @@
         <button id="cancel-mindset">Cancelar</button>
       </div>
     </div>
-  </div>
-
-  <div id="stats-modal" class="hidden">
-    <h2 id="stats-question"></h2>
-    <div class="slider-container">
-      <input type="range" min="1" max="10" value="5" id="stats-slider" />
-      <span id="stats-slider-value">5</span>
-    </div>
-    <button id="stats-next">Próximo</button>
   </div>
 
   <script type="module" src="js/main.js"></script>

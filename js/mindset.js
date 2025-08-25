@@ -5,8 +5,6 @@ let mindsetData = [];
 let statsColors = {};
 let editingMindsetIndex = null;
 
-const addMindsetBtn = document.getElementById('add-mindset-btn');
-const suggestMindsetBtn = document.getElementById('suggest-mindset-btn');
 const mindsetModal = document.getElementById('mindset-modal');
 const mindsetTitleInput = document.getElementById('mindset-title');
 const mindsetDescInput = document.getElementById('mindset-desc');
@@ -26,24 +24,11 @@ export function initMindset(keys, data, colors) {
   mindsetRateInput.addEventListener('input', () => {
     mindsetRateValue.textContent = mindsetRateInput.value;
   });
-  addMindsetBtn.addEventListener('click', () => openMindsetModal());
-  suggestMindsetBtn.addEventListener('click', suggestMindset);
   saveMindsetBtn.addEventListener('click', saveMindset);
   cancelMindsetBtn.addEventListener('click', closeMindsetModal);
   acceptMindsetBtn.addEventListener('click', saveMindset);
   declineMindsetBtn.addEventListener('click', closeMindsetModal);
   deleteMindsetBtn.addEventListener('click', deleteMindset);
-  if (window.innerWidth <= 600) {
-    const icon = document.querySelector('#mindset .icone-central');
-    if (icon) {
-      let lastTap = 0;
-      icon.addEventListener('touchend', () => {
-        const now = Date.now();
-        if (now - lastTap < 300) suggestMindset();
-        lastTap = now;
-      });
-    }
-  }
   buildMindset();
 }
 
@@ -82,7 +67,7 @@ function buildMindset() {
   }
 }
 
-function openMindsetModal(index = null, prefill = null, suggestion = false) {
+export function openMindsetModal(index = null, prefill = null, suggestion = false) {
   mindsetAspectSelect.innerHTML = '';
   aspectKeys.forEach(k => {
     const opt = document.createElement('option');
@@ -165,7 +150,7 @@ function deleteMindset() {
   buildMindset();
 }
 
-function suggestMindset() {
+export function suggestMindset() {
   if (!Array.isArray(mindsetData) || !mindsetData.length) return;
   const idea = mindsetData[Math.floor(Math.random() * mindsetData.length)];
   const mindsets = JSON.parse(localStorage.getItem('customMindsets') || '[]');
