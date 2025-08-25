@@ -1,7 +1,7 @@
 import { initTasks } from './tasks.js';
 import { initLaws } from './laws.js';
-import { initMindset } from './mindset.js';
-import { initStats, checkStatsPrompt } from './stats.js';
+import { initMindset, openMindsetModal, suggestMindset } from './mindset.js';
+import { initStats } from './stats.js';
 import { initHistory } from './history.js';
 
 let aspectsData = {};
@@ -15,6 +15,7 @@ let responses = JSON.parse(localStorage.getItem('responses') || '{}');
 let previousLogin = 0;
 let pendingReturnPage = null;
 let suppressVoting = false;
+let introDone = localStorage.getItem('introDone') === 'true';
 
 const introMattersMessages = [
   'Este é o iLife Prime\nEstamos preparando tudo pra você',
@@ -181,12 +182,58 @@ if (savedTheme === 'turquoise') {
   savedTheme = 'neon';
   localStorage.setItem('theme', 'neon');
 }
-savedTheme = savedTheme || 'black';
+savedTheme = savedTheme || 'neon';
 document.body.classList.add(savedTheme);
+if (!localStorage.getItem('theme')) localStorage.setItem('theme', 'neon');
 
 const savedBg = localStorage.getItem('customBg');
 if (savedBg) document.body.style.backgroundImage = `url(${savedBg})`;
-headerLogo.addEventListener('click', () => showPage('menu'));
+let logoTapCount = 0;
+let logoTapTimer;
+let logoPressTimer;
+
+headerLogo.addEventListener('touchstart', () => {
+  logoPressTimer = setTimeout(() => {
+    suggestMindset();
+    logoTapCount = 0;
+  }, 500);
+});
+
+headerLogo.addEventListener('touchend', () => {
+  clearTimeout(logoPressTimer);
+  logoTapCount++;
+  if (logoTapCount === 1) {
+    logoTapTimer = setTimeout(() => {
+      showPage('menu');
+      logoTapCount = 0;
+    }, 300);
+  } else if (logoTapCount === 2) {
+    clearTimeout(logoTapTimer);
+    openMindsetModal();
+    logoTapCount = 0;
+  }
+});
+
+headerLogo.addEventListener('click', e => {
+  if (!('ontouchstart' in window)) {
+    showPage('menu');
+  }
+});
+headerLogo.addEventListener('dblclick', e => {
+  if (!('ontouchstart' in window)) {
+    openMindsetModal();
+  }
+});
+headerLogo.addEventListener('mousedown', () => {
+  if (!('ontouchstart' in window)) {
+    logoPressTimer = setTimeout(() => {
+      suggestMindset();
+    }, 500);
+  }
+});
+headerLogo.addEventListener('mouseup', () => {
+  clearTimeout(logoPressTimer);
+});
 
 Promise.all([
   fetch('data/aspects.json').then(r => r.json()),
@@ -199,7 +246,7 @@ Promise.all([
   lawsData = leis;
   mindsetData = mindset;
   aspectKeys = Object.keys(aspects);
-  if (Object.keys(responses).length) {
+  if (introDone || Object.keys(responses).length) {
     document.getElementById('logo-screen').style.display = 'none';
     document.getElementById('main-header').classList.remove('hidden');
     document.getElementById('main-content').classList.remove('hidden');
@@ -368,9 +415,9 @@ function checkStartReady() {
 }
 
 document.getElementById('start-btn').addEventListener('click', () => {
-  document.getElementById('name-screen').classList.add('hidden');
-  initApp(true);
-});
+      document.getElementById('name-screen').classList.add('hidden');
+      initApp(true);
+    });
 
 function buildOath() {
   const parts = [];
@@ -388,13 +435,10 @@ function initApp(firstTime) {
   previousLogin = Number(localStorage.getItem('lastLogin')) || now;
   localStorage.setItem('lastLogin', now);
   if (firstTime) {
-    const hour = prompt('Qual horário (0-23) é melhor para você atualizar suas estatísticas?');
-    if (hour !== null) {
-      localStorage.setItem('statsHour', hour);
-    }
     localStorage.setItem('responses', JSON.stringify(responses));
     const name = document.getElementById('username').value.trim();
     localStorage.setItem('username', name);
+    localStorage.setItem('introDone', 'true');
   } else {
     responses = JSON.parse(localStorage.getItem('responses') || '{}');
   }
@@ -407,8 +451,6 @@ function initApp(firstTime) {
   scheduleNotifications();
   document.getElementById('main-header').classList.remove('hidden');
   document.getElementById('main-content').classList.remove('hidden');
-  setInterval(checkStatsPrompt, 60000);
-  checkStatsPrompt();
   if (window.innerWidth <= 600) {
     initCarousel();
   }

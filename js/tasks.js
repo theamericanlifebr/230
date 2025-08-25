@@ -58,10 +58,12 @@ function formatDuration(mins) {
   const m = mins || 0;
   const h = Math.floor(m / 60);
   const mm = m % 60;
-  if (h && mm) return `${h}h ${mm}m`;
-  if (h) return `${h}h`;
-  if (mm) return `${mm}m`;
-  return '';
+  if (h) {
+    const hTxt = `${h} hora${h > 1 ? 's' : ''}`;
+    const mTxt = mm ? ` e ${mm} minuto${mm > 1 ? 's' : ''}` : '';
+    return hTxt + mTxt;
+  }
+  return `${mm} minuto${mm !== 1 ? 's' : ''}`;
 }
 export function initTasks(keys, data, aspects) {
   aspectKeys = keys;
@@ -125,7 +127,7 @@ export function initTasks(keys, data, aspects) {
   setInterval(() => {
     buildTasks();
     if (window.buildCalendar) window.buildCalendar();
-  }, 60000);
+  }, 1000);
 }
 
 function buildTasks() {
@@ -157,7 +159,7 @@ function buildTasks() {
     textDiv.appendChild(h3);
 
     const span = document.createElement('span');
-    span.textContent = `${formatDuration(t.duration)} ${t.type || 'Hábito'}`.trim();
+    span.textContent = formatDuration(t.duration);
     textDiv.appendChild(span);
 
     div.appendChild(icon);
@@ -181,10 +183,22 @@ function buildTasks() {
     if (time && time > now) {
       const timer = document.createElement('div');
       timer.className = 'task-timer';
-      const diff = Math.floor((time - now) / 60000);
-      const hh = Math.floor(diff / 60);
-      const mm = diff % 60;
-      timer.innerHTML = `<small>tempo até início</small><div>${hh}:${mm.toString().padStart(2,'0')}h</div>`;
+      const diffMs = time - now;
+      let txt;
+      if (diffMs >= 3600000) {
+        const hh = Math.floor(diffMs / 3600000);
+        const mm = Math.floor((diffMs % 3600000) / 60000);
+        txt = `${hh.toString().padStart(2,'0')}:${mm
+          .toString()
+          .padStart(2, '0')}+h`;
+      } else {
+        const mm = Math.floor(diffMs / 60000);
+        const ss = Math.floor((diffMs % 60000) / 1000);
+        txt = `${mm.toString().padStart(2,'0')}:${ss
+          .toString()
+          .padStart(2, '0')}+m`;
+      }
+      timer.textContent = txt;
       div.appendChild(timer);
     }
     if (t.substituted) {
@@ -282,7 +296,7 @@ function suggestTask() {
   const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
   const now = new Date(Date.now() + 3600000).toISOString();
   tasks.push({
-    title: idea.title.slice(0, 14),
+    title: idea.title.slice(0, 27),
     description: (idea.description || '').slice(0, 60),
     startTime: now,
     aspect: idea.aspect,
@@ -359,7 +373,7 @@ function saveTask() {
       return;
     }
     const baseTask = {
-      title: title.slice(0, 14),
+      title: title.slice(0, 27),
       description: description.slice(0, 60),
       aspect,
       type,
@@ -409,8 +423,8 @@ function saveTask() {
       }
     }
   } else {
-    const taskObj = {
-      title: title.slice(0, 14),
+      const taskObj = {
+        title: title.slice(0, 27),
       description: (description || '').slice(0, 60),
       aspect,
       type,
