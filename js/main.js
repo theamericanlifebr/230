@@ -16,6 +16,7 @@ let previousLogin = 0;
 let pendingReturnPage = null;
 let suppressVoting = false;
 let introDone = localStorage.getItem('introDone') === 'true';
+let levelDone = localStorage.getItem('levelDone') === 'true';
 
 const introMattersMessages = [
   'Este é o iLife Prime\nEstamos preparando tudo pra você',
@@ -389,10 +390,13 @@ document.getElementById('next-btn').addEventListener('click', () => {
       showQuestion();
     } else {
       localStorage.setItem('responses', JSON.stringify(responses));
+      localStorage.setItem('levelDone', 'true');
+      levelDone = true;
       document.getElementById('question-screen').classList.add('hidden');
       if (pendingReturnPage) {
         document.getElementById('main-header').classList.remove('hidden');
         document.getElementById('main-content').classList.remove('hidden');
+        initStats(aspectKeys, responses, statsColors, aspectsData);
         suppressVoting = true;
         showPage(pendingReturnPage);
         suppressVoting = false;
@@ -615,7 +619,7 @@ function showPage(pageId) {
   if (section) section.classList.add('active');
   if (!suppressVoting) {
     if (pageId === 'laws') startMattersVoting();
-    if (pageId === 'stats') startLevelVoting();
+    if (pageId === 'stats' && !levelDone) startLevelVoting();
   }
 }
 
