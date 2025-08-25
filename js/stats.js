@@ -35,26 +35,26 @@ function showCurrent() {
 
   const svgNS = 'http://www.w3.org/2000/svg';
   const svg = document.createElementNS(svgNS, 'svg');
-  svg.setAttribute('width', '290');
-  svg.setAttribute('height', '290');
-  const radius = 125;
+  svg.setAttribute('width', '392');
+  svg.setAttribute('height', '392');
+  const radius = 169;
   const circumference = 2 * Math.PI * radius;
 
   const bg = document.createElementNS(svgNS, 'circle');
-  bg.setAttribute('cx', '145');
-  bg.setAttribute('cy', '145');
+  bg.setAttribute('cx', '196');
+  bg.setAttribute('cy', '196');
   bg.setAttribute('r', radius);
   bg.setAttribute('stroke', '#222');
-  bg.setAttribute('stroke-width', '20');
+  bg.setAttribute('stroke-width', '27');
   bg.setAttribute('fill', 'none');
   svg.appendChild(bg);
 
   const prog = document.createElementNS(svgNS, 'circle');
-  prog.setAttribute('cx', '145');
-  prog.setAttribute('cy', '145');
+  prog.setAttribute('cx', '196');
+  prog.setAttribute('cy', '196');
   prog.setAttribute('r', radius);
   prog.setAttribute('stroke', color);
-  prog.setAttribute('stroke-width', '20');
+  prog.setAttribute('stroke-width', '27');
   prog.setAttribute('fill', 'none');
   prog.setAttribute('stroke-linecap', 'round');
   prog.setAttribute('stroke-dasharray', circumference);
