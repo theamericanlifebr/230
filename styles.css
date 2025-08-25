@@ -475,7 +475,18 @@ li:hover { transform: scale(1.02); }
   height: 100%;
   overflow: hidden;
   position: relative;
-  margin-top: -60px;
+  margin-top: 0;
+}
+
+#stats.page {
+  padding: 0;
+}
+
+#stats.page.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
 .stats-item {
@@ -486,8 +497,8 @@ li:hover { transform: scale(1.02); }
 
 .stats-circle {
   position: relative;
-  width: 290px;
-  height: 290px;
+  width: 392px;
+  height: 392px;
 }
 
 .stats-circle svg {
@@ -499,10 +510,10 @@ li:hover { transform: scale(1.02); }
 
 .stats-circle img {
   position: absolute;
-  top: 20px;
-  left: 20px;
-  width: 250px;
-  height: 250px;
+  top: 27px;
+  left: 27px;
+  width: 338px;
+  height: 338px;
   border-radius: 50%;
 }
 
