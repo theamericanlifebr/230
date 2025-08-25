@@ -273,7 +273,7 @@ li:hover { transform: scale(1.02); }
 }
 
 .header-logo {
-  height: 20px;
+  height: 30px;
 }
 
 #main-content {
@@ -493,6 +493,8 @@ li:hover { transform: scale(1.02); }
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
 .stats-circle {
@@ -510,10 +512,10 @@ li:hover { transform: scale(1.02); }
 
 .stats-circle img {
   position: absolute;
-  top: 27px;
-  left: 27px;
-  width: 338px;
-  height: 338px;
+  top: 69px;
+  left: 69px;
+  width: 254px;
+  height: 254px;
   border-radius: 50%;
 }
 
@@ -720,9 +722,10 @@ li:hover { transform: scale(1.02); }
   .aspect-image { width: 210px; }
   .menu-item img,
   .menu-carousel img { width: 140px; height: 140px; }
-  #main-header { height: 42px; }
+  #main-header { height: 53px; }
   .header-container { padding: 3px 30px; }
-  .header-logo { height: 28px; }
+  .header-logo { height: 37px; }
+  #main-content { margin-top: 53px; }
   #slider { width: 210px; }
   .progress-container { height: 6px; }
   #progress-bar { border-radius: 3px; }
